@@ -44,7 +44,8 @@ public class MainMenu extends Activity {
 	public void anchorClicked(View v)
 	{
 		
-		Toast.makeText(this, "Anchor Clicked", Toast.LENGTH_SHORT).show();
+		String aString = "You think you fly I know you not";
+		Toast.makeText(this, aString, Toast.LENGTH_SHORT).show();
 
 	}
 
