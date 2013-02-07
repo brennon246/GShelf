@@ -26,6 +26,18 @@
             android:name="com.derpicons.gshelf.MainMenu"
             android:label="@string/title_activity_main_menu" >
         </activity>
+        <activity
+            android:name="com.derpicons.gshelf.Register"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name="com.derpicons.gshelf.ChangePassword"
+            android:label="@string/title_activity_change_password" >
+        </activity>
+        <activity
+            android:name="com.derpicons.gshelf.GetUserName"
+            android:label="@string/title_activity_get_user_name" >
+        </activity>
     </application>
 
 </manifest>
