@@ -58,9 +58,9 @@ public class Login extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				
-				//Intent i = new Intent(getApplicationContext(),
-				//		RegisterActivity.class);
-				//startActivity(i);
+				Intent i = new Intent(getApplicationContext(),
+						Register.class);
+				startActivity(i);
 			}
 		});
 
@@ -71,9 +71,9 @@ public class Login extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				
-				//Intent i = new Intent(getApplicationContext(),
-				//		UserQuestionActivity.class);
-				//startActivity(i);
+				Intent i = new Intent(getApplicationContext(),
+						GetUserName.class);
+				startActivity(i);
 			}
 		});
 	}
