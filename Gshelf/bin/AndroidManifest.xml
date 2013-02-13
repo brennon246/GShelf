@@ -38,6 +38,10 @@
             android:name="com.derpicons.gshelf.GetUserName"
             android:label="@string/title_activity_get_user_name" >
         </activity>
+        <activity
+            android:name="com.derpicons.gshelf.Library"
+            android:label="@string/title_activity_library" >
+        </activity>
     </application>
 
 </manifest>
