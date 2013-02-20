@@ -1,4 +1,4 @@
-package com.example.g;
+package com.derpicons.gshelf;
 
 public class Game {
 	
