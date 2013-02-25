@@ -1,6 +1,8 @@
 package com.derpicons.gshelf;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
@@ -12,7 +14,8 @@ import android.util.Log;
 
 public class Network {
 	
-
+	private static final Map<Integer,String> errorMap = new HashMap<Integer,String>();
+	
 	ArrayList<Game> getGames(String name)
 	{
 		//should use string.format
@@ -47,5 +50,27 @@ public class Network {
 	{
 		return null;
 	}
+	
+	String authenticate(String username, String password)
+	{
+		//implement authentication logic
+		
+		String authResult = "null";
+		
+		return authResult;
+		
+		
+	}
+	
+	boolean hasNetwork()
+	{
+		boolean isNetwork;
+		
+		isNetwork = true;
+		
+		return isNetwork; 
+	}
+	
+	
 
 }
