@@ -209,5 +209,23 @@ public class Network {
 	    }
 	 }
 	
+	public String register(String username, String password, String question, String answer){
+	
+		
+		return "null";
+	}
+	
+	public String getQuestion(String username){
+		
+		return "null";
+
+	}
+	
+	public String  changePassword(String answer, String password){
+		
+		return "null";
+
+	}
+	
 
 }
