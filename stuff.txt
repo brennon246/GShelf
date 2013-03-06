@@ -1,7 +1,0 @@
-https://github.com/brennon246/GShelf.git
-
-git config --global user.name "YOUR NAME"
-git config --global user.email "not super important so enter whatever email"
- git clone https://github.com/brennon246/GShelf.git
-
-testasda
