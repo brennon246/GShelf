@@ -59,8 +59,9 @@
 
         <Spinner
             android:id="@+id/securityQuestions"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_weight="15.71" />
 
         <TextView
             android:id="@+id/answer"
@@ -93,6 +94,11 @@
             android:padding="10dip"
             android:text="Login Here"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/errorDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </RelativeLayout>

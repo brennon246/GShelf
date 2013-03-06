@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,12 +21,8 @@ public class ChangePassword extends Activity {
 
 		TextView loginScreen = (TextView) findViewById(R.id.login);
 		Button submitPass = (Button) findViewById(R.id.submission);
-		final TextView password = (TextView) findViewById(R.id.newPasswordField);
-		final TextView ConPassword = (TextView) findViewById(R.id.confirmNewPasswordField);
-		final TextView confirmPasswordTextView = (TextView) findViewById(R.id.confirmPassword);
-		final TextView answer = (TextView) findViewById(R.id.answer);
-		final CheckBox Login = (CheckBox) findViewById(R.id.logMeIn);
 
+		//GET QUESTION
 		// Sends user to login screen.
 		loginScreen.setOnClickListener(new View.OnClickListener() {
 
@@ -41,6 +38,14 @@ public class ChangePassword extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				final TextView answerTextView = (TextView) findViewById(R.id.answer);
+				final EditText answer = (EditText) findViewById(R.id.answerField);
+				final CheckBox Login = (CheckBox) findViewById(R.id.logMeIn);
+				final EditText password = (EditText) findViewById(R.id.newPasswordField);
+				final TextView passwordTextView = (TextView) findViewById(R.id.newPassword);
+				final EditText ConPassword = (EditText) findViewById(R.id.confirmNewPasswordField);
+				final TextView confirmPasswordTextView = (TextView) findViewById(R.id.confirmPassword);
+				
 				// test password
 				if (!password.getText().toString()
 						.equals(ConPassword.getText().toString())) {

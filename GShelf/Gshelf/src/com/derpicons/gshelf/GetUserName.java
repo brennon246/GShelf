@@ -1,12 +1,12 @@
 package com.derpicons.gshelf;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class GetUserName extends Activity {
@@ -17,24 +17,29 @@ public class GetUserName extends Activity {
 		setContentView(R.layout.activity_get_user_name);
 
 		Button submit = (Button) findViewById(R.id.submission);
-		final TextView username = (TextView) findViewById(R.id.desiredUsernameField);
 		TextView loginScreen = (TextView) findViewById(R.id.login);
+		final TextView errorDis = (TextView) findViewById(R.id.errorDisplay);
 
 		submit.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//String Question = LoginUtilities.GetQuestion(username.getText()
-				//		.toString());
-				String Question = "dsa";
-				if (Question != null) {
-					// pass question to next screen.
+				final EditText username = (EditText) findViewById(R.id.desiredUsernameField);
+				final TextView usernameTextView = (TextView) findViewById(R.id.username);
+				final Network Net = new Network();
+
+				String GetQuestionResult = Net.getQuestion(username.getText()
+						.toString());
+				if (GetQuestionResult == "null") {
+
 					Intent i = new Intent(getApplicationContext(),
 							ChangePassword.class);
+					i.putExtra("Question", GetQuestionResult);
+					i.putExtra("UserName", username.getText().toString());
 					startActivity(i);
 				} else {
-					// not a valid username.
+					errorDis.setText("Not a valid username.");
 				}
 			}
 		});
@@ -57,4 +62,3 @@ public class GetUserName extends Activity {
 	}
 
 }
-
