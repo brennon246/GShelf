@@ -76,17 +76,11 @@ public class Register extends Activity {
 								.toString(), Question, answer.getText()
 								.toString());
 						if (RegisterResult == "null") {
-							if (Login.isChecked()) {
-								Intent i = new Intent(getApplicationContext(),
-										MainMenu.class);
-								i.putExtra("UserName", desiredUsername
-										.getText().toString());
-								startActivity(i);
-							} else {
-								Intent i = new Intent(getApplicationContext(),
-										Login.class);
-								startActivity(i);
-							}
+								//Intent i = new Intent(getApplicationContext(),
+								//		MainMenu.class);
+								//i.putExtra("UserName", desiredUsername
+								//		.getText().toString());
+								//startActivity(i);
 						} else {
 							errorDis.setText(RegisterResult);
 						}
@@ -105,12 +99,13 @@ public class Register extends Activity {
 			}
 		});
 	}
-
+/*
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_register, menu);
 		return true;
 	}
+*/
 
 }

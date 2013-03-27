@@ -14,13 +14,29 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.derpicons.gshelf.MainActivity"
+            android:name="com.derpicons.gshelf.Login"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.derpicons.gshelf.Register"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name="com.derpicons.gshelf.GetUserName"
+            android:label="@string/title_activity_get_user_name" >
+        </activity>
+        <activity
+            android:name="com.derpicons.gshelf.ChangePassword"
+            android:label="@string/title_activity_change_password" >
+        </activity>
+        <activity
+            android:name="com.derpicons.gshelf.MainMenu"
+            android:label="@string/title_activity_main_menu" >
         </activity>
     </application>
 
