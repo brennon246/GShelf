@@ -110,16 +110,16 @@ public class Network {
 			String tagName = parser.getName();
 			
 			if(tagName.equals("GameTitle")){
-				newGame.title = parseGameTitle(parser,newGame);
+				newGame.setTitle(parseGameTitle(parser,newGame));
 			
 			}
 			
 			else if(tagName.equals("Platform")){
-				newGame.platform = parsePlatform(parser, newGame);
+				newGame.setPlatform(parsePlatform(parser, newGame));
 			}
 			
 			else if(tagName.equals("Overview")){
-				newGame.overview = parseOverview(parser, newGame);
+				newGame.setOverview(parseOverview(parser, newGame));
 			}
 			
 			else{
