@@ -1,6 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!--
+      <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
@@ -16,5 +16,33 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-
+    <style name="PageName" >
+        <item name= "android:textSize">32dp</item>
+         <item name="android:layout_width">wrap_content </item>
+        <item name ="android:layout_height">48dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_gravity">center_horizontal|top</item>
+        
+    </style>
+    
+    <style name="Description" >
+        <item name="android:textSize">10dp</item>  
+        <item name="android:layout_width">10dp </item>
+        <item name ="android:layout_height">10dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_gravity">right|center_vertical</item>
+          
+    </style>
+    
+    <style name="Title">
+        <item name="android:textSize">10dp</item>
+        <item name="android:layout_width">158dp </item>
+        <item name ="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_gravity">left|top</item>
+    </style>
+    
+    
+    
 </resources>
+
