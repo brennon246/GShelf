@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 public class GamesLibrary extends Activity {
 
@@ -24,8 +25,8 @@ public class GamesLibrary extends Activity {
 		
 		// Display list of games
 
-		Button LGame = (Button) findViewById(R.id.LGame);
-		Button Search = (Button) findViewById(R.id.Search);
+		RelativeLayout LGame = (RelativeLayout) findViewById(R.id.Game);
+		//Button Search = (Button) findViewById(R.id.Search);
 
 		LGame.setOnClickListener(new View.OnClickListener() {
 
@@ -49,7 +50,7 @@ public class GamesLibrary extends Activity {
 				startActivity(i);
 			}
 		});
-
+/*
 		Search.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -71,7 +72,7 @@ public class GamesLibrary extends Activity {
 				}
 			}
 		});
-
+*/
 	}
 
 	@Override

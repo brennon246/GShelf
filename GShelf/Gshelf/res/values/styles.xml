@@ -25,15 +25,20 @@
         
     </style>
     
-    <style name="Description" >
-        <item name="android:textSize">10dp</item>  
-        <item name="android:layout_width">10dp </item>
-        <item name ="android:layout_height">10dp</item>
+    <style name="Desu" >
+        <item name="android:textSize">10dp</item>
+        <item name="android:layout_width">184dp </item>
+        <item name ="android:layout_height">133dp</item>
         <item name="android:textColor">#ffffff</item>
-        <item name="android:layout_gravity">right|center_vertical</item>
-          
+        <item name="android:layout_gravity">right|top</item>   
     </style>
     
+    <style name = "Pic">
+        <item name="android:layout_width">130dp </item>
+        <item name ="android:layout_height">154dp</item>
+        <item name = "android:layout_gravity">left|fill_vertical</item>
+    </style>
+    <!--  <item name="android:layout_gravity">right|center_vertical</item> -->
     <style name="Title">
         <item name="android:textSize">10dp</item>
         <item name="android:layout_width">158dp </item>
@@ -45,4 +50,3 @@
     
     
 </resources>
-

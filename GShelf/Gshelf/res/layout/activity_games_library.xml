@@ -34,23 +34,62 @@
 
         <Space android:id="@+id/space1" />
 
-        <EditText
-            android:id="@+id/SearchInput"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_column="0"
+            android:layout_gravity="left|top"
+            android:layout_row="0"
+            android:src="@drawable/ic_launcher" />
 
-        <Button
-            android:id="@+id/Search"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Search" />
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/PageName"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:text="Library" />
 
-        <Button
-            android:id="@+id/LGame"
+        <Space android:id="@+id/space1" />
+
+        <View
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Game" />
+            android:layout_height="1dp"
+            android:layout_column="0"
+            android:layout_gravity="left|top"
+            android:layout_row="6"
+            android:background="#03773b" />
+
+        <Space
+            android:id="@+id/space2"
+            android:layout_width="1dp"
+            android:layout_height="15dp"
+            android:layout_row="20" />
+
+        <RelativeLayout
+            android:id="@+id/Game"
+            android:layout_width="match_parent"
+            android:layout_height="154dp" >
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/Title"
+                android:layout_column="0"
+                android:layout_row="8"
+                android:text="Assassin&apos;s Creed 3" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                style="@style/Pic"
+                android:layout_column="0"
+                android:layout_row="9"
+                android:src="@drawable/ac3" />
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/Desu"
+                android:layout_below="@+id/textView2"
+                android:layout_toRightOf="@+id/imageView3"
+                android:text="Any additional information needed for a game. This will likely containt price information and other such information" />
+        </RelativeLayout>
     </GridLayout>
 
 </ScrollView>
