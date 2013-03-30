@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class Login extends Activity {
+	
+	private Network Net = new Network();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +24,6 @@ public class Login extends Activity {
 		TextView registerScreen = (TextView) findViewById(R.id.register);
 		TextView passwordScreen = (TextView) findViewById(R.id.forgotPassword);
 		final TextView errorDis = (TextView) findViewById(R.id.errorDisplay);
-		final Network Net = new Network();
 
 		// Attempts to authenticate the user.
 		login.setOnClickListener(new View.OnClickListener() {
@@ -38,40 +39,28 @@ public class Login extends Activity {
 				boolean complete = true;
 
 				// Check that all fields are filled.
-				/*
-				if (username.getText().toString() == "") {
-					usernameText.setTextColor(Color.RED);
-					complete = false;
-				} else
-					usernameText.setTextColor(Color.BLACK);
-				if (password.getText().toString() == "") {
-					passwordText.setTextColor(Color.RED);
-					complete = false;
-				} else
-					passwordText.setTextColor(Color.BLACK);
-				*/
 				String un = username.getText().toString();
 				String pass = password.getText().toString();
 				if (un.length() == 0) {
 					usernameText.setTextColor(Color.RED);
 					complete = false;
 				} else
-					usernameText.setTextColor(Color.BLACK);
+					usernameText.setTextColor(Color.WHITE);
 				if (pass.length() == 0) {
 					passwordText.setTextColor(Color.RED);
 					complete = false;
 				} else
-					passwordText.setTextColor(Color.BLACK);
-				
-				
-				
+					passwordText.setTextColor(Color.WHITE);
+
 				if (complete) {
 					String LoginResult = Net.authenticate(username.getText()
 							.toString(), password.getText().toString());
 					if (LoginResult == "null") {
-						
-						// remember me stuff
-						
+
+						if (Remember.isChecked()) {
+							// DO REMEMBER ME STUFF
+						}
+
 						Intent i = new Intent(getApplicationContext(),
 								MainMenu.class);
 						i.putExtra("UserName", username.getText().toString());
@@ -109,12 +98,9 @@ public class Login extends Activity {
 			}
 		});
 	}
-/*
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-*/
+	/*
+	 * @Override public boolean onCreateOptionsMenu(Menu menu) { // Inflate the
+	 * menu; this adds items to the action bar if it is present.
+	 * getMenuInflater().inflate(R.menu.activity_login, menu); return true; }
+	 */
 }

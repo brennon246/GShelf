@@ -2,8 +2,8 @@ package com.derpicons.gshelf;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 public class GetUserName extends Activity {
 
+	private Network Net = new Network();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,19 +29,27 @@ public class GetUserName extends Activity {
 				// TODO Auto-generated method stub
 				final EditText username = (EditText) findViewById(R.id.desiredUsernameField);
 				final TextView usernameTextView = (TextView) findViewById(R.id.username);
-				final Network Net = new Network();
+				boolean complete = true;
 
-				String GetQuestionResult = Net.getQuestion(username.getText()
-						.toString());
-				if (GetQuestionResult == "null") {
+				// Check that all fields are filled.
+				if (username.getText().toString().length() == 0) {
+					usernameTextView.setTextColor(Color.RED);
+					complete = false;
+				}
 
-					Intent i = new Intent(getApplicationContext(),
-							ChangePassword.class);
-					i.putExtra("Question", GetQuestionResult);
-					i.putExtra("UserName", username.getText().toString());
-					startActivity(i);
-				} else {
-					errorDis.setText("Not a valid username.");
+				if (complete) {
+					String GetQuestionResult = Net.getQuestion(username
+							.getText().toString());
+					if (GetQuestionResult == "null") {
+
+						Intent i = new Intent(getApplicationContext(),
+								ChangePassword.class);
+						i.putExtra("Question", GetQuestionResult);
+						i.putExtra("UserName", username.getText().toString());
+						startActivity(i);
+					} else {
+						errorDis.setText("Not a valid username.");
+					}
 				}
 			}
 		});
@@ -53,13 +63,11 @@ public class GetUserName extends Activity {
 		});
 
 	}
-/*
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_get_user_name, menu);
-		return true;
-	}
-*/
+	/*
+	 * @Override public boolean onCreateOptionsMenu(Menu menu) { // Inflate the
+	 * menu; this adds items to the action bar if it is present.
+	 * getMenuInflater().inflate(R.menu.activity_get_user_name, menu); return
+	 * true; }
+	 */
 
 }

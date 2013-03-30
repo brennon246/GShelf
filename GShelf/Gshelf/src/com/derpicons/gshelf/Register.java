@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 public class Register extends Activity {
 
+	private Network Net = new Network();
+	private String Question = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,8 +24,6 @@ public class Register extends Activity {
 		Button register = (Button) findViewById(R.id.register);
 		TextView loginScreen = (TextView) findViewById(R.id.login);
 		final TextView errorDis = (TextView) findViewById(R.id.errorDisplay);
-		final Network Net = new Network();
-		final String Question = null;
 
 		// Checks for valid user input and attempts to authenticate the new
 		// user.
@@ -43,26 +44,26 @@ public class Register extends Activity {
 				boolean complete = true;
 
 				// Check that all fields are filled.
-				if (desiredUsername.getText().toString() == "") {
+				if (desiredUsername.getText().toString().length() == 0) {
 					desiredUsernameTextView.setTextColor(Color.RED);
 					complete = false;
 				} else
-					desiredUsername.setTextColor(Color.BLACK);
-				if (password.getText().toString() == "") {
+					desiredUsername.setTextColor(Color.WHITE);
+				if (password.getText().toString().length() == 0) {
 					passwordTextView.setTextColor(Color.RED);
 					complete = false;
 				} else
-					passwordTextView.setTextColor(Color.BLACK);
-				if (ConPassword.getText().toString() == "") {
+					passwordTextView.setTextColor(Color.WHITE);
+				if (ConPassword.getText().toString().length() == 0) {
 					confirmPasswordTextView.setTextColor(Color.RED);
 					complete = false;
 				} else
-					confirmPasswordTextView.setTextColor(Color.BLACK);
-				if (answer.getText().toString() == "") {
+					confirmPasswordTextView.setTextColor(Color.WHITE);
+				if (answer.getText().toString().length() == 0) {
 					answerTextView.setTextColor(Color.RED);
 					complete = false;
 				} else
-					answerTextView.setTextColor(Color.BLACK);
+					answerTextView.setTextColor(Color.WHITE);
 				//Check Question
 
 				if (complete) {
