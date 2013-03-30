@@ -22,52 +22,68 @@ public final class R {
     }
     public static final class drawable {
         public static final int ac3=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int action_help=0x7f020001;
+        public static final int action_search=0x7f020002;
+        public static final int content_backspace=0x7f020003;
+        public static final int content_discard=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int navigation_accept=0x7f020006;
+        public static final int navigation_cancel=0x7f020007;
+        public static final int navigation_previous_item=0x7f020008;
+        public static final int rating_bad=0x7f020009;
+        public static final int rating_favorite=0x7f02000a;
+        public static final int rating_good=0x7f02000b;
+        public static final int rating_half_important=0x7f02000c;
+        public static final int rating_important=0x7f02000d;
+        public static final int rating_not_important=0x7f02000e;
     }
     public static final class id {
         public static final int ConfirmNewPassword=0x7f080006;
-        public static final int Game=0x7f080011;
+        public static final int Game=0x7f080028;
+        public static final int GameInfo=0x7f08002b;
+        public static final int GameTitleTextView=0x7f080029;
         public static final int GridLayout1=0x7f08000b;
-        public static final int LinearLayout1=0x7f08001e;
-        public static final int LinearLayout2=0x7f08001f;
+        public static final int LinearLayout1=0x7f08001b;
+        public static final int LinearLayout2=0x7f08001d;
         public static final int Question=0x7f080001;
-        public static final int action_settings=0x7f08002a;
-        public static final int anchor=0x7f080020;
+        public static final int action_settings=0x7f08002d;
+        public static final int anchor=0x7f08001e;
         public static final int answer=0x7f080002;
         public static final int answerField=0x7f080003;
         public static final int confirmNewPasswordField=0x7f080007;
-        public static final int confirmPassword=0x7f080026;
-        public static final int confirmPasswordField=0x7f080027;
-        public static final int deals=0x7f080021;
-        public static final int desiredUsername=0x7f080025;
-        public static final int desiredUsernameField=0x7f080016;
-        public static final int errorDisplay=0x7f080017;
-        public static final int forgotPassword=0x7f08001d;
+        public static final int confirmPassword=0x7f080024;
+        public static final int confirmPasswordField=0x7f080025;
+        public static final int deals=0x7f08001f;
+        public static final int desiredUsername=0x7f080023;
+        public static final int desiredUsernameField=0x7f080013;
+        public static final int errorDisplay=0x7f080014;
+        public static final int forgotPassword=0x7f08001a;
+        public static final int game_list=0x7f080011;
         public static final int imageView1=0x7f08000c;
         public static final int imageView2=0x7f08000d;
-        public static final int imageView3=0x7f080013;
-        public static final int library=0x7f080022;
+        public static final int imageView3=0x7f08002a;
+        public static final int library=0x7f080020;
         public static final int linearLayout1=0x7f080000;
         public static final int logMeIn=0x7f080008;
         public static final int login=0x7f08000a;
         public static final int newPassword=0x7f080004;
         public static final int newPasswordField=0x7f080005;
-        public static final int password=0x7f080019;
-        public static final int passwordField=0x7f08001a;
-        public static final int register=0x7f08001c;
-        public static final int rememberMe=0x7f08001b;
-        public static final int securityQuestion=0x7f080028;
-        public static final int securityQuestions=0x7f080029;
-        public static final int settings=0x7f080023;
+        public static final int password=0x7f080016;
+        public static final int passwordField=0x7f080017;
+        public static final int register=0x7f080019;
+        public static final int rememberMe=0x7f080018;
+        public static final int search_option=0x7f08001c;
+        public static final int securityQuestion=0x7f080026;
+        public static final int securityQuestions=0x7f080027;
+        public static final int settings=0x7f080021;
         public static final int space1=0x7f08000f;
         public static final int space2=0x7f080010;
         public static final int submission=0x7f080009;
         public static final int textView1=0x7f08000e;
-        public static final int textView2=0x7f080012;
-        public static final int textView3=0x7f080014;
-        public static final int trade=0x7f080024;
-        public static final int username=0x7f080015;
-        public static final int usernameField=0x7f080018;
+        public static final int textView2=0x7f08002c;
+        public static final int trade=0x7f080022;
+        public static final int username=0x7f080012;
+        public static final int usernameField=0x7f080015;
     }
     public static final class layout {
         public static final int activity_change_password=0x7f030000;
@@ -77,6 +93,7 @@ public final class R {
         public static final int activity_login=0x7f030004;
         public static final int activity_main_menu=0x7f030005;
         public static final int activity_register=0x7f030006;
+        public static final int game_list=0x7f030007;
     }
     public static final class menu {
         public static final int change_password=0x7f070000;
