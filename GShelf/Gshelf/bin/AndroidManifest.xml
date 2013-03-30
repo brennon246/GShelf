@@ -38,6 +38,10 @@
             android:name="com.derpicons.gshelf.MainMenu"
             android:label="@string/title_activity_main_menu" >
         </activity>
+        <activity
+            android:name="com.derpicons.gshelf.GamesLibrary"
+            android:label="@string/title_activity_games_library" >
+        </activity>
     </application>
 
 </manifest>

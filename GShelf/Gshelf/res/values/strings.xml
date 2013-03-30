@@ -8,5 +8,6 @@
     <string name="title_activity_get_user_name">GetUserName</string>
     <string name="title_activity_change_password">ChangePassword</string>
     <string name="title_activity_main_menu">MainMenu</string>
+    <string name="title_activity_games_library">GamesLibrary</string>
 
 </resources>
