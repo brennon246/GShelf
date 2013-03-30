@@ -6,6 +6,11 @@
     android:orientation="vertical"
     tools:context=".MainMenu" >
 
+    <item android:id="@+id/search_option"
+        android:title="Search"
+        android:icon="@drawable/action_search"
+        />
+    
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
