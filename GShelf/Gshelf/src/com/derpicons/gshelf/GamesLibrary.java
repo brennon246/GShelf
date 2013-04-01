@@ -34,7 +34,7 @@ public class GamesLibrary extends Activity {
 
 		RelativeLayout LGame = (RelativeLayout) findViewById(R.id.Game);
 		// Button Search = (Button) findViewById(R.id.Search);
-
+		
 		LGame.setOnClickListener(new View.OnClickListener() {
 
 			@Override
