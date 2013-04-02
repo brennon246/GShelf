@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/GameTitleTextView"
+        android:id="@+id/WGameTitleTextView"
         style="@style/Title"
         android:layout_column="0"
         android:layout_row="8"
@@ -20,7 +20,7 @@
         android:src="@drawable/ac3" />
 
     <TextView
-        android:id="@+id/GameInfo"
+        android:id="@+id/WGameInfo"
         style="@style/Desu"
         android:layout_below="@+id/GameTitleTextView"
         android:layout_toRightOf="@+id/imageView3"

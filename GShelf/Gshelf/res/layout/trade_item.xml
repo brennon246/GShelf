@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/Game"
+    android:id="@+id/Trade"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/GameTitleTextView"
+        android:id="@+id/TradeTitleTextView"
         style="@style/Title"
         android:layout_column="0"
         android:layout_row="8"
@@ -20,10 +20,10 @@
         android:src="@drawable/ac3" />
 
     <TextView
-        android:id="@+id/GameInfo"
+        android:id="@+id/TradeInfo"
         style="@style/Desu"
-        android:layout_below="@+id/GameTitleTextView"
+        android:layout_below="@+id/textView2"
         android:layout_toRightOf="@+id/imageView3"
-        android:text="Any additional information needed for a game. This will likely containt price information and other such information" />
+        android:text="Any additional information needed for a trade. This will likely containt price information and other such information" />
 
 </RelativeLayout>
