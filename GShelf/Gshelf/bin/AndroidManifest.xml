@@ -12,19 +12,18 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        
-        android:theme="@android:style/Theme.NoTitleBar">
+        android:theme="@android:style/Theme.NoTitleBar" >
+
         <!-- android:theme="@style/AppTheme" -->
 
         <activity
             android:name="com.derpicons.gshelf.Login"
             android:label="@string/app_name" >
-            
-           <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            
         </activity>
         <activity
             android:name="com.derpicons.gshelf.Register"
@@ -45,6 +44,22 @@
         <activity
             android:name="com.derpicons.gshelf.GamesLibrary"
             android:label="@string/title_activity_games_library" >
+        </activity>
+        <activity
+            android:name="com.derpicons.gshelf.DealsLibrary"
+            android:label="@string/title_activity_deals_library" >
+        </activity>
+        <activity
+            android:name="com.derpicons.gshelf.Marketplace"
+            android:label="@string/title_activity_marketplace" >
+        </activity>
+        <activity
+            android:name="com.derpicons.gshelf.Wishlist"
+            android:label="@string/title_activity_wishlist" >
+        </activity>
+        <activity
+            android:name="com.derpicons.gshelf.DealsView"
+            android:label="@string/title_activity_deals_view" >
         </activity>
     </application>
 

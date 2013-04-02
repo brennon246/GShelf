@@ -12,6 +12,11 @@ public class Game {
 	public Game() {
 	}
 	
+	public Game(String t, String o) {
+		title = t;
+		overview = o;
+	}
+	
 	public String getTitle() {
 		return title;
 	}
