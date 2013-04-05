@@ -5,7 +5,6 @@ ArrayList <NameValuePair> gameList = new ArrayList <NameValuePair>();
 
 HttpClient httpclient = new DefaultHttpClient();
 HttpPost httppost = new HttpPost("http://gshelf.epyon-tech.net/register.php");
-httppost.setEntity(new UrlEncodedFormEntity(gameList));
 HttpResponse response = httpclient.execute(httppost);
 
 
