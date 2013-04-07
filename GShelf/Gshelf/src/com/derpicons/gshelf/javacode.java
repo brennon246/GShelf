@@ -12,7 +12,7 @@ HttpResponse response = httpclient.execute(httppost);
 HttpEntity entity = response.getEntity();
 InputStream input = entity.getContent();
 
-//build data
+//build data here
     try{
         BufferedReader reader = new BufferedReader(new InputStreamReader(input,"iso-8859-1"),8);
         sbuilder = new StringBuilder();
