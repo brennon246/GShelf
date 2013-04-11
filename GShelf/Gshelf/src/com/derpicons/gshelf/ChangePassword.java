@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class ChangePassword extends Activity {
 
-	private Network Net = new Network();
+	private Network Net = new Network(this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

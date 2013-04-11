@@ -47,6 +47,20 @@
         <item name="android:layout_gravity">left|top</item>
     </style>
     
-    
+     <style name="Library_Title">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+    <style name="Library_Console">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+    <style name="Library_Pic">
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_width">100dp </item>
+        <item name ="android:layout_height">200dp</item>
+    </style>  
     
 </resources>

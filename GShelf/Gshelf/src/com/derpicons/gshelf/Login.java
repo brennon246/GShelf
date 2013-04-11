@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class Login extends Activity {
 	
-	private Network Net = new Network();
+	private Network Net = new Network(this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

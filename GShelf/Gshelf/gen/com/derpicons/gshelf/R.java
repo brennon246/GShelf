@@ -167,6 +167,9 @@ public final class R {
          */
         public static final int AppTheme=0x7f060001;
         public static final int Desu=0x7f060003;
+        public static final int Library_Console=0x7f060007;
+        public static final int Library_Pic=0x7f060008;
+        public static final int Library_Title=0x7f060006;
         public static final int PageName=0x7f060002;
         public static final int Pic=0x7f060004;
         /**   <item name="android:layout_gravity">right|center_vertical</item> 

@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class Register extends Activity {
 
-	private Network Net = new Network();
+	private Network Net = new Network(this);
 	private String Question = null;
 	
 	@Override
