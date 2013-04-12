@@ -116,7 +116,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 		Game g = result.get(0);
 
-		int idVal = Integer.parseInt(g.title);
+		int idVal = Integer.parseInt(g.getTitle());
 
 		return idVal;
 	}
@@ -181,7 +181,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 		Game g = result.get(0);
 
-		return g.title.equalsIgnoreCase("true") ? true : false;
+		return g.getTitle().equalsIgnoreCase("true") ? true : false;
 
 	}
 
@@ -199,7 +199,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 		Game g = result.get(0);
 
-		return g.title.equalsIgnoreCase("true") ? true : false;
+		return g.getTitle().equalsIgnoreCase("true") ? true : false;
 	}
 
 	// parses response from getGames API call
@@ -249,16 +249,16 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			String tagName = parser.getName();
 
 			if (tagName.equals("GameTitle")) {
-				newGame.title = parseGameTitle(parser, newGame);
+				newGame.setTitle(parseGameTitle(parser, newGame));
 
 			}
 
 			else if (tagName.equals("Platform")) {
-				newGame.platform = parsePlatform(parser, newGame);
+				newGame.setPlatform(parsePlatform(parser, newGame));
 			}
 
 			else if (tagName.equals("Overview")) {
-				newGame.overview = parseOverview(parser, newGame);
+				newGame.setOverview(parseOverview(parser, newGame));
 			}
 
 			else {
@@ -497,7 +497,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			Game returnGame = new Game();
 
-			returnGame.title = line;
+			returnGame.setTitle(line);
 
 			ArrayList<Game> returnList = new ArrayList<Game>();
 
@@ -564,7 +564,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			Game returnGame = new Game();
 
-			returnGame.title = line;
+			returnGame.setTitle(line);
 
 			ArrayList<Game> returnList = new ArrayList<Game>();
 
@@ -616,9 +616,9 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			Game returnGame = new Game();
 
 			if (input.toString().equalsIgnoreCase("game successfully added"))
-				returnGame.title = "true";
+				returnGame.setTitle("true");
 			else
-				returnGame.title = "false";
+				returnGame.setTitle("false");
 
 			ArrayList<Game> returnList = new ArrayList<Game>();
 
@@ -715,7 +715,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			}
 
 			for (Game g : searchResults) {
-				if (g.title.equalsIgnoreCase(name)) {
+				if (g.getTitle().equalsIgnoreCase(name)) {
 					progressDialog.dismiss();
 					ArrayList<Game> returnList = new ArrayList<Game>();
 					returnList.add(g);
