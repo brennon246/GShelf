@@ -72,6 +72,7 @@
         <style name="Deals_effect">
             <item name="android:layout_width">180dp</item>
             <item name="android:layout_height">100dp</item>
+            <item name="android:textColor">#ffffff</item>
             <item name="android:layout_marginLeft">31dp</item>
         </style>
 </resources>
