@@ -62,5 +62,16 @@
         <item name="android:layout_width">100dp </item>
         <item name ="android:layout_height">200dp</item>
     </style>  
-    
+    <style name="Deals_pic">
+         <item name="android:scaleType">fitXY</item>
+         <item name="android:layout_height">100dp</item>
+         <item name="android:layout_width">100dp</item>
+         <item name="android:layout_marginLeft">21dp</item>
+         <item name="android:layout_marginTop">16dp</item>
+     </style>
+        <style name="Deals_effect">
+            <item name="android:layout_width">180dp</item>
+            <item name="android:layout_height">100dp</item>
+            <item name="android:layout_marginLeft">31dp</item>
+        </style>
 </resources>

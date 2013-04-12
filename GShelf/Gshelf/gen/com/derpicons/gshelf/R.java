@@ -166,6 +166,8 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f060001;
+        public static final int Deals_effect=0x7f06000a;
+        public static final int Deals_pic=0x7f060009;
         public static final int Desu=0x7f060003;
         public static final int Library_Console=0x7f060007;
         public static final int Library_Pic=0x7f060008;
