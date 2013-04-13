@@ -58,15 +58,17 @@ public final class R {
         public static final int LinearLayout1=0x7f08001b;
         public static final int LinearLayout2=0x7f08001d;
         public static final int Question=0x7f080001;
-        public static final int Trade=0x7f080037;
-        public static final int TradeInfo=0x7f080039;
-        public static final int TradeTitleTextView=0x7f080038;
-        public static final int WGameInfo=0x7f08003b;
-        public static final int WGameTitleTextView=0x7f08003a;
-        public static final int action_settings=0x7f08003c;
+        public static final int Trade=0x7f08003a;
+        public static final int TradeInfo=0x7f08003c;
+        public static final int TradeTitleTextView=0x7f08003b;
+        public static final int WGameInfo=0x7f08003e;
+        public static final int WGameTitleTextView=0x7f08003d;
+        public static final int action_settings=0x7f08003f;
         public static final int anchor=0x7f08001e;
         public static final int answer=0x7f080002;
         public static final int answerField=0x7f080003;
+        public static final int button1=0x7f080038;
+        public static final int button2=0x7f080039;
         public static final int confirmNewPasswordField=0x7f080007;
         public static final int confirmPassword=0x7f080025;
         public static final int confirmPasswordField=0x7f080026;
@@ -107,6 +109,7 @@ public final class R {
         public static final int trade_list=0x7f080023;
         public static final int username=0x7f080013;
         public static final int usernameField=0x7f080015;
+        public static final int view1=0x7f080037;
         public static final int wish_list=0x7f08002a;
     }
     public static final class layout {
@@ -123,8 +126,10 @@ public final class R {
         public static final int deal_item=0x7f03000a;
         public static final int game_info=0x7f03000b;
         public static final int game_list=0x7f03000c;
-        public static final int trade_item=0x7f03000d;
-        public static final int wishlist_item=0x7f03000e;
+        public static final int library_game_info=0x7f03000d;
+        public static final int trade_item=0x7f03000e;
+        public static final int wishlist_game_info=0x7f03000f;
+        public static final int wishlist_item=0x7f030010;
     }
     public static final class menu {
         public static final int change_password=0x7f070000;
