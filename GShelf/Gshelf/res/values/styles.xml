@@ -130,4 +130,58 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+    <style name="Info_Title">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name= "android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Info_pic">
+        <item name="android:layout_width">170dp</item>
+        <item name="android:layout_height">170dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+    <style name="Info_Console">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Info_Genre">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+  <style name="Info_Developer">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Info_Price">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="Info_Overview">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginTop">19dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
 </resources>
