@@ -26,16 +26,24 @@ public final class R {
         public static final int action_search=0x7f020002;
         public static final int content_backspace=0x7f020003;
         public static final int content_discard=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int navigation_accept=0x7f020006;
-        public static final int navigation_cancel=0x7f020007;
-        public static final int navigation_previous_item=0x7f020008;
-        public static final int rating_bad=0x7f020009;
-        public static final int rating_favorite=0x7f02000a;
-        public static final int rating_good=0x7f02000b;
-        public static final int rating_half_important=0x7f02000c;
-        public static final int rating_important=0x7f02000d;
-        public static final int rating_not_important=0x7f02000e;
+        public static final int do_image=0x7f020005;
+        public static final int ds_image=0x7f020006;
+        public static final int ic_launcher=0x7f020007;
+        public static final int navigation_accept=0x7f020008;
+        public static final int navigation_cancel=0x7f020009;
+        public static final int navigation_previous_item=0x7f02000a;
+        public static final int no_image=0x7f02000b;
+        public static final int ps3_image=0x7f02000c;
+        public static final int rating_bad=0x7f02000d;
+        public static final int rating_favorite=0x7f02000e;
+        public static final int rating_good=0x7f02000f;
+        public static final int rating_half_important=0x7f020010;
+        public static final int rating_important=0x7f020011;
+        public static final int rating_not_important=0x7f020012;
+        public static final int super_nintendo_image=0x7f020013;
+        public static final int wii_image=0x7f020014;
+        public static final int xbox360_image=0x7f020015;
+        public static final int xbox_image=0x7f020016;
     }
     public static final class id {
         public static final int ConfirmNewPassword=0x7f080006;
