@@ -177,5 +177,9 @@ public final class R {
         /**   <item name="android:layout_gravity">right|center_vertical</item> 
          */
         public static final int Title=0x7f060005;
+        public static final int Wishlist_Console=0x7f06000d;
+        public static final int Wishlist_Price=0x7f06000e;
+        public static final int Wishlist_Title=0x7f06000b;
+        public static final int Wishlist_pic=0x7f06000c;
     }
 }
