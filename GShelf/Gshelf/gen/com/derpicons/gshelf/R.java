@@ -172,6 +172,10 @@ public final class R {
         public static final int Library_Console=0x7f060007;
         public static final int Library_Pic=0x7f060008;
         public static final int Library_Title=0x7f060006;
+        public static final int Market_Console=0x7f060010;
+        public static final int Market_Location=0x7f060012;
+        public static final int Market_Price=0x7f060011;
+        public static final int Market_pic=0x7f06000f;
         public static final int PageName=0x7f060002;
         public static final int Pic=0x7f060004;
         /**   <item name="android:layout_gravity">right|center_vertical</item> 
