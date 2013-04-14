@@ -9,21 +9,19 @@
         android:id="@+id/GameTitleTextView"
         style="@style/Title"
         android:layout_column="0"
-        android:layout_row="8"
-        android:text="Assassin&apos;s Creed 3" />
+        android:layout_row="8" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/CoverImageView"
         style="@style/Pic"
         android:layout_column="0"
         android:layout_row="9"
         android:src="@drawable/ac3" />
 
     <TextView
-        android:id="@+id/GameInfo"
+        android:id="@+id/ConsoleTextView"
         style="@style/Desu"
         android:layout_below="@+id/GameTitleTextView"
-        android:layout_toRightOf="@+id/imageView3"
-        android:text="Any additional information needed for a game. This will likely containt price information and other such information" />
+        android:layout_toRightOf="@+id/CoverImageView" />
 
 </RelativeLayout>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -42,9 +43,15 @@ public class WishListAdapter extends ArrayAdapter<Game> {
 		TextView txtGameTitle = viewCache.getTextGameTitle(resource);
 		txtGameTitle.setText(game.getTitle());
 
-		TextView txtGameInfo = viewCache.getTextGameInfo(resource);
-		txtGameInfo.setText(game.getOverview());
+		TextView txtGameInfo = viewCache.getTextGamePrice(resource);
+		txtGameInfo.setText(game.getPrice());
+		
+		TextView txtGameConsole = viewCache.getTextGameConsole(resource);
+		txtGameConsole.setText(game.getPlatform());
 
+		ImageView WGameCover = viewCache.getWGameCover(resource);
+		WGameCover.setImageDrawable(game.getCover());
+		
 		/* Take the ImageView from layout and set the city's image */
 		/*
 		 * ImageView imageCity = (ImageView)

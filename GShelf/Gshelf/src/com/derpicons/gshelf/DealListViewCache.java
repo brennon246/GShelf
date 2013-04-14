@@ -1,13 +1,14 @@
 package com.derpicons.gshelf;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 class DealListViewCache {
 
 	private View baseView;
-	private TextView textDealLink;
 	private TextView textDealEffect;
+	private ImageView DealImage;
 
 	// private ImageView imageCity;
 
@@ -20,23 +21,24 @@ class DealListViewCache {
 		return baseView;
 	}
 
-	public TextView getTextDealLink(int resource) {
-		if (textDealLink == null) {
-			textDealLink = (TextView) baseView
-					.findViewById(R.id.DealTitleTextView);
-		}
-		return textDealLink;
-	}
-
 	public TextView getTextDealEffect(int resource) {
 		if (textDealEffect == null) {
-			textDealEffect = (TextView) baseView.findViewById(R.id.DealInfo);
+			textDealEffect = (TextView) baseView.findViewById(R.id.DealEffectTextView);
 		}
 		return textDealEffect;
 	}
+	
+	public ImageView getDealImage(int resource) {
+		if (DealImage == null) {
+			DealImage = (ImageView) baseView.findViewById(R.id.DealImageView);
+		}
+		return DealImage;
+	}
+	
+	
 	/*
-	 * public ImageView getImageView (int resource) { if ( imageCity == null ) {
-	 * imageCity = ( ImageView ) baseView.findViewById(R.id.ImageCity); } return
+	 * public ImageView getDealImageView (int resource) { if ( imageCity == null ) {
+	 * imageCity = ( ImageView ) baseView.findViewById(R.id.DealImageView); } return
 	 * imageCity; }
 	 */
 }

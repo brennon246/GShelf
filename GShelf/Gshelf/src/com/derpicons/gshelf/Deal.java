@@ -3,23 +3,26 @@ package com.derpicons.gshelf;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import android.graphics.drawable.Drawable;
+
 public class Deal {
 
 	private Date ExpirationDate;
 	private ArrayList<Tag> Tags;
 	private String Link;
 	private String Overview;
-	private String Effect;
+	private String Description;
 	private String Rating;
 	private int Key;
+	private Drawable Image;
 
-	public Deal(Date e, ArrayList<Tag> t, String l, String o, String eff,
+	public Deal(Date e, ArrayList<Tag> t, String l, String o, String dis,
 			String r, int k) {
 		ExpirationDate = e;
 		Tags = t;
 		Link = l;
 		Overview = o;
-		Effect = eff;
+		Description = dis;
 		Rating = r;
 		Key = k;
 	}
@@ -67,12 +70,12 @@ public class Deal {
 		Overview = overview;
 	}
 
-	public String getEffect() {
-		return Effect;
+	public String getDescription() {
+		return Description;
 	}
 
-	public void setEffect(String effect) {
-		Effect = effect;
+	public void setEffect(String description) {
+		Description = description;
 	}
 
 	public String getRating() {
@@ -81,5 +84,13 @@ public class Deal {
 
 	public void setRating(String rating) {
 		Rating = rating;
+	}
+
+	public Drawable getImage() {
+		return Image;
+	}
+
+	public void setImage(Drawable dealImage) {
+		Image = dealImage;
 	}
 }

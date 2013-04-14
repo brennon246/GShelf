@@ -2,9 +2,9 @@ package com.derpicons.gshelf;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class Login extends Activity {
-	
+
 	private Network Net = new Network(this);
 
 	@Override
@@ -20,11 +20,33 @@ public class Login extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 
+		final TextView errorDis = (TextView) findViewById(R.id.errorDisplay);
+		
+		// Check Shared Preferences
+		//Some kind of if statement
+		SharedPreferences settings = getSharedPreferences("GSHELF_LOGIN",
+                Activity.MODE_PRIVATE);
+		if (settings.contains("username") && settings.contains("password"))
+		{
+			String uname = settings.getString("username", null);
+			String pass = settings.getString("password", null);
+			String LoginResult = Net.authenticate(uname, pass);
+			
+			if (LoginResult == "null") {
+				Intent i = new Intent(getApplicationContext(),
+						MainMenu.class);
+				i.putExtra("UserName", uname);
+				startActivity(i);
+			} else {
+				errorDis.setText(LoginResult);
+			}
+			
+		}
+		
 		Button login = (Button) findViewById(R.id.login);
 		TextView registerScreen = (TextView) findViewById(R.id.register);
 		TextView passwordScreen = (TextView) findViewById(R.id.forgotPassword);
-		final TextView errorDis = (TextView) findViewById(R.id.errorDisplay);
-
+		
 		// Attempts to authenticate the user.
 		login.setOnClickListener(new View.OnClickListener() {
 
@@ -59,6 +81,14 @@ public class Login extends Activity {
 
 						if (Remember.isChecked()) {
 							// DO REMEMBER ME STUFF
+							// Save to Shared Preferences
+							SharedPreferences settings = getSharedPreferences(
+									"GSHELF_LOGIN", 0);
+							SharedPreferences.Editor editor = settings.edit();
+
+							editor.putString("username", un);
+							editor.putString("password", pass);
+							editor.commit();
 						}
 
 						Intent i = new Intent(getApplicationContext(),

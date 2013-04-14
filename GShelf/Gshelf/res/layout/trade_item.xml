@@ -9,21 +9,31 @@
         android:id="@+id/TradeTitleTextView"
         style="@style/Title"
         android:layout_column="0"
-        android:layout_row="8"
-        android:text="Assassin&apos;s Creed 3" />
+        android:layout_row="8" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/TradeCoverImageView"
         style="@style/Pic"
         android:layout_column="0"
         android:layout_row="9"
         android:src="@drawable/ac3" />
 
     <TextView
-        android:id="@+id/TradeInfo"
+        android:id="@+id/TradePriceTextView"
         style="@style/Desu"
-        android:layout_below="@+id/textView2"
-        android:layout_toRightOf="@+id/imageView3"
-        android:text="Any additional information needed for a trade. This will likely containt price information and other such information" />
+        android:layout_below="@+id/TradeTitleTextView"
+        android:layout_toRightOf="@+id/TradeCoverImageView" />
+
+    <TextView
+        android:id="@+id/TradeLocationTextView"
+        style="@style/Desu"
+        android:layout_below="@+id/TradePriceTextView"
+        android:layout_toRightOf="@+id/TradeCoverImageView" />
+
+    <TextView
+        android:id="@+id/TradeConsoleTextView"
+        style="@style/Desu"
+        android:layout_below="@+id/TradeLocationTextView"
+        android:layout_toRightOf="@+id/TradeCoverImageView" />
 
 </RelativeLayout>

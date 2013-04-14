@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -43,7 +44,16 @@ public class TradeListAdapter extends ArrayAdapter<Trade> {
 
 		TextView txtGamePrice = viewCache.getTextGamePrice(resource);
 		txtGamePrice.setText(trade.getPrice());
+		
+		TextView txtTradeLocation = viewCache.getTextTradeLocation(resource);
+		txtTradeLocation.setText(trade.getLocation());
+		
+		TextView txtGameConsole = viewCache.getTextGameConsole(resource);
+		txtGameConsole.setText(trade.gettGame().getPlatform());
 
+		ImageView TGameCover = viewCache.getTGameCover(resource);
+		TGameCover.setImageDrawable(trade.gettGame().getCover());
+		
 		/* Take the ImageView from layout and set the city's image */
 		/*
 		 * ImageView imageCity = (ImageView)

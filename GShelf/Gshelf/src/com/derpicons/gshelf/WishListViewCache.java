@@ -1,13 +1,16 @@
 package com.derpicons.gshelf;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 class WishListViewCache {
 
 	private View baseView;
 	private TextView textGameTitle;
-	private TextView textGameInfo;
+	private TextView textGamePrice;
+	private TextView textGameConsole;
+	private ImageView WGameCover;
 
 	// private ImageView imageCity;
 
@@ -28,15 +31,24 @@ class WishListViewCache {
 		return textGameTitle;
 	}
 
-	public TextView getTextGameInfo(int resource) {
-		if (textGameInfo == null) {
-			textGameInfo = (TextView) baseView.findViewById(R.id.WGameInfo);
+	public TextView getTextGamePrice(int resource) {
+		if (textGamePrice == null) {
+			textGamePrice = (TextView) baseView.findViewById(R.id.WPriceTextView);
 		}
-		return textGameInfo;
+		return textGamePrice;
 	}
-	/*
-	 * public ImageView getImageView (int resource) { if ( imageCity == null ) {
-	 * imageCity = ( ImageView ) baseView.findViewById(R.id.ImageCity); } return
-	 * imageCity; }
-	 */
+	
+	public TextView getTextGameConsole(int resource) {
+		if (textGameConsole == null) {
+			textGameConsole = (TextView) baseView.findViewById(R.id.WConsoleTextView);
+		}
+		return textGameConsole;
+	}
+	
+	public ImageView getWGameCover(int resource) {
+		if (WGameCover == null) {
+			WGameCover = (ImageView) baseView.findViewById(R.id.WCoverImageView);
+		}
+		return WGameCover;
+	}
 }

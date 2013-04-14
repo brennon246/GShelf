@@ -1,6 +1,7 @@
 package com.derpicons.gshelf;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 class TradeListViewCache {
@@ -8,6 +9,9 @@ class TradeListViewCache {
 	private View baseView;
 	private TextView textGameTitle;
 	private TextView textGamePrice;
+	private TextView textTradeLocation;
+	private TextView textGameConsole;
+	private ImageView TGameCover;	
 
 	// private ImageView imageCity;
 
@@ -27,16 +31,32 @@ class TradeListViewCache {
 		}
 		return textGameTitle;
 	}
-
+	
 	public TextView getTextGamePrice(int resource) {
 		if (textGamePrice == null) {
-			textGamePrice = (TextView) baseView.findViewById(R.id.TradeInfo);
+			textGamePrice = (TextView) baseView.findViewById(R.id.TradePriceTextView);
 		}
 		return textGamePrice;
 	}
-	/*
-	 * public ImageView getImageView (int resource) { if ( imageCity == null ) {
-	 * imageCity = ( ImageView ) baseView.findViewById(R.id.ImageCity); } return
-	 * imageCity; }
-	 */
+	
+	public TextView getTextTradeLocation(int resource) {
+		if (textTradeLocation == null) {
+			textTradeLocation = (TextView) baseView.findViewById(R.id.TradeLocationTextView);
+		}
+		return textTradeLocation;
+	}
+	
+	public TextView getTextGameConsole(int resource) {
+		if (textGameConsole == null) {
+			textGameConsole = (TextView) baseView.findViewById(R.id.TradeConsoleTextView);
+		}
+		return textGameConsole;
+	}
+	
+	public ImageView getTGameCover(int resource) {
+		if (TGameCover == null) {
+			TGameCover = (ImageView) baseView.findViewById(R.id.TradeCoverImageView);
+		}
+		return TGameCover;
+	}
 }

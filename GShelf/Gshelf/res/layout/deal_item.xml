@@ -5,25 +5,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/DealTitleTextView"
-        style="@style/Title"
-        android:layout_column="0"
-        android:layout_row="8"
-        android:text="Assassin&apos;s Creed 3" />
-
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/DealImageView"
         style="@style/Pic"
         android:layout_column="0"
         android:layout_row="9"
         android:src="@drawable/ac3" />
 
     <TextView
-        android:id="@+id/DealInfo"
+        android:id="@+id/DealEffectTextView"
         style="@style/Desu"
-        android:layout_below="@+id/DealTitleTextView"
-        android:layout_toRightOf="@+id/imageView3"
-        android:text="Any additional information needed for a deal. This will likely containt price information and other such information" />
+        android:layout_toRightOf="@+id/DealImageView"
+        android:text="10% off Blizzard games" />
 
 </RelativeLayout>

@@ -1,5 +1,7 @@
 package com.derpicons.gshelf;
 
+import android.graphics.drawable.Drawable;
+
 public class Game {
 
 	private String title;
@@ -8,6 +10,8 @@ public class Game {
 	private String genre;
 	private String developer;
 	private int key;
+	private Drawable Cover;
+	private String price;
 
 	public Game() {
 	}
@@ -63,6 +67,22 @@ public class Game {
 
 	public void setKey(int key) {
 		this.key = key;
+	}
+
+	public Drawable getCover() {
+		return Cover;
+	}
+
+	public void setCover(Drawable cover) {
+		Cover = cover;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
 	}
 
 }

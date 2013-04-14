@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -42,9 +43,12 @@ public class GameListAdapter extends ArrayAdapter<Game> {
 		TextView txtGameTitle = viewCache.getTextGameTitle(resource);
 		txtGameTitle.setText(game.getTitle());
 
-		TextView txtGameInfo = viewCache.getTextGameInfo(resource);
-		txtGameInfo.setText(game.getOverview());
+		TextView txtGameInfo = viewCache.getTextGameConsole(resource);
+		txtGameInfo.setText(game.getPlatform());
 
+		ImageView GameCover = viewCache.getGameCover(resource);
+		GameCover.setImageDrawable(game.getCover());
+		
 		/* Take the ImageView from layout and set the city's image */
 		/*
 		 * ImageView imageCity = (ImageView)

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -38,13 +39,17 @@ public class DealListAdapter extends ArrayAdapter<Deal> {
 			viewCache = (DealListViewCache) convertView.getTag();
 		}
 
-		TextView txtDealLink = viewCache.getTextDealLink(resource);
-		txtDealLink.setText(deal.getLink());
+		TextView txtDealLink = viewCache.getTextDealEffect(resource);
+		txtDealLink.setText(deal.getDescription());
 
-		TextView txtDealEffect = viewCache.getTextDealEffect(resource);
-		txtDealEffect.setText(deal.getEffect());
-
+		ImageView GameCover = viewCache.getDealImage(resource);
+		GameCover.setImageDrawable(deal.getImage());
+		
 		/* Take the ImageView from layout and set the city's image */
+		/*
+		ImageView imageDeal = viewCache.getDealImageView(resource);
+		imageDeal.setImageDrawable(deal.getImage());
+		*/
 		/*
 		 * ImageView imageCity = (ImageView)
 		 * convertView.findViewById(R.id.ImageCity); String uri = "drawable/" +

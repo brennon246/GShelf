@@ -1,13 +1,15 @@
 package com.derpicons.gshelf;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 class GameListViewCache {
 
 	private View baseView;
 	private TextView textGameTitle;
-	private TextView textGameInfo;
+	private TextView textGameConsole;
+	private ImageView GameCover;
 
 	// private ImageView imageCity;
 
@@ -28,15 +30,19 @@ class GameListViewCache {
 		return textGameTitle;
 	}
 
-	public TextView getTextGameInfo(int resource) {
-		if (textGameInfo == null) {
-			textGameInfo = (TextView) baseView.findViewById(R.id.GameInfo);
+	public TextView getTextGameConsole(int resource) {
+		if (textGameConsole == null) {
+			textGameConsole = (TextView) baseView
+					.findViewById(R.id.ConsoleTextView);
 		}
-		return textGameInfo;
+		return textGameConsole;
 	}
-	/*
-	 * public ImageView getImageView (int resource) { if ( imageCity == null ) {
-	 * imageCity = ( ImageView ) baseView.findViewById(R.id.ImageCity); } return
-	 * imageCity; }
-	 */
+
+	public ImageView getGameCover(int resource) {
+		if (GameCover == null) {
+			GameCover = (ImageView) baseView.findViewById(R.id.CoverImageView);
+		}
+		return GameCover;
+	}
+
 }
