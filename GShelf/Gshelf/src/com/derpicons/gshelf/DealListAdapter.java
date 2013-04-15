@@ -28,15 +28,15 @@ public class DealListAdapter extends ArrayAdapter<Deal> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		Deal deal = getItem(position);
-		DealListViewCache viewCache;
+		ListViewCache viewCache;
 
 		if (convertView == null) {
 			convertView = (RelativeLayout) inflater.inflate(resource, null);
-			viewCache = new DealListViewCache(convertView);
+			viewCache = new ListViewCache(convertView);
 			convertView.setTag(viewCache);
 		} else {
 			convertView = (RelativeLayout) convertView;
-			viewCache = (DealListViewCache) convertView.getTag();
+			viewCache = (ListViewCache) convertView.getTag();
 		}
 
 		TextView txtDealLink = viewCache.getTextDealEffect(resource);

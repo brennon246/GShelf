@@ -73,7 +73,7 @@ public final class R {
         public static final int desiredUsernameField=0x7f080014;
         public static final int errorDisplay=0x7f080009;
         public static final int forgotPassword=0x7f08001a;
-        public static final int game_list=0x7f080012;
+        public static final int game_item=0x7f080012;
         public static final int imageView1=0x7f08000c;
         public static final int imageView2=0x7f08000d;
         public static final int library=0x7f080020;
@@ -105,14 +105,14 @@ public final class R {
         public static final int activity_deals_view=0x7f030001;
         public static final int activity_games_library=0x7f030002;
         public static final int activity_get_user_name=0x7f030003;
-        public static final int activity_library=0x7f030004;
-        public static final int activity_login=0x7f030005;
-        public static final int activity_main_menu=0x7f030006;
-        public static final int activity_marketplace=0x7f030007;
-        public static final int activity_register=0x7f030008;
+        public static final int activity_login=0x7f030004;
+        public static final int activity_main_menu=0x7f030005;
+        public static final int activity_marketplace=0x7f030006;
+        public static final int activity_register=0x7f030007;
+        public static final int activity_search=0x7f030008;
         public static final int activity_wishlist=0x7f030009;
         public static final int deal_item=0x7f03000a;
-        public static final int game_list=0x7f03000b;
+        public static final int game_item=0x7f03000b;
         public static final int trade_item=0x7f03000c;
         public static final int wishlist_item=0x7f03000d;
     }
@@ -127,7 +127,8 @@ public final class R {
         public static final int main_menu=0x7f070007;
         public static final int marketplace=0x7f070008;
         public static final int register=0x7f070009;
-        public static final int wishlist=0x7f07000a;
+        public static final int search=0x7f07000a;
+        public static final int wishlist=0x7f07000b;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -141,6 +142,7 @@ public final class R {
         public static final int title_activity_main_menu=0x7f050006;
         public static final int title_activity_marketplace=0x7f050009;
         public static final int title_activity_register=0x7f050003;
+        public static final int title_activity_search=0x7f05000c;
         public static final int title_activity_wishlist=0x7f05000a;
     }
     public static final class style {

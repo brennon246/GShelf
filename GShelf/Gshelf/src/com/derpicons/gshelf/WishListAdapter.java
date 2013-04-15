@@ -29,24 +29,24 @@ public class WishListAdapter extends ArrayAdapter<Game> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		Game game = getItem(position);
-		WishListViewCache viewCache;
+		ListViewCache viewCache;
 
 		if (convertView == null) {
 			convertView = (RelativeLayout) inflater.inflate(resource, null);
-			viewCache = new WishListViewCache(convertView);
+			viewCache = new ListViewCache(convertView);
 			convertView.setTag(viewCache);
 		} else {
 			convertView = (RelativeLayout) convertView;
-			viewCache = (WishListViewCache) convertView.getTag();
+			viewCache = (ListViewCache) convertView.getTag();
 		}
 
-		TextView txtGameTitle = viewCache.getTextGameTitle(resource);
+		TextView txtGameTitle = viewCache.getTextWGameTitle(resource);
 		txtGameTitle.setText(game.getTitle());
 
-		TextView txtGameInfo = viewCache.getTextGamePrice(resource);
+		TextView txtGameInfo = viewCache.getTextWGamePrice(resource);
 		txtGameInfo.setText(game.getPrice());
 		
-		TextView txtGameConsole = viewCache.getTextGameConsole(resource);
+		TextView txtGameConsole = viewCache.getTextWGameConsole(resource);
 		txtGameConsole.setText(game.getPlatform());
 
 		ImageView WGameCover = viewCache.getWGameCover(resource);

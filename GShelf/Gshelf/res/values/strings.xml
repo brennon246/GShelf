@@ -13,5 +13,6 @@
     <string name="title_activity_marketplace">Marketplace</string>
     <string name="title_activity_wishlist">Wishlist</string>
     <string name="title_activity_deals_view">DealsView</string>
+    <string name="title_activity_search">SearchActivity</string>
 
 </resources>

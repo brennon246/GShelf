@@ -39,8 +39,8 @@ public class GamesLibrary extends Activity {
 		final Games LGames = new Games(AGames);
 
 		// Display list of games
-		listViewGames = (ListView) findViewById(R.id.game_list);
-		listViewGames.setAdapter(new GameListAdapter(ctx, R.layout.game_list,
+		listViewGames = (ListView) findViewById(R.id.game_item);
+		listViewGames.setAdapter(new GameListAdapter(ctx, R.layout.game_item,
 				LGames.getShowGames()));
 
 		listViewGames.setClickable(true);

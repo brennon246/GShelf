@@ -29,15 +29,15 @@ public class GameListAdapter extends ArrayAdapter<Game> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		Game game = getItem(position);
-		GameListViewCache viewCache;
+		ListViewCache viewCache;
 
 		if (convertView == null) {
 			convertView = (RelativeLayout) inflater.inflate(resource, null);
-			viewCache = new GameListViewCache(convertView);
+			viewCache = new ListViewCache(convertView);
 			convertView.setTag(viewCache);
 		} else {
 			convertView = (RelativeLayout) convertView;
-			viewCache = (GameListViewCache) convertView.getTag();
+			viewCache = (ListViewCache) convertView.getTag();
 		}
 
 		TextView txtGameTitle = viewCache.getTextGameTitle(resource);

@@ -28,27 +28,27 @@ public class TradeListAdapter extends ArrayAdapter<Trade> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		Trade trade = getItem(position);
-		TradeListViewCache viewCache;
+		ListViewCache viewCache;
 
 		if (convertView == null) {
 			convertView = (RelativeLayout) inflater.inflate(resource, null);
-			viewCache = new TradeListViewCache(convertView);
+			viewCache = new ListViewCache(convertView);
 			convertView.setTag(viewCache);
 		} else {
 			convertView = (RelativeLayout) convertView;
-			viewCache = (TradeListViewCache) convertView.getTag();
+			viewCache = (ListViewCache) convertView.getTag();
 		}
 
-		TextView txtGameTitle = viewCache.getTextGameTitle(resource);
+		TextView txtGameTitle = viewCache.getTextTGameTitle(resource);
 		txtGameTitle.setText(trade.gettGame().getTitle());
 
-		TextView txtGamePrice = viewCache.getTextGamePrice(resource);
+		TextView txtGamePrice = viewCache.getTextTGamePrice(resource);
 		txtGamePrice.setText(trade.getPrice());
 		
 		TextView txtTradeLocation = viewCache.getTextTradeLocation(resource);
 		txtTradeLocation.setText(trade.getLocation());
 		
-		TextView txtGameConsole = viewCache.getTextGameConsole(resource);
+		TextView txtGameConsole = viewCache.getTextTGameConsole(resource);
 		txtGameConsole.setText(trade.gettGame().getPlatform());
 
 		ImageView TGameCover = viewCache.getTGameCover(resource);

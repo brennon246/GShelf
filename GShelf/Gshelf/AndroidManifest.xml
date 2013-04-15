@@ -61,6 +61,10 @@
             android:name="com.derpicons.gshelf.DealsView"
             android:label="@string/title_activity_deals_view" >
         </activity>
+        <activity
+            android:name="com.derpicons.gshelf.SearchActivity"
+            android:label="@string/title_activity_search" >
+        </activity>
     </application>
 
 </manifest>
