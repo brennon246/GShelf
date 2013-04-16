@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -22,11 +23,16 @@ public class GamesLibrary extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_games_library);
+		final Network Net = new Network(this);
 		ctx = this;
 
-		// Get list of games
+		Intent intent = getIntent();
+		String Username = intent.getStringExtra("UserName");
+		int Userkey = intent.getIntExtra("UKey", 0);
 
-		final ArrayList<Game> AGames = new ArrayList<Game>();
+		// Get list of games
+				
+		ArrayList<Game> AGames = new ArrayList<Game>();
 		// Test Data
 		/*
 		 * AGames.add(new Game("Dino Chase", "Chase dinos around"));
@@ -36,6 +42,7 @@ public class GamesLibrary extends Activity {
 		 * Game("Disco", "Dance")); AGames.add(new Game("Thermonuclear Warfare",
 		 * "There is only one winning move"));
 		 */
+		AGames = Net.getGames("halo");
 		final Games LGames = new Games(AGames);
 
 		// Display list of games
@@ -55,20 +62,18 @@ public class GamesLibrary extends Activity {
 						.show();
 				// Takes user to GameView page with required data.
 				/*
-				Intent i = new Intent(getApplicationContext(), GameView.class);
-				i.putExtra("key", LGames.getShowGames().get(position).getKey());
-				i.putExtra("title", LGames.getShowGames().get(position)
-						.getTitle());
-				i.putExtra("platform", LGames.getShowGames().get(position)
-						.getPlatform());
-				i.putExtra("overview", LGames.getShowGames().get(position)
-						.getOverview());
-				i.putExtra("genre", LGames.getShowGames().get(position)
-						.getGenre());
-				i.putExtra("developer", LGames.getShowGames().get(position)
-						.getDeveloper());
-				startActivity(i);
-				*/
+				 * Intent i = new Intent(getApplicationContext(),
+				 * GameView.class); i.putExtra("key",
+				 * LGames.getShowGames().get(position).getKey());
+				 * i.putExtra("title", LGames.getShowGames().get(position)
+				 * .getTitle()); i.putExtra("platform",
+				 * LGames.getShowGames().get(position) .getPlatform());
+				 * i.putExtra("overview", LGames.getShowGames().get(position)
+				 * .getOverview()); i.putExtra("genre",
+				 * LGames.getShowGames().get(position) .getGenre());
+				 * i.putExtra("developer", LGames.getShowGames().get(position)
+				 * .getDeveloper()); startActivity(i);
+				 */
 			}
 		});
 

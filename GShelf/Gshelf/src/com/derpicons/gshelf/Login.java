@@ -1,6 +1,7 @@
 package com.derpicons.gshelf;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -14,12 +15,14 @@ import android.widget.TextView;
 
 public class Login extends Activity {
 
+	private Context ctx;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-
-		final Network Net = new Network(this);
+		ctx = this;
+		
 		final TextView errorDis = (TextView) findViewById(R.id.errorDisplay);
 
 		// Check Shared Preferences
@@ -28,19 +31,16 @@ public class Login extends Activity {
 		if (settings.contains("username") && settings.contains("password")) {
 			String SPuname = settings.getString("username", null);
 			String SPpass = settings.getString("password", null);
-			SPpass = Net.decrypt(SPpass);
-			int SPLoginResult = Net.login(SPuname, SPpass);
+			SPpass = new Network(ctx).decrypt(SPpass);
+			int SPLoginResult = new Network(ctx).login(SPuname, SPpass);
 
 			// Login is a success take user to default page
 			if (SPLoginResult != 0) {
 				Intent i = new Intent(getApplicationContext(),
-						GamesLibrary.class);
+						SearchActivity.class);
 				i.putExtra("UserName", SPuname);
 				i.putExtra("UKey", SPLoginResult);
 				startActivity(i);
-			} else {
-				// Error, display the meaning of the error code
-				errorDis.setText(SPLoginResult);
 			}
 
 		}
@@ -77,7 +77,7 @@ public class Login extends Activity {
 					passwordText.setTextColor(Color.WHITE);
 
 				if (complete) {
-					int LoginResult = Net.login(un, pass);
+					int LoginResult = new Network(ctx).login(un, pass);
 
 					// Login is a success take user to default page
 					if (LoginResult != 0) {
@@ -86,13 +86,13 @@ public class Login extends Activity {
 							SharedPreferences settings = getSharedPreferences(
 									"GSHELF_LOGIN", 0);
 							SharedPreferences.Editor editor = settings.edit();
-							pass = Net.encrypt(pass);
+							pass = new Network(ctx).encrypt(pass);
 							editor.putString("username", un);
 							editor.putString("password", pass);
 							editor.commit();
 						}
 						Intent i = new Intent(getApplicationContext(),
-								GamesLibrary.class);
+								SearchActivity.class);
 						i.putExtra("UserName", un);
 						i.putExtra("UKey", LoginResult);
 						startActivity(i);
@@ -121,7 +121,7 @@ public class Login extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if (Net.hasNetwork()) {
+				if (new Network(ctx).hasNetwork()) {
 					Intent i = new Intent(getApplicationContext(),
 							GetUserName.class);
 					startActivity(i);

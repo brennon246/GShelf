@@ -1,6 +1,7 @@
 package com.derpicons.gshelf;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,13 +15,15 @@ import android.widget.TextView;
 public class Register extends Activity {
 
 	private String Question = null;
+	private Context ctx;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
 
-		final Network Net = new Network(this);
+		ctx = this;
+		
 		Button register = (Button) findViewById(R.id.register);
 		TextView loginScreen = (TextView) findViewById(R.id.login);
 		final TextView errorDis = (TextView) findViewById(R.id.errorDisplay);
@@ -75,12 +78,12 @@ public class Register extends Activity {
 						//		.getText().toString(), password.getText()
 						//		.toString(), Question, answer.getText()
 						//		.toString());
-						boolean RegisterResult = Net.addUser(desiredUsername.getText().toString(), password.getText().toString());
+						boolean RegisterResult = new Network(ctx).addUser(desiredUsername.getText().toString(), password.getText().toString());
 						if (RegisterResult == true) {
 								//Intent i = new Intent(getApplicationContext(),
-								//		MainMenu.class);
-								//i.putExtra("UserName", desiredUsername
-								//		.getText().toString());
+								//		GamesLibrary.class);
+								//i.putExtra("UserName", desiredUsername.getText().toString());
+								//i.putExtra("UKey", RegisterResult);
 								//startActivity(i);
 							finish();
 						} else {
