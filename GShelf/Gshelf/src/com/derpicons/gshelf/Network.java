@@ -77,16 +77,19 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		return new String( Base64.decode( string, Base64.DEFAULT ) );
 	}
 	Drawable getImage(String name) {
+		
+		//HTTP URL
 		URL url;
 		try {
 
-			// url, replace with parse data
-			url = new URL(
-					"http://thegamesdb.net/banners/fanart/thumb/170-1.jpg");
+			// Create URL from url parameter
+			url = new URL(name);
 
 			// establish connection and download image
 			URLConnection connection = url.openConnection();
 			connection.setUseCaches(true);
+			
+			//create Drawable from stream associated with connection
 			return Drawable
 					.createFromStream(connection.getInputStream(), "src");
 		} catch (MalformedURLException e) {
@@ -105,7 +108,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 		ArrayList<Game> result = new ArrayList<Game>();
 		try {
-			result = this.execute("2", username, password).get();
+			result = this.execute("2", username, encrypt(password)).get();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -309,16 +312,6 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		return overview;
 	}
 
-	// place holder for authenticate function
-	String authenticate(String username, String password) {
-		// implement authentication logic
-
-		String authResult = "null";
-
-		return authResult;
-
-	}
-
 	//poll network connectivity, needs manifest permission:     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	boolean hasNetwork() {
 		ConnectivityManager cm = (ConnectivityManager) ctxt
@@ -348,12 +341,6 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 				break;
 			}
 		}
-	}
-
-	public String register(String username, String password, String question,
-			String answer) {
-
-		return "null";
 	}
 
 	public String getQuestion(String username) {
