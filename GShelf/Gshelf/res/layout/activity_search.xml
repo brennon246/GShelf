@@ -1,16 +1,52 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_height="wrap_content"
     tools:context=".SearchActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:padding="10dip" >
 
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter game title" >
+
+            <requestFocus android:layout_width="wrap_content" />
+
+        </EditText>
+
+        <Button
+            android:id="@+id/buttonSearch"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+
+        <ListView
+            android:id="@+id/result_item"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+        </ListView>
+        
+        
+        
+    </LinearLayout>
+
+    <Button 
+        android:id="@+id/buttonDeal"
+        android:layout_height="wrap_content" android:layout_width="fill_parent" 
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text="Add to Deals"
+        />
+
+    
 </RelativeLayout>

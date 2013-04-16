@@ -13,32 +13,34 @@ import android.widget.TextView;
 
 public class Login extends Activity {
 
-	private Network Net = new Network(this);
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 
+		final Network Net = new Network(this);
 		final TextView errorDis = (TextView) findViewById(R.id.errorDisplay);
 		
 		// Check Shared Preferences
-		//Some kind of if statement
 		SharedPreferences settings = getSharedPreferences("GSHELF_LOGIN",
                 Activity.MODE_PRIVATE);
 		if (settings.contains("username") && settings.contains("password"))
 		{
-			String uname = settings.getString("username", null);
-			String pass = settings.getString("password", null);
-			String LoginResult = Net.authenticate(uname, pass);
+			String SPuname = settings.getString("username", null);
+			String SPpass = settings.getString("password", null);
+			SPpass = Net.decrypt(SPpass);
+			int SPLoginResult = Net.login(SPuname, SPpass);
 			
-			if (LoginResult == "null") {
+			//Login is a success take user to default page 
+			if (SPLoginResult != -1) {
 				Intent i = new Intent(getApplicationContext(),
-						MainMenu.class);
-				i.putExtra("UserName", uname);
+						GamesLibrary.class);
+				i.putExtra("UserName", SPuname);
+				i.putExtra("UKey", SPLoginResult);
 				startActivity(i);
 			} else {
-				errorDis.setText(LoginResult);
+				//Error, display the meaning of the error code
+				errorDis.setText(SPLoginResult);
 			}
 			
 		}
@@ -75,10 +77,12 @@ public class Login extends Activity {
 					passwordText.setTextColor(Color.WHITE);
 
 				if (complete) {
-					String LoginResult = Net.authenticate(username.getText()
-							.toString(), password.getText().toString());
-					if (LoginResult == "null") {
-
+					
+					pass = Net.encrypt(pass);
+					int LoginResult = Net.login(un, pass);
+					
+					//Login is a success take user to default page 
+					if (LoginResult != -1) {
 						if (Remember.isChecked()) {
 							// DO REMEMBER ME STUFF
 							// Save to Shared Preferences
@@ -90,12 +94,13 @@ public class Login extends Activity {
 							editor.putString("password", pass);
 							editor.commit();
 						}
-
 						Intent i = new Intent(getApplicationContext(),
-								MainMenu.class);
-						i.putExtra("UserName", username.getText().toString());
+								GamesLibrary.class);
+						i.putExtra("UserName", un);
+						i.putExtra("UKey", LoginResult);
 						startActivity(i);
 					} else {
+						//Error, display the meaning of the error code
 						errorDis.setText(LoginResult);
 					}
 				}
@@ -127,6 +132,7 @@ public class Login extends Activity {
 					errorDis.setText("no network");
 			}
 		});
+		
 	}
 	/*
 	 * @Override public boolean onCreateOptionsMenu(Menu menu) { // Inflate the

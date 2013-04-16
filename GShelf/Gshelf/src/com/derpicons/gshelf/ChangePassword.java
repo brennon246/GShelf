@@ -12,13 +12,12 @@ import android.widget.TextView;
 
 public class ChangePassword extends Activity {
 
-	private Network Net = new Network(this);
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_change_password);
 
+		final Network Net = new Network(this);
 		Bundle bundle = getIntent().getExtras();
 		final String un = bundle.getString("UserName");
 		final String qu = bundle.getString("Question");
@@ -45,7 +44,6 @@ public class ChangePassword extends Activity {
 				// TODO Auto-generated method stub
 				final TextView answerTextView = (TextView) findViewById(R.id.answer);
 				final EditText answer = (EditText) findViewById(R.id.answerField);
-				final CheckBox Login = (CheckBox) findViewById(R.id.logMeIn);
 				final EditText password = (EditText) findViewById(R.id.newPasswordField);
 				final TextView passwordTextView = (TextView) findViewById(R.id.newPassword);
 				final EditText ConPassword = (EditText) findViewById(R.id.confirmNewPasswordField);

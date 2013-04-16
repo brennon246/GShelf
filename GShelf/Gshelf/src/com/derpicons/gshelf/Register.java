@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 public class Register extends Activity {
 
-	private Network Net = new Network(this);
 	private String Question = null;
 	
 	@Override
@@ -21,6 +20,7 @@ public class Register extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
 
+		final Network Net = new Network(this);
 		Button register = (Button) findViewById(R.id.register);
 		TextView loginScreen = (TextView) findViewById(R.id.login);
 		final TextView errorDis = (TextView) findViewById(R.id.errorDisplay);
@@ -40,7 +40,6 @@ public class Register extends Activity {
 				final TextView desiredUsernameTextView = (TextView) findViewById(R.id.desiredUsername);
 				final EditText answer = (EditText) findViewById(R.id.answerField);
 				final TextView answerTextView = (TextView) findViewById(R.id.answer);
-				final CheckBox Login = (CheckBox) findViewById(R.id.logMeIn);
 				boolean complete = true;
 
 				// Check that all fields are filled.

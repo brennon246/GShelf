@@ -1,8 +1,10 @@
 package com.derpicons.gshelf;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 
 public class SearchActivity extends Activity {
 
@@ -10,6 +12,10 @@ public class SearchActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
+		
+		//Removes Deal Button for regular search
+		Button DealsButton = (Button) findViewById(R.id.buttonDeal);
+		DealsButton.setVisibility(View.GONE);
 	}
 
 	@Override

@@ -11,13 +11,12 @@ import android.widget.TextView;
 
 public class GetUserName extends Activity {
 
-	private Network Net = new Network(this);
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_get_user_name);
 
+		final Network Net = new Network(this);
 		Button submit = (Button) findViewById(R.id.submission);
 		TextView loginScreen = (TextView) findViewById(R.id.login);
 		final TextView errorDis = (TextView) findViewById(R.id.errorDisplay);
