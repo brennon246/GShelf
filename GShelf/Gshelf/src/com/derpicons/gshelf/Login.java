@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,35 +21,34 @@ public class Login extends Activity {
 
 		final Network Net = new Network(this);
 		final TextView errorDis = (TextView) findViewById(R.id.errorDisplay);
-		
+
 		// Check Shared Preferences
 		SharedPreferences settings = getSharedPreferences("GSHELF_LOGIN",
-                Activity.MODE_PRIVATE);
-		if (settings.contains("username") && settings.contains("password"))
-		{
+				Activity.MODE_PRIVATE);
+		if (settings.contains("username") && settings.contains("password")) {
 			String SPuname = settings.getString("username", null);
 			String SPpass = settings.getString("password", null);
 			SPpass = Net.decrypt(SPpass);
 			int SPLoginResult = Net.login(SPuname, SPpass);
-			
-			//Login is a success take user to default page 
-			if (SPLoginResult != -1) {
+
+			// Login is a success take user to default page
+			if (SPLoginResult != 0) {
 				Intent i = new Intent(getApplicationContext(),
 						GamesLibrary.class);
 				i.putExtra("UserName", SPuname);
 				i.putExtra("UKey", SPLoginResult);
 				startActivity(i);
 			} else {
-				//Error, display the meaning of the error code
+				// Error, display the meaning of the error code
 				errorDis.setText(SPLoginResult);
 			}
-			
+
 		}
-		
+
 		Button login = (Button) findViewById(R.id.login);
 		TextView registerScreen = (TextView) findViewById(R.id.register);
 		TextView passwordScreen = (TextView) findViewById(R.id.forgotPassword);
-		
+
 		// Attempts to authenticate the user.
 		login.setOnClickListener(new View.OnClickListener() {
 
@@ -77,19 +77,16 @@ public class Login extends Activity {
 					passwordText.setTextColor(Color.WHITE);
 
 				if (complete) {
-					
-					pass = Net.encrypt(pass);
 					int LoginResult = Net.login(un, pass);
-					
-					//Login is a success take user to default page 
-					if (LoginResult != -1) {
+
+					// Login is a success take user to default page
+					if (LoginResult != 0) {
 						if (Remember.isChecked()) {
-							// DO REMEMBER ME STUFF
 							// Save to Shared Preferences
 							SharedPreferences settings = getSharedPreferences(
 									"GSHELF_LOGIN", 0);
 							SharedPreferences.Editor editor = settings.edit();
-
+							pass = Net.encrypt(pass);
 							editor.putString("username", un);
 							editor.putString("password", pass);
 							editor.commit();
@@ -100,8 +97,8 @@ public class Login extends Activity {
 						i.putExtra("UKey", LoginResult);
 						startActivity(i);
 					} else {
-						//Error, display the meaning of the error code
-						errorDis.setText(LoginResult);
+						// Error, display the meaning of the error code
+						errorDis.setText("Login failed");
 					}
 				}
 			}
@@ -132,11 +129,14 @@ public class Login extends Activity {
 					errorDis.setText("no network");
 			}
 		});
-		
+
 	}
-	/*
-	 * @Override public boolean onCreateOptionsMenu(Menu menu) { // Inflate the
-	 * menu; this adds items to the action bar if it is present.
-	 * getMenuInflater().inflate(R.menu.activity_login, menu); return true; }
-	 */
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		//getMenuInflater().inflate(R.menu.activity_login, menu);
+		return true;
+	}
+
 }

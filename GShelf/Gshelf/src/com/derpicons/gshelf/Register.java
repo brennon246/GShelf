@@ -47,7 +47,7 @@ public class Register extends Activity {
 					desiredUsernameTextView.setTextColor(Color.RED);
 					complete = false;
 				} else
-					desiredUsername.setTextColor(Color.WHITE);
+					desiredUsernameTextView.setTextColor(Color.WHITE);
 				if (password.getText().toString().length() == 0) {
 					passwordTextView.setTextColor(Color.RED);
 					complete = false;
@@ -71,18 +71,20 @@ public class Register extends Activity {
 							.equals(ConPassword.getText().toString())) {
 						confirmPasswordTextView.setTextColor(Color.RED);
 					} else {
-						String RegisterResult = Net.register(desiredUsername
-								.getText().toString(), password.getText()
-								.toString(), Question, answer.getText()
-								.toString());
-						if (RegisterResult == "null") {
+						//String RegisterResult = Net.register(desiredUsername
+						//		.getText().toString(), password.getText()
+						//		.toString(), Question, answer.getText()
+						//		.toString());
+						boolean RegisterResult = Net.addUser(desiredUsername.getText().toString(), password.getText().toString());
+						if (RegisterResult == true) {
 								//Intent i = new Intent(getApplicationContext(),
 								//		MainMenu.class);
 								//i.putExtra("UserName", desiredUsername
 								//		.getText().toString());
 								//startActivity(i);
+							finish();
 						} else {
-							errorDis.setText(RegisterResult);
+							errorDis.setText("Failed to register user");
 						}
 					}
 				}
