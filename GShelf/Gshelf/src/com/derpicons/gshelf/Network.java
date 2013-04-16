@@ -184,7 +184,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 		Game g = result.get(0);
 
-		return g.getTitle().equalsIgnoreCase("true") ? true : false;
+		return g.getTitle().equalsIgnoreCase("1") ? true : false;
 
 	}
 
@@ -602,10 +602,27 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			Game returnGame = new Game();
 
-			if (input.toString().equalsIgnoreCase("game successfully added"))
-				returnGame.setTitle("true");
-			else
-				returnGame.setTitle("false");
+			BufferedReader reader = null;
+			try {
+				 reader = new BufferedReader(
+						new InputStreamReader(input, "iso-8859-1"), 8);
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			StringBuilder sbuilder = new StringBuilder();
+
+			String line = "";
+			try {
+				line = reader.readLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Log.i("Add user result",line);
+			
+			returnGame.setTitle(line);
 
 			ArrayList<Game> returnList = new ArrayList<Game>();
 
