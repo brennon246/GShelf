@@ -13,10 +13,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/gshelf_icon"
-        android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar" >
-
-        <!-- android:theme="@style/AppTheme" -->
+        android:label="@string/app_name">
 
         <activity
             android:name="com.derpicons.gshelf.Login"
