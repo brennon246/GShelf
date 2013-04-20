@@ -74,11 +74,12 @@ public final class R {
         public static final int TradeLocationTextView=0x7f0a0044;
         public static final int TradePriceTextView=0x7f0a0045;
         public static final int TradeTitleTextView=0x7f0a0041;
+        public static final int WConsoleTextView=0x7f0a0049;
         public static final int WCoverImageView=0x7f0a0047;
         public static final int WGameTitleTextView=0x7f0a0046;
         public static final int WPriceTextView=0x7f0a0048;
-        public static final int action_search=0x7f0a004a;
-        public static final int action_settings=0x7f0a0049;
+        public static final int action_search=0x7f0a004b;
+        public static final int action_settings=0x7f0a004a;
         public static final int anchor=0x7f0a001e;
         public static final int answer=0x7f0a0002;
         public static final int answerField=0x7f0a0003;
@@ -228,9 +229,13 @@ public final class R {
         /**   <item name="android:layout_gravity">right|center_vertical</item> 
          */
         public static final int Title=0x7f080005;
+        public static final int TradeItem_Console=0x7f08001c;
+        public static final int TradeItem_Location=0x7f08001e;
+        public static final int TradeItem_Price=0x7f08001d;
         public static final int Wish_Item_Title=0x7f08001b;
         public static final int Wishlist_Console=0x7f08000d;
         public static final int Wishlist_Info=0x7f08000f;
+        public static final int Wishlist_Item_Info=0x7f08001f;
         public static final int Wishlist_Price=0x7f08000e;
         public static final int Wishlist_Title=0x7f08000b;
         public static final int Wishlist_pic=0x7f08000c;

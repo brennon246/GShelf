@@ -21,8 +21,14 @@
 
     <TextView
         android:id="@+id/WPriceTextView"
-        style="@style/Wishlist_Info"
+        style="@style/Wishlist_Item_Info"
         android:layout_alignTop="@+id/WCoverImageView"
         android:layout_toRightOf="@+id/WCoverImageView" />
+
+    <TextView
+        android:id="@+id/WConsoleTextView"
+        style="@style/Wishlist_Item_Info"
+        android:layout_alignLeft="@+id/WPriceTextView"
+        android:layout_below="@+id/WPriceTextView" />
 
 </RelativeLayout>

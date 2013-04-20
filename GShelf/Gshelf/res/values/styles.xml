@@ -199,4 +199,36 @@
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_width">fill_parent</item>
     </style>
+    <style name="TradeItem_Console">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="TradeItem_Price">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+  <style name="TradeItem_Location">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">28dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Wishlist_Item_Info">
+        <item name="android:textSize">10dp</item>
+        <item name="android:layout_width">184dp </item>
+        <item name ="android:layout_height">50dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_gravity">right|top</item>  
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
 </resources>

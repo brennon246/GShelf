@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/TradeConsoleTextView"
-        style="@style/Info_Console"
+        style="@style/TradeItem_Console"
         android:layout_alignTop="@+id/TradeCoverImageView"
         android:layout_toRightOf="@+id/TradeTitleTextView"
         android:text="Console" />
@@ -30,29 +30,27 @@
         android:layout_marginBottom="90dp"
         android:background="#03773b" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_above="@+id/view1"
-        android:layout_alignRight="@+id/textView4"
-        android:layout_marginBottom="20dp"
-        android:text="Remove From Trades" />
-
     <TextView
         android:id="@+id/TradeLocationTextView"
-        style="@style/Info_Developer"
+        style="@style/TradeItem_Location"
         android:layout_alignBottom="@+id/TradeCoverImageView"
         android:layout_alignLeft="@+id/TradePriceTextView"
-        android:layout_marginBottom="28dp"
         android:text="Location" />
 
     <TextView
         android:id="@+id/TradePriceTextView"
-        style="@style/Info_Genre"
+        style="@style/TradeItem_Price"
         android:layout_above="@+id/TradeLocationTextView"
         android:layout_alignLeft="@+id/TradeConsoleTextView"
-        android:layout_marginBottom="16dp"
         android:text="Price" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/TradeLocationTextView"
+        android:layout_below="@+id/TradeCoverImageView"
+        android:layout_marginTop="16dp"
+        android:text="Remove From Trades" />
 
 </RelativeLayout>
