@@ -17,7 +17,7 @@ public class Base_Activity extends Activity
 		// Inflate the menu
 		getMenuInflater().inflate(R.menu.main_menu, menu);
 //		SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
-//		return super.onCreateOptionMenu(menu);
+//		return super.onCreateOptionsMenu(menu);
 		return true;
 	}
 	
