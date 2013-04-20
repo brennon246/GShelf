@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class GetUserName extends Base_Activity {
+public class GetUserName extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

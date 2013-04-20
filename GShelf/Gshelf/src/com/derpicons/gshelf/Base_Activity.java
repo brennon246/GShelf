@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 public class Base_Activity extends Activity 
 {
@@ -13,8 +14,10 @@ public class Base_Activity extends Activity
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) 
 	{
-		// Inflate the menu; this adds items to the action bar if it is present.
+		// Inflate the menu
 		getMenuInflater().inflate(R.menu.main_menu, menu);
+//		SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
+//		return super.onCreateOptionMenu(menu);
 		return true;
 	}
 	
