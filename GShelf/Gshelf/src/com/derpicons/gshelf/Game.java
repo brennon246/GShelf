@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 
 public class Game {
 
+	private String gameUrl;
 	private String title;
 	private String platform;
 	private String overview;
@@ -83,6 +84,14 @@ public class Game {
 
 	public void setPrice(String price) {
 		this.price = price;
+	}
+
+	public String getGameUrl() {
+		return gameUrl;
+	}
+
+	public void setGameUrl(String gameUrl) {
+		this.gameUrl = gameUrl;
 	}
 
 }
