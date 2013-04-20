@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/Info_Title"
+        android:text="Title" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        style="@style/Info_pic"
+        android:layout_below="@+id/textView1"
+        android:src="@drawable/ac3" />
+    
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/Deal_Info"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_toRightOf="@+id/imageView2"
+        android:text="TextView" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button2"
+        android:layout_marginTop="59dp"
+        android:background="#03773b" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:text="Go To Site" />
+
+</RelativeLayout>

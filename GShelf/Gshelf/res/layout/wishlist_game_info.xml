@@ -77,23 +77,31 @@
         android:layout_marginTop="36dp"
         android:background="#03773b" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/view1"
-        android:layout_alignLeft="@+id/textView6"
-        android:layout_marginBottom="18dp"
-        android:layout_toLeftOf="@+id/button2"
-        android:text="Buy game" />
+   <Button
+       android:id="@+id/button3"
+       android:layout_width="80dp"
+       android:layout_height="40dp"
+       android:layout_alignBottom="@+id/view1"
+       android:layout_alignLeft="@+id/button1"
+       android:layout_marginBottom="18dp"
+       android:layout_toLeftOf="@+id/button2"
+       android:text="Add to Library" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignLeft="@+id/textView1"
-        android:text="Remove From Wishlist" />
+   <Button
+       android:id="@+id/button1"
+       android:layout_width="wrap_content"
+       android:layout_height="40dp"
+       android:layout_above="@+id/button3"
+       android:layout_alignLeft="@+id/textView6"
+       android:text="Buy game" />
+
+   <Button
+       android:id="@+id/button2"
+       android:layout_width="wrap_content"
+       android:layout_height="40dp"
+       android:layout_alignParentRight="true"
+       android:layout_below="@+id/button1"
+       android:layout_marginRight="20dp"
+       android:text="Remove From Wishlist" />
 
 </RelativeLayout>

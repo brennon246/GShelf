@@ -59,8 +59,8 @@
         android:layout_height="40dp"
         android:layout_alignBottom="@+id/view1"
         android:layout_marginBottom="40dp"
-        android:layout_marginLeft="10dp"
-        android:text="Sell game" />
+        android:layout_marginLeft="20dp"
+        android:text="Add to Wishlist" />
 
     <Button
         android:id="@+id/button2"
@@ -70,7 +70,7 @@
         android:layout_alignBottom="@+id/button1"
         android:layout_marginBottom="30dp"
         android:layout_toRightOf="@+id/button1"
-        android:text="Remove From Library" />
+        android:text="Add to Library" />
 
     <TextView
         android:id="@+id/textView5"
