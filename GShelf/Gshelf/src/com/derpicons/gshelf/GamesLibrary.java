@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class GamesLibrary extends Activity {
+public class GamesLibrary extends Base_Activity {
 
 	private ListView listViewGames;
 	private Context ctx;

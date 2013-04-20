@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
-public class DealsView extends Activity {
+public class DealsView extends Base_Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

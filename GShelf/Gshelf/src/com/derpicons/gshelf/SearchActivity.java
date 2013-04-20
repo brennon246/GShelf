@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class SearchActivity extends Activity {
+public class SearchActivity extends Base_Activity {
 	
 	private ListView listViewGames;
 	private Context ctx;

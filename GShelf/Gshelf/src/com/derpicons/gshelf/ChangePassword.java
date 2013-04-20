@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class ChangePassword extends Activity {
+public class ChangePassword extends Base_Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

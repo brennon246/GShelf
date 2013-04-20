@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 
-public class Marketplace extends Activity {
+public class Marketplace extends Base_Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
