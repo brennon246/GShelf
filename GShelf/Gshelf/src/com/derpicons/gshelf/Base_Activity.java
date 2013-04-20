@@ -42,6 +42,14 @@ public class Base_Activity extends Activity
 			
 		case R.id.action_logout:
 			Log.i(TAG, "Action Logout Clicked");
+			//delete shared preferences
+				//editor.putString("username", un);
+				//editor.putString("password", pass);
+				//editor.commit();
+			//intent return to login
+			Intent j = new Intent(getApplicationContext(), Login.class);
+			startActivity(j);
+			//back button takes them out of app
 			return true;
 			
 		default:

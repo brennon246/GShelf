@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.app.ActionBar;
+
 
 public class SearchActivity extends Base_Activity {
 	
@@ -36,16 +38,8 @@ public class SearchActivity extends Base_Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 				
-		////////////////////
-		//action bar
-		///////////////////
-		/*String query;
-		Intent action_intent = getIntent();
-		if(Intent.ACTION_SEARCH.equals(action_intent.getAction())){
-			query = action_intent.getStringExtra(SearchManager.QUERY);
-			Log.i("action_search", query.toString());
-		}*/
-		/////////////////
+		//ActionBar actionBar = getActionBar();
+		//actionBar.setDisplayHomeAsUpEnabled(true);
 		
 		final EditText SearchText = (EditText) findViewById(R.id.editTextSearch);
 		Button SearchButton = (Button) findViewById(R.id.buttonSearch);
