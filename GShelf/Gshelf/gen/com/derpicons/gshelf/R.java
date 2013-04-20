@@ -69,6 +69,7 @@ public final class R {
         public static final int WCoverImageView=0x7f090040;
         public static final int WGameTitleTextView=0x7f09003f;
         public static final int WPriceTextView=0x7f090041;
+        public static final int action_search=0x7f090044;
         public static final int action_settings=0x7f090043;
         public static final int anchor=0x7f09001e;
         public static final int answer=0x7f090002;
