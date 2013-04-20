@@ -1,9 +1,11 @@
 package com.derpicons.gshelf;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView;
 
 public class Base_Activity extends Activity 
@@ -16,8 +18,8 @@ public class Base_Activity extends Activity
 	{
 		// Inflate the menu
 		getMenuInflater().inflate(R.menu.main_menu, menu);
-//		SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
-//		return super.onCreateOptionsMenu(menu);
+		//SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+		//return super.onCreateOptionsMenu(menu);
 		return true;
 	}
 	
@@ -28,6 +30,10 @@ public class Base_Activity extends Activity
 		{
 		case R.id.action_search:
 			Log.i(TAG, "Action Search Clicked");
+			
+			Intent i = new Intent(getApplicationContext(), SearchActivity.class);
+			startActivity(i);
+
 			return true;
 			
 		case R.id.action_settings:

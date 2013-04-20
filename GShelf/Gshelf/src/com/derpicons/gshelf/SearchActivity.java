@@ -30,12 +30,12 @@ public class SearchActivity extends Base_Activity {
 		////////////////////
 		//action bar
 		///////////////////
-		String query;
+		/*String query;
 		Intent action_intent = getIntent();
 		if(Intent.ACTION_SEARCH.equals(action_intent.getAction())){
 			query = action_intent.getStringExtra(SearchManager.QUERY);
 			Log.i("action_search", query.toString());
-		}
+		}*/
 		/////////////////
 		
 		final EditText SearchText = (EditText) findViewById(R.id.editTextSearch);
