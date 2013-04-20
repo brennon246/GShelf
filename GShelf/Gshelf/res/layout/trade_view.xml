@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/T_image"
+        style="@style/TPic"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ac3" />
+
+    <TextView
+        android:id="@+id/T_Title"
+        style="@style/TTitle"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
+        android:layout_toRightOf="@+id/T_image"
+        android:text="Title" />
+
+    <TextView
+        android:id="@+id/T_Console"
+        style="@style/TConsole"
+        android:layout_below="@+id/T_Title"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/T_image"
+        android:text="Console" />
+
+    <TextView
+        android:id="@+id/T_Price"
+        style="@style/Info_Genre"
+        android:layout_alignLeft="@+id/T_Console"
+        android:layout_below="@+id/T_Console"
+        android:layout_marginTop="21dp"
+        android:text="Price" />
+
+</RelativeLayout>
