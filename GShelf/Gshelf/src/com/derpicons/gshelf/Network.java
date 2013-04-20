@@ -59,6 +59,8 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 	// name of game to search for
 	String name;
 
+	private final String BASEURLIMG = "http://thegamesdb.net/banners/";
+
 	// result of search, either array list of games or one game
 	ArrayList<Game> searchResults;
 	Game searchResult;
@@ -69,39 +71,27 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		progressDialog = new ProgressDialog(ctxt);
 	}
 
-	String encrypt(String string){
-		return Base64.encodeToString( string.getBytes(), Base64.DEFAULT );
+	String encrypt(String string) {
+		return Base64.encodeToString(string.getBytes(), Base64.DEFAULT);
 	}
-	
-	String decrypt(String string){
-		return new String( Base64.decode( string, Base64.DEFAULT ) );
+
+	String decrypt(String string) {
+		return new String(Base64.decode(string, Base64.DEFAULT));
 	}
+
 	Drawable getImage(String name) {
-		
-		//HTTP URL
-		URL url;
+		ArrayList<Game> games = null;
 		try {
-
-			// Create URL from url parameter
-			url = new URL(name);
-
-			// establish connection and download image
-			URLConnection connection = url.openConnection();
-			connection.setUseCaches(true);
-			
-			//create Drawable from stream associated with connection
-			return Drawable
-					.createFromStream(connection.getInputStream(), "src");
-		} catch (MalformedURLException e) {
-
-			e.printStackTrace();
-			return null;
-		} catch (IOException e) {
+			games = new Network(ctxt).execute("6", name).get();
+		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
+		return games.get(0).getCover();
 	}
 
 	int login(String username, String password) {
@@ -143,6 +133,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		}
 
 		else {
+			gamList.get(0).setCover(getImage(gamList.get(0).getGameUrl()));
 			return gamList.get(0);
 		}
 
@@ -164,9 +155,12 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			e.printStackTrace();
 		}
 
+		for (Game g : gameResults) {
+			g.setCover(getImage(g.getGameUrl()));
+		}
+
 		return gameResults;
 	}
-
 
 	// key: username , key: password
 	boolean addUser(String username, String password) {
@@ -191,7 +185,8 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 	boolean addGameForUser(int userId, int gameId) {
 		ArrayList<Game> result = new ArrayList<Game>();
 		try {
-			result = this.execute("1", String.valueOf(userId), String.valueOf(gameId)).get();
+			result = this.execute("1", String.valueOf(userId),
+					String.valueOf(gameId)).get();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -261,7 +256,20 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			}
 
 			else if (tagName.equals("Overview")) {
+
 				newGame.setOverview(parseOverview(parser, newGame));
+
+			}
+
+			else if (tagName.equals("Images")) {
+
+				if (newGame.getGameUrl() == null)
+					newGame.setGameUrl(BASEURLIMG + parseImage(parser, newGame));
+				Log.i("looking for one",
+						""
+								+ newGame.getGameUrl().charAt(
+										newGame.getGameUrl().length() - 5));
+
 			}
 
 			else {
@@ -271,6 +279,76 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		}
 
 		return newGame;
+	}
+
+	String parseImage(XmlPullParser parser, Game game) throws IOException,
+			XmlPullParserException {
+
+		String bannerData = null;
+		boolean gotArt = false;
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+
+			String tagName = parser.getName();
+
+			if (tagName.equals("fanart") && !gotArt) {
+				String temp = "ONION";
+
+				temp = parseBanner(parser, null);
+				bannerData = temp;
+				Log.i("getting", bannerData);
+				gotArt = true;
+			}
+
+			else {
+				skip(parser);
+			}
+
+		}
+
+		return bannerData;
+	}
+
+	String parseBanner(XmlPullParser parser, Game game) throws IOException,
+			XmlPullParserException {
+
+		String bannerData = null;
+
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+
+			String tagName = parser.getName();
+
+			if (tagName.equals("original")) {
+				String temp = "ONION";
+
+				temp = parseDeep(parser, null);
+				bannerData = temp;
+			}
+
+			else {
+				skip(parser);
+			}
+		}
+		return bannerData;
+	}
+
+	String parseDeep(XmlPullParser parser, Game game) throws IOException,
+			XmlPullParserException {
+		parser.require(XmlPullParser.START_TAG, null, "original");
+		String gameTitle = "null";
+
+		if (parser.next() == XmlPullParser.TEXT) {
+			gameTitle = parser.getText();
+			parser.nextTag();
+		}
+
+		return gameTitle;
+
 	}
 
 	String parseGameTitle(XmlPullParser parser, Game game) throws IOException,
@@ -305,6 +383,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		String overview = "null";
 
 		if (parser.next() == XmlPullParser.TEXT) {
+
 			overview = parser.getText();
 			parser.nextTag();
 		}
@@ -312,13 +391,14 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		return overview;
 	}
 
-	//poll network connectivity, needs manifest permission:     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	// poll network connectivity, needs manifest permission: <uses-permission
+	// android:name="android.permission.ACCESS_NETWORK_STATE" />
 	boolean hasNetwork() {
 		ConnectivityManager cm = (ConnectivityManager) ctxt
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
-		
+
 		NetworkInfo netInfo = cm.getActiveNetworkInfo();
-		
+
 		if (netInfo != null && netInfo.isConnectedOrConnecting()) {
 			return true;
 		}
@@ -393,7 +473,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			paramList.add(new BasicNameValuePair("userid", params[1]));
 			paramList.add(new BasicNameValuePair("gameid", params[2]));
-			
+
 			// access db and execute
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(
@@ -462,11 +542,11 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 				}
 
 			}
-			
 
 			BufferedReader reader = null;
 			try {
-				 reader = new BufferedReader(	new InputStreamReader(input, "iso-8859-1"), 8);
+				reader = new BufferedReader(new InputStreamReader(input,
+						"iso-8859-1"), 8);
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -474,12 +554,12 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			String line = "pop";
 			try {
-				 line = reader.readLine();
+				line = reader.readLine();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			Log.i("LINE", line.toString());
 
 			Game returnGame = new Game();
@@ -528,10 +608,11 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			BufferedReader reader = null;
 			try {
-				 reader = new BufferedReader(	new InputStreamReader(input, "iso-8859-1"), 8);
+				reader = new BufferedReader(new InputStreamReader(input,
+						"iso-8859-1"), 8);
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -541,12 +622,12 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			String line = "pop";
 			try {
-				 line = reader.readLine();
+				line = reader.readLine();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			Log.i("LINE", line.toString());
 
 			Game returnGame = new Game();
@@ -604,8 +685,8 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			BufferedReader reader = null;
 			try {
-				 reader = new BufferedReader(
-						new InputStreamReader(input, "iso-8859-1"), 8);
+				reader = new BufferedReader(new InputStreamReader(input,
+						"iso-8859-1"), 8);
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -620,8 +701,8 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			Log.i("Add user result",line);
-			
+			Log.i("Add user result", line);
+
 			returnGame.setTitle(line);
 
 			ArrayList<Game> returnList = new ArrayList<Game>();
@@ -649,7 +730,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 				// obtain xml game data
 				responseBody = client.execute(getMethod, responseHandler);
-				Log.i("RESPONSE", responseBody);
+				// Log.i("RESPONSE", responseBody);
 
 			} catch (Throwable t) {
 				// can use t as a string to pass to logcat to display error
@@ -730,6 +811,42 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			progressDialog.dismiss();
 
 			return null;
+		}
+
+		else if (ctrl == 6) {
+
+			// HTTP URL
+			URL url;
+			try {
+
+				// Create URL from url parameter
+				url = new URL(params[1]);
+
+				// establish connection and download image
+				URLConnection connection = url.openConnection();
+				connection.setUseCaches(true);
+
+				Drawable draw = Drawable.createFromStream(
+						connection.getInputStream(), "src");
+
+				Game returnGame = new Game();
+				returnGame.setCover(draw);
+
+				ArrayList<Game> returnList = new ArrayList<Game>();
+
+				returnList.add(returnGame);
+				return returnList;
+
+			} catch (MalformedURLException e) {
+
+				e.printStackTrace();
+				return null;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
+
 		}
 		return null;
 
