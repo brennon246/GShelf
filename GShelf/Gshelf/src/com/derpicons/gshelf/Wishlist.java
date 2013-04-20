@@ -17,11 +17,4 @@ public class Wishlist extends Activity {
 		int Userkey = intent.getIntExtra("UKey", 0);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.wishlist, menu);
-		return true;
-	}
-
 }
