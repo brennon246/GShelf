@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_alignParentLeft="true"
+        android:background="#03773b" />
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/Info_Title"
+        android:layout_below="@+id/imageView1"
+        android:text="Title" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        style="@style/Info_pic"
+        android:layout_below="@+id/textView1"
+        android:src="@drawable/ac3" />
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/Info_Console"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="Console" />
+
+    <TextView
+        android:id="@+id/textView4"
+        style="@style/Info_Developer"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/textView3"
+        android:text="Developer" />
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/Info_Genre"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="Genre" />
+
+    <TextView
+        android:id="@+id/textView5"
+        style="@style/Info_Price"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="Price" />
+
+    <TextView
+        android:id="@+id/textView6"
+        style="@style/Info_Overview"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/imageView2"
+        android:layout_marginTop="20dp"
+        android:text="Overview of Game" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView6"
+        android:layout_marginTop="36dp"
+        android:background="#03773b" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/view1"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_marginBottom="18dp"
+        android:layout_toLeftOf="@+id/button2"
+        android:text="Sell game" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_alignLeft="@+id/textView1"
+        android:text="Remove From Library" />
+
+</RelativeLayout>
