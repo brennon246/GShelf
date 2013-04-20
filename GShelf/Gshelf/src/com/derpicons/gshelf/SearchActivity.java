@@ -23,6 +23,15 @@ public class SearchActivity extends Base_Activity {
 	private Context ctx;
 
 	@Override
+	public boolean onCreateOptionsMenu(Menu menu) 
+	{
+		// Inflate the menu
+		getMenuInflater().inflate(R.menu.search, menu);
+		
+		return true;
+	}
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
