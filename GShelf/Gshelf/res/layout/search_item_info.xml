@@ -4,43 +4,43 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/STitle"
         style="@style/Info_Title"
         android:text="Title" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/SImage"
         style="@style/Info_pic"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/STitle"
         android:src="@drawable/ac3" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/SConsole"
         style="@style/Info_Console"
-        android:layout_alignTop="@+id/imageView2"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_alignTop="@+id/SImage"
+        android:layout_toRightOf="@+id/STitle"
         android:text="Console" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/SDeveloper"
         style="@style/Info_Developer"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/SGenre"
+        android:layout_below="@+id/SGenre"
         android:text="Developer" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/SGenre"
         style="@style/Info_Genre"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/SConsole"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_toRightOf="@+id/STitle"
         android:text="Genre" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/SOverview"
         style="@style/Info_Overview"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/imageView2"
+        android:layout_below="@+id/SImage"
         android:layout_marginTop="20dp"
         android:text="Overview of Game" />
 
@@ -49,7 +49,7 @@
         android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView6"
+        android:layout_below="@+id/SOverview"
         android:layout_marginTop="36dp"
         android:background="#03773b" />
 
@@ -73,10 +73,10 @@
         android:text="Add to Library" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/SPrice"
         style="@style/Info_Price"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_below="@+id/textView4"
+        android:layout_alignLeft="@+id/SDeveloper"
+        android:layout_below="@+id/SDeveloper"
         android:text="Price" />
 
 </RelativeLayout>

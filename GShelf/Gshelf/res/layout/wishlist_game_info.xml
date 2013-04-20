@@ -20,51 +20,51 @@
         android:background="#03773b" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/WTitle"
         style="@style/Info_Title"
         android:layout_below="@+id/imageView1"
         android:text="Title" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/WPic"
         style="@style/Info_pic"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/WTitle"
         android:src="@drawable/ac3" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/WConsole"
         style="@style/Info_Console"
-        android:layout_alignTop="@+id/imageView2"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_alignTop="@+id/WPic"
+        android:layout_toRightOf="@+id/WTitle"
         android:text="Console" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/WDevlop"
         style="@style/Info_Developer"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/WGenre"
+        android:layout_below="@+id/WGenre"
         android:text="Developer" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/WGenre"
         style="@style/Info_Genre"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/WConsole"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_toRightOf="@+id/WTitle"
         android:text="Genre" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/WPrice"
         style="@style/Info_Price"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_toRightOf="@+id/WTitle"
         android:text="Price" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/WOverview"
         style="@style/Info_Overview"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/imageView2"
+        android:layout_below="@+id/WPic"
         android:layout_marginTop="20dp"
         android:text="Overview of Game" />
 
@@ -73,7 +73,7 @@
         android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView6"
+        android:layout_below="@+id/WOverview"
         android:layout_marginTop="36dp"
         android:background="#03773b" />
 
@@ -92,7 +92,7 @@
        android:layout_width="wrap_content"
        android:layout_height="40dp"
        android:layout_above="@+id/button3"
-       android:layout_alignLeft="@+id/textView6"
+       android:layout_alignLeft="@+id/WOverview"
        android:text="Buy game" />
 
    <Button
