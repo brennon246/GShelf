@@ -36,6 +36,7 @@
     <style name = "Pic">
         <item name="android:layout_width">130dp </item>
         <item name ="android:layout_height">154dp</item>
+        <item name="android:scaleType">fitXY</item>
         <item name = "android:layout_gravity">left|fill_vertical</item>
     </style>
     <!--  <item name="android:layout_gravity">right|center_vertical</item> -->
@@ -184,5 +185,10 @@
         <item name="android:layout_marginTop">19dp</item>
         <item name="android:layout_marginBottom">45dp</item>
         <item name="android:layout_alignParentLeft">true</item>
+    </style>
+    <style name="Wish_Item_Title">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">fill_parent</item>
     </style>
 </resources>
