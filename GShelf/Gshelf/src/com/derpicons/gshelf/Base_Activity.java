@@ -2,6 +2,7 @@ package com.derpicons.gshelf;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,14 +43,19 @@ public class Base_Activity extends Activity
 			
 		case R.id.action_logout:
 			Log.i(TAG, "Action Logout Clicked");
+			
 			//delete shared preferences
-				//editor.putString("username", un);
-				//editor.putString("password", pass);
-				//editor.commit();
+			SharedPreferences settings = getSharedPreferences("GSHELF_LOGIN", 0);
+			SharedPreferences.Editor editor = settings.edit();
+				editor.remove("username");
+				editor.remove("password");
+				editor.commit();
+			
 			//intent return to login
 			Intent j = new Intent(getApplicationContext(), Login.class);
+			j.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(j);
-			//back button takes them out of app
+			
 			return true;
 			
 		default:
