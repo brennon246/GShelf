@@ -39,7 +39,7 @@
 
     <TextView
         android:id="@+id/textView6"
-       style="@style/Info_Overview"
+        style="@style/Info_Overview"
         android:layout_below="@+id/imageView2"
         android:text="Overview of Game" />
 
