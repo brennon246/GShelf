@@ -6,18 +6,6 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/WPriceTextView"
-        style="@style/Desu"
-        android:layout_below="@+id/WGameTitleTextView"
-        android:layout_toRightOf="@+id/WCoverImageView" />
-
-    <TextView
-        android:id="@+id/WConsoleTextView"
-        style="@style/Desu"
-        android:layout_below="@+id/WPriceTextView"
-        android:layout_toRightOf="@+id/WCoverImageView" />
-
-    <TextView
         android:id="@+id/WGameTitleTextView"
         style="@style/Wishlist_Title"
         android:layout_alignParentLeft="true"
@@ -26,9 +14,15 @@
 
     <ImageView
         android:id="@+id/WCoverImageView"
-        style="@style/Wishlist_Pic"
+        style="@style/Pic"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/WGameTitleTextView"
         android:src="@drawable/ac3" />
+
+    <TextView
+        android:id="@+id/WPriceTextView"
+        style="@style/Wishlist_Info"
+        android:layout_alignTop="@+id/WCoverImageView"
+        android:layout_toRightOf="@+id/WCoverImageView" />
 
 </RelativeLayout>

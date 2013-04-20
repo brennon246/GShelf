@@ -104,6 +104,14 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+    <style name="Wishlist_Info">
+        <item name="android:textSize">10dp</item>
+        <item name="android:layout_width">184dp </item>
+        <item name ="android:layout_height">133dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_gravity">right|top</item>  
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
     <style name="Market_pic">
          <item name="android:scaleType">fitXY</item>
          <item name="android:layout_height">100dp</item>
