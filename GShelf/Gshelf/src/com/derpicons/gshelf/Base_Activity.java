@@ -34,6 +34,10 @@ public class Base_Activity extends Activity
 			Log.i(TAG, "Action Settings Clicked");
 			return true;
 			
+		case R.id.action_logout:
+			Log.i(TAG, "Action Logout Clicked");
+			return true;
+			
 		default:
 			return super.onOptionsItemSelected(item);
 		}
