@@ -133,7 +133,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		}
 
 		else {
-			gamList.get(0).setCover(getImage(gamList.get(0).getGameUrl()));
+			//gamList.get(0).setCover(getImage(gamList.get(0).getGameUrl()));
 			return gamList.get(0);
 		}
 
@@ -155,9 +155,9 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			e.printStackTrace();
 		}
 
-		for (Game g : gameResults) {
-			g.setCover(getImage(g.getGameUrl()));
-		}
+		// for (Game g : gameResults) {
+		// g.setCover(getImage(g.getGameUrl()));
+		// }
 
 		return gameResults;
 	}
@@ -261,6 +261,10 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			}
 
+			else if (tagName.equals("id")) {
+				newGame.setKey(Integer.parseInt(parseKey(parser, newGame)));
+			}
+
 			else if (tagName.equals("Images")) {
 
 				if (newGame.getGameUrl() == null)
@@ -362,6 +366,20 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		}
 
 		return gameTitle;
+	}
+
+	String parseKey(XmlPullParser parser, Game game) throws IOException,
+			XmlPullParserException {
+		
+		parser.require(XmlPullParser.START_TAG, null, "id");
+		String key = "null";
+
+		if (parser.next() == XmlPullParser.TEXT) {
+			key = parser.getText();
+			parser.nextTag();
+		}
+
+		return key;
 	}
 
 	String parsePlatform(XmlPullParser parser, Game game) throws IOException,
