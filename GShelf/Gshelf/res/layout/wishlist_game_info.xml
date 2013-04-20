@@ -3,26 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:scaleType="fitXY"
-        android:src="@drawable/logo" />
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:layout_alignBottom="@+id/imageView1"
-        android:layout_alignParentLeft="true"
-        android:background="#03773b" />
-
     <TextView
         android:id="@+id/WTitle"
         style="@style/Info_Title"
-        android:layout_below="@+id/imageView1"
         android:text="Title" />
 
     <ImageView
@@ -53,48 +36,6 @@
         android:layout_toRightOf="@+id/WTitle"
         android:text="Genre" />
 
-    <TextView
-        android:id="@+id/WPrice"
-        style="@style/Info_Price"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/WTitle"
-        android:text="Price" />
-
-    <TextView
-        android:id="@+id/WOverview"
-        style="@style/Info_Overview"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/WPic"
-        android:layout_marginTop="20dp"
-        android:text="Overview of Game" />
-
-    <View
-        android:id="@+id/view1"
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/WOverview"
-        android:layout_marginTop="36dp"
-        android:background="#03773b" />
-
-   <Button
-       android:id="@+id/button3"
-       android:layout_width="80dp"
-       android:layout_height="40dp"
-       android:layout_alignBottom="@+id/view1"
-       android:layout_alignLeft="@+id/button1"
-       android:layout_marginBottom="18dp"
-       android:layout_toLeftOf="@+id/button2"
-       android:text="Add to Library" />
-
-   <Button
-       android:id="@+id/button1"
-       android:layout_width="wrap_content"
-       android:layout_height="40dp"
-       android:layout_above="@+id/button3"
-       android:layout_alignLeft="@+id/WOverview"
-       android:text="Buy game" />
-
    <Button
        android:id="@+id/button2"
        android:layout_width="wrap_content"
@@ -103,5 +44,83 @@
        android:layout_below="@+id/button1"
        android:layout_marginRight="20dp"
        android:text="Remove From Wishlist" />
+
+   <TextView
+       android:id="@+id/WPrice"
+       style="@style/Info_Price"
+       android:layout_alignBottom="@+id/WPic"
+       android:layout_alignLeft="@+id/WDevlop"
+       android:layout_marginBottom="19dp"
+       android:text="Price" />
+
+   <Button
+       android:id="@+id/button4"
+       android:layout_width="wrap_content"
+       android:layout_height="35dp"
+       android:layout_alignLeft="@+id/WTitle"
+       android:layout_below="@+id/textView1"
+       android:text="Change Threshold" />
+
+   <TextView
+       android:id="@+id/textView2"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/editText1"
+       android:layout_below="@+id/button4"
+       android:text="If this game drops below your set threshold, you will be notified\nEX: 39.99"
+       android:textSize="8dp" />
+
+   <TextView
+       android:id="@+id/WOverview"
+       style="@style/Info_Overview"
+       android:layout_alignParentRight="true"
+       android:layout_below="@+id/WPic"
+       android:text="Overview of Game" />
+
+   <EditText
+       android:id="@+id/editText1"
+       android:layout_width="90dp"
+       android:layout_height="35dp"
+       android:layout_above="@+id/textView2"
+       android:layout_alignLeft="@+id/textView1"
+       android:layout_alignRight="@+id/textView1"
+       android:ems="10"
+       android:inputType="numberDecimal" />
+
+   <TextView
+       android:id="@+id/textView1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/WOverview"
+       android:layout_alignTop="@+id/WOverview"
+       android:layout_marginTop="62dp"
+       android:text="Price Threshold*" />
+
+   <Button
+       android:id="@+id/button1"
+       android:layout_width="wrap_content"
+       android:layout_height="40dp"
+       android:layout_alignLeft="@+id/textView2"
+       android:layout_below="@+id/textView2"
+       android:layout_marginTop="16dp"
+       android:text="Buy game" />
+
+   <Button
+       android:id="@+id/button3"
+       android:layout_width="80dp"
+       android:layout_height="40dp"
+       android:layout_alignBaseline="@+id/button2"
+       android:layout_alignBottom="@+id/button2"
+       android:layout_alignLeft="@+id/button1"
+       android:layout_toLeftOf="@+id/button2"
+       android:text="Add to Library" />
+
+   <View
+       android:id="@+id/view1"
+       android:layout_width="fill_parent"
+       android:layout_height="2dp"
+       android:layout_alignParentLeft="true"
+       android:layout_below="@+id/button2"
+       android:background="#03773b" />
 
 </RelativeLayout>

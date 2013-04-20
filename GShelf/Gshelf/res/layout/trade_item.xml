@@ -1,56 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/TradeTitleTextView"
-        style="@style/Info_Title"
+        android:id="@+id/T_Title"
+        style="@style/TTitle"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="13dp"
         android:text="Title" />
 
-    <ImageView
-        android:id="@+id/TradeCoverImageView"
-        style="@style/Info_pic"
-        android:layout_below="@+id/TradeTitleTextView"
-        android:src="@drawable/ac3" />
-
     <TextView
-        android:id="@+id/TradeConsoleTextView"
-        style="@style/TradeItem_Console"
-        android:layout_alignTop="@+id/TradeCoverImageView"
-        android:layout_toRightOf="@+id/TradeTitleTextView"
+        android:id="@+id/T_Console"
+        style="@style/TConsole"
+        android:layout_alignBaseline="@+id/T_Title"
+        android:layout_alignBottom="@+id/T_Title"
+        android:layout_marginLeft="21dp"
+        android:layout_toRightOf="@+id/T_Title"
         android:text="Console" />
 
-    <View
-        android:id="@+id/view1"
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="90dp"
-        android:background="#03773b" />
-
     <TextView
-        android:id="@+id/TradeLocationTextView"
-        style="@style/TradeItem_Location"
-        android:layout_alignBottom="@+id/TradeCoverImageView"
-        android:layout_alignLeft="@+id/TradePriceTextView"
-        android:text="Location" />
-
-    <TextView
-        android:id="@+id/TradePriceTextView"
-        style="@style/TradeItem_Price"
-        android:layout_above="@+id/TradeLocationTextView"
-        android:layout_alignLeft="@+id/TradeConsoleTextView"
+        android:id="@+id/T_Price"
+        style="@style/Info_Genre"
+        android:layout_alignLeft="@+id/T_Title"
+        android:layout_below="@+id/T_Title"
+        android:layout_marginTop="-5dp" 
+        android:textStyle="italic"
         android:text="Price" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignRight="@+id/TradeLocationTextView"
-        android:layout_below="@+id/TradeCoverImageView"
-        android:layout_marginTop="16dp"
-        android:text="Remove From Trades" />
 
 </RelativeLayout>
