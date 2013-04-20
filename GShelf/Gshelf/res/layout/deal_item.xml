@@ -7,25 +7,25 @@
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="70dp"
+        android:layout_width="80dp"
         android:layout_height="30dp"
-        android:layout_alignParentTop="true"
         android:textSize="10dp"
-        android:layout_alignRight="@+id/DealEffectTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:text="Add Deal" />
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/D_Source"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button1"
+        android:text="Source" />
 
     <TextView
         android:id="@+id/DealEffectTextView"
         style="@style/Deal_Item_Text"
         android:layout_below="@+id/button1"
-        android:layout_toRightOf="@+id/DealImageView"
+        android:layout_toLeftOf="@+id/button1"
         android:text="10% off Blizzard games" />
-
-    <ImageView
-        android:id="@+id/DealImageView"
-        style="@style/Deal_Item_Pic"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/DealEffectTextView"
-        android:src="@drawable/ac3" />
 
 </RelativeLayout>

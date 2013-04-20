@@ -3,40 +3,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/textView1"
-        style="@style/Info_Title"
-        android:text="Title" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        style="@style/Info_pic"
-        android:layout_below="@+id/textView1"
-        android:src="@drawable/ac3" />
-    
-    <TextView
-        android:id="@+id/textView2"
-        style="@style/Deal_Info"
-        android:layout_alignTop="@+id/imageView2"
-        android:layout_toRightOf="@+id/imageView2"
-        android:text="TextView" />
-
     <View
         android:id="@+id/view1"
         android:layout_width="fill_parent"
         android:layout_height="2dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/button2"
-        android:layout_marginTop="59dp"
+        android:layout_marginBottom="86dp"
         android:background="#03773b" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@+id/imageView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
-        android:text="Go To Site" />
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/Deal_Des"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="29dp"
+        android:layout_toRightOf="@+id/textView2"
+        android:text="Details" />
+<TextView
+        android:id="@+id/textView3"
+        style="@style/Deal_Des"
+        android:layout_above="@+id/ListView1"
+        android:layout_toRightOf="@+id/textView2"
+        android:text="Games Affected" />
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/Deal_Source"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:text="Source" />
+
+    <ListView
+        android:id="@+id/ListView1"
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:layout_above="@+id/view1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:textSize="13dp" >
+
+    </ListView>
+
+    
 
 </RelativeLayout>

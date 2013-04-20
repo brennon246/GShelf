@@ -3,26 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        android:scaleType="fitXY"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/logo" />
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:layout_alignBottom="@+id/imageView1"
-        android:layout_alignParentLeft="true"
-        android:background="#03773b" />
-
     <TextView
         android:id="@+id/textView1"
         style="@style/Info_Title"
-        android:layout_below="@+id/imageView1"
         android:text="Title" />
 
     <ImageView
@@ -60,13 +43,6 @@
         android:layout_below="@+id/imageView2"
         android:text="Overview of Game" />
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView6"
-        android:background="#03773b" />
-
     <TextView
         android:id="@+id/textView5"
         style="@style/Info_Price"
@@ -74,5 +50,13 @@
         android:layout_marginBottom="14dp"
         android:layout_toRightOf="@+id/textView1"
         android:text="Price" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="80dp"
+        android:background="#03773b" />
 		
 </RelativeLayout>
