@@ -231,4 +231,63 @@
         <item name="android:layout_gravity">right|top</item>  
         <item name="android:layout_marginTop">10dp</item>
     </style>
+    <style name="Game_Info_Pic">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+    <style name="Game_Info_Console">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginRight">10dp</item>     
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">25dp</item>
+         <item name="android:textSize">20dp</item>
+    </style>
+    <style name="Game_Info_Title">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginRight">40dp</item>
+         <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+    <style name="Deal_Item_Text">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:layout_width">184dp </item>
+        <item name ="android:layout_height">154dp</item>
+    </style>
+    <style name="Deal_Item_Pic">
+        <item name="android:layout_width">130dp </item>
+        <item name ="android:layout_height">154dp</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name = "android:layout_gravity">left|fill_vertical</item>
+    </style>
+    <style name="Result_Item_Title">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginRight">10dp</item>
+         <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+    <style name="Result_Item_Console">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginRight">10dp</item>     
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">25dp</item>
+         <item name="android:textSize">13dp</item>       
+         <item name="android:textStyle">italic</item>
+    </style>
+    <style name="Result_Item_Price">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>     
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">25dp</item>
+         <item name="android:textSize">15dp</item>
+         <item name="android:textStyle">italic</item>
+    </style>
 </resources>

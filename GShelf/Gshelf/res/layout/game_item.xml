@@ -7,21 +7,23 @@
 
     <TextView
         android:id="@+id/GameTitleTextView"
-        style="@style/Title"
+        style="@style/Game_Info_Title"
         android:layout_column="0"
-        android:layout_row="8" />
-
-    <ImageView
-        android:id="@+id/CoverImageView"
-        style="@style/Pic"
-        android:layout_column="0"
-        android:layout_row="9"
-        android:src="@drawable/ac3" />
+        android:layout_row="8"
+        android:text="Title" />
 
     <TextView
         android:id="@+id/ConsoleTextView"
-        style="@style/Desu"
-        android:layout_below="@+id/GameTitleTextView"
-        android:layout_toRightOf="@+id/CoverImageView" />
+        style="@style/Game_Info_Console"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/GameTitleTextView"
+        android:text="Console" />
+
+    <ImageView
+        android:id="@+id/CoverImageView"
+        style="@style/Game_Info_Pic"
+        android:layout_below="@+id/ConsoleTextView"
+       
+        android:src="@drawable/ac3" />
 
 </RelativeLayout>

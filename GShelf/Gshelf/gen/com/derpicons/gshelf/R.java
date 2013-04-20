@@ -54,8 +54,8 @@ public final class R {
     }
     public static final class id {
         public static final int ConfirmNewPassword=0x7f0a0006;
-        public static final int ConsoleTextView=0x7f0a0039;
-        public static final int CoverImageView=0x7f0a0038;
+        public static final int ConsoleTextView=0x7f0a0038;
+        public static final int CoverImageView=0x7f0a0039;
         public static final int Deal=0x7f0a002e;
         public static final int DealEffectTextView=0x7f0a0030;
         public static final int DealImageView=0x7f0a002f;
@@ -65,8 +65,8 @@ public final class R {
         public static final int LinearLayout1=0x7f0a001b;
         public static final int LinearLayout2=0x7f0a001d;
         public static final int Question=0x7f0a0001;
-        public static final int RConsoleTextView=0x7f0a0040;
-        public static final int RCoverImageView=0x7f0a003e;
+        public static final int RCheckBox=0x7f0a0040;
+        public static final int RConsoleTextView=0x7f0a003e;
         public static final int RGameTitleTextView=0x7f0a003d;
         public static final int RPriceTextView=0x7f0a003f;
         public static final int TradeConsoleTextView=0x7f0a0043;
@@ -78,6 +78,7 @@ public final class R {
         public static final int WCoverImageView=0x7f0a0047;
         public static final int WGameTitleTextView=0x7f0a0046;
         public static final int WPriceTextView=0x7f0a0048;
+        public static final int action_logout=0x7f0a004c;
         public static final int action_search=0x7f0a004b;
         public static final int action_settings=0x7f0a004a;
         public static final int anchor=0x7f0a001e;
@@ -207,9 +208,14 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        public static final int Deal_Item_Pic=0x7f080024;
+        public static final int Deal_Item_Text=0x7f080023;
         public static final int Deals_effect=0x7f08000a;
         public static final int Deals_pic=0x7f080009;
         public static final int Desu=0x7f080003;
+        public static final int Game_Info_Console=0x7f080021;
+        public static final int Game_Info_Pic=0x7f080020;
+        public static final int Game_Info_Title=0x7f080022;
         public static final int Info_Console=0x7f080016;
         public static final int Info_Developer=0x7f080018;
         public static final int Info_Genre=0x7f080017;
@@ -226,6 +232,9 @@ public final class R {
         public static final int Market_pic=0x7f080010;
         public static final int PageName=0x7f080002;
         public static final int Pic=0x7f080004;
+        public static final int Result_Item_Console=0x7f080026;
+        public static final int Result_Item_Price=0x7f080027;
+        public static final int Result_Item_Title=0x7f080025;
         /**   <item name="android:layout_gravity">right|center_vertical</item> 
          */
         public static final int Title=0x7f080005;

@@ -7,27 +7,25 @@
 
     <TextView
         android:id="@+id/RGameTitleTextView"
-        style="@style/Title"
+        style="@style/Result_Item_Title"
         android:layout_column="0"
-        android:layout_row="8" />
+        android:layout_row="8" 
+        android:text="Title" />
 
-    <ImageView
-        android:id="@+id/RCoverImageView"
-        style="@style/Pic"
-        android:layout_column="0"
-        android:layout_row="9"
-        android:src="@drawable/ac3" />
-
-    <TextView
-        android:id="@+id/RPriceTextView"
-        style="@style/Desu"
-        android:layout_below="@+id/RGameTitleTextView"
-        android:layout_toRightOf="@+id/RCoverImageView" />
+    <CheckBox
+        android:id="@+id/RCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/RPriceTextView"
+        android:layout_alignBottom="@+id/RPriceTextView"
+        android:layout_alignParentRight="true"
+        android:clickable="false" />
 
     <TextView
         android:id="@+id/RConsoleTextView"
-        style="@style/Desu"
-        android:layout_below="@+id/RPriceTextView"
-        android:layout_toRightOf="@+id/RCoverImageView" />
+        style="@style/Result_Item_Console"
+        android:layout_alignLeft="@+id/RGameTitleTextView"
+        android:layout_below="@+id/RGameTitleTextView"
+        android:text="Console" />
 
 </RelativeLayout>
