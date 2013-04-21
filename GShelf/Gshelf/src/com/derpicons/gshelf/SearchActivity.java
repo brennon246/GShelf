@@ -2,21 +2,18 @@ package com.derpicons.gshelf;
 
 import java.util.ArrayList;
 
-import android.app.SearchManager;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.app.ActionBar;
 
 
 public class SearchActivity extends Base_Activity {
@@ -40,7 +37,7 @@ public class SearchActivity extends Base_Activity {
 				
 		//ActionBar actionBar = getActionBar();
 		//actionBar.setDisplayHomeAsUpEnabled(true);
-		
+
 		final EditText SearchText = (EditText) findViewById(R.id.editTextSearch);
 		Button SearchButton = (Button) findViewById(R.id.buttonSearch);
 		ctx = this;
@@ -51,6 +48,7 @@ public class SearchActivity extends Base_Activity {
 		
 		//ArrayList<Game> AGames = new ArrayList<Game>();
 
+		Game newGame = new Game(this);
 		// Display list of games
 		listViewGames = (ListView) findViewById(R.id.result_item);
 		listViewGames.setClickable(true);
@@ -67,7 +65,7 @@ public class SearchActivity extends Base_Activity {
 				if (search.length() != 0) {
 					AGames = new Network(ctx).getGames(search);
 				}
-				listViewGames.setAdapter(new GameListAdapter(ctx, R.layout.game_item,
+				listViewGames.setAdapter(new SearchListAdapter(ctx, R.layout.result_item,
 						AGames));
 				
 			}

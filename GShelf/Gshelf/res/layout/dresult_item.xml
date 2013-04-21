@@ -12,6 +12,16 @@
         android:layout_row="8" 
         android:text="Title" />
 
+    <CheckBox
+        android:id="@+id/RCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/RPriceTextView"
+        android:layout_alignBottom="@+id/RPriceTextView"
+        android:layout_alignParentRight="true"
+        
+        android:clickable="false" />
+
     <TextView
         android:id="@+id/RConsoleTextView"
         style="@style/Result_Item_Console"

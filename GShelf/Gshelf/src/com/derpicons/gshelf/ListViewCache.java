@@ -8,7 +8,6 @@ public class ListViewCache {
 
 	private View baseView;
 	private TextView textDealEffect;
-	private ImageView DealImage;
 	private TextView textGameTitle;
 	private TextView textGameConsole;
 	private ImageView GameCover;
@@ -23,6 +22,8 @@ public class ListViewCache {
 	private ImageView WGameCover;
 	private TextView textNotificationActivity;
 	private TextView textNotificationMessage;
+	private TextView textSearchGameTitle;
+	private TextView textSearchGameConsole;
 
 
 	public ListViewCache(View baseView) {
@@ -148,4 +149,17 @@ public class ListViewCache {
 		return textNotificationMessage;
 	}
 	
+	public TextView getTextSearchGameTitle(int resource) {
+		if (textSearchGameTitle == null) {
+			textSearchGameTitle = (TextView) baseView.findViewById(R.id.RGameTitleTextView);
+		}
+		return textSearchGameTitle;
+	}
+	
+	public TextView getTextSearchGameConsole(int resource) {
+		if (textSearchGameConsole == null) {
+			textSearchGameConsole = (TextView) baseView.findViewById(R.id.RConsoleTextView);
+		}
+		return textSearchGameConsole;
+	}
 }
