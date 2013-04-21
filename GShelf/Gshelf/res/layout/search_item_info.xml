@@ -45,26 +45,17 @@
         android:text="Overview of Game" />
 
     <View
-        android:id="@+id/view1"
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/SOverview"
-        android:layout_marginTop="36dp"
-        android:background="#03773b" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/view1"
-        android:layout_marginBottom="40dp"
-        android:layout_marginLeft="20dp"
-        android:text="Add to Wishlist" />
+       android:id="@+id/view1"
+       android:layout_width="fill_parent"
+       android:layout_height="2dp"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentLeft="true"
+       android:layout_marginBottom="20dp"
+       android:background="#33b5e5" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="40dp"
         android:layout_alignBaseline="@+id/button1"
         android:layout_alignBottom="@+id/button1"
@@ -78,5 +69,14 @@
         android:layout_alignLeft="@+id/SDeveloper"
         android:layout_below="@+id/SDeveloper"
         android:text="Price" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/SOverview"
+        android:layout_alignTop="@+id/SOverview"
+        android:layout_marginTop="52dp"
+        android:text="Add to Wishlist" />
 
 </RelativeLayout>

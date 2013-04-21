@@ -22,13 +22,13 @@
         android:text="Console" />
 
     <View
-        android:id="@+id/view1"
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="90dp"
-        android:background="#03773b" />
+       android:id="@+id/view1"
+       android:layout_width="fill_parent"
+       android:layout_height="2dp"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentLeft="true"
+       android:layout_marginBottom="20dp"
+       android:background="#33b5e5" />
 
     <TextView
         android:id="@+id/TradeLocationTextView"
@@ -46,11 +46,10 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="40dp"
-        android:layout_alignRight="@+id/TradeLocationTextView"
-        android:layout_below="@+id/TradeCoverImageView"
+        android:layout_centerInParent="true"
         android:layout_marginTop="16dp"
-        android:text="Remove From Trades" />
+        android:text="Remove" />
 
 </RelativeLayout>

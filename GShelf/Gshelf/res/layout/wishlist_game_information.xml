@@ -50,6 +50,7 @@
        android:layout_height="40dp"
        android:layout_alignLeft="@+id/WTitle"
        android:layout_below="@+id/textView1"
+       android:textSize="14dp"
        android:text="Update" />
 
    <TextView
@@ -58,7 +59,7 @@
        android:layout_height="wrap_content"
        android:layout_alignLeft="@+id/editText1"
        android:layout_below="@+id/button4"
-       android:text="If this game drops below your set threshold, you will be notified\nEX: 39.99"
+       android:text="*If this game drops below your set threshold, you will be notified\nEX: 39.99"
        android:textSize="8dp" />
 
    <TextView
@@ -88,13 +89,24 @@
        android:text="Price Threshold*" />
 
    <Button
-       android:id="@+id/button1"
+       android:id="@+id/button2"
        android:layout_width="120dp"
        android:layout_height="40dp"
-       android:layout_alignRight="@+id/WGenre"
+       android:layout_alignBaseline="@+id/button3"
+       android:layout_alignBottom="@+id/button3"
+       android:layout_alignLeft="@+id/WPrice"
+       android:textSize="14dp"
+       android:text="Remove" />
+
+   <Button
+       android:id="@+id/button3"
+       android:layout_width="120dp"
+       android:layout_height="40dp"
        android:layout_below="@+id/textView2"
-       android:layout_marginTop="17dp"
-       android:text="Buy game" />
+       android:layout_marginTop="14dp"
+       android:layout_toLeftOf="@+id/button4"
+       android:text="Add to Library"
+       android:textSize="14dp" />
 
    <View
        android:id="@+id/view1"
@@ -104,23 +116,5 @@
        android:layout_alignParentLeft="true"
        android:layout_marginBottom="20dp"
        android:background="#33b5e5" />
-
-   <Button
-       android:id="@+id/button3"
-       android:layout_width="120dp"
-       android:layout_height="40dp"
-       android:layout_below="@+id/button1"
-       android:layout_marginTop="18dp"
-       android:layout_toLeftOf="@+id/button4"
-       android:text="Add to Library" />
-
-   <Button
-       android:id="@+id/button2"
-       android:layout_width="120dp"
-       android:layout_height="40dp"
-       android:layout_alignBaseline="@+id/button3"
-       android:layout_alignBottom="@+id/button3"
-       android:layout_alignLeft="@+id/WPrice"
-       android:text="Remove" />
 
 </RelativeLayout>

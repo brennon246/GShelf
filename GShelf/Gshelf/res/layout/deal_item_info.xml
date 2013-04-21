@@ -4,13 +4,13 @@
     android:layout_height="match_parent" >
 
     <View
-        android:id="@+id/view1"
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="86dp"
-        android:background="#03773b" />
+       android:id="@+id/view1"
+       android:layout_width="fill_parent"
+       android:layout_height="2dp"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentLeft="true"
+       android:layout_marginBottom="20dp"
+       android:background="#33b5e5" />
 
     <TextView
         android:id="@+id/textView1"
@@ -38,7 +38,7 @@
     <ListView
         android:id="@+id/ListView1"
         android:layout_width="200dp"
-        android:layout_height="250dp"
+        android:layout_height="350dp"
         android:layout_above="@+id/view1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
