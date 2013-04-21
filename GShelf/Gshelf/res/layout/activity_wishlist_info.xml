@@ -56,7 +56,7 @@
    <Button
        android:id="@+id/buttonChangeThreshold"
        android:layout_width="wrap_content"
-       android:layout_height="35dp"
+       android:layout_height="40dp"
        android:layout_alignLeft="@+id/WTitle"
        android:layout_below="@+id/textView1"
        android:text="Change Threshold" />
@@ -121,6 +121,6 @@
        android:layout_height="2dp"
        android:layout_alignParentLeft="true"
        android:layout_below="@+id/buttonRemove"
-       android:background="#03773b" />
+       android:background="#33b5e5" />
 
 </RelativeLayout>
