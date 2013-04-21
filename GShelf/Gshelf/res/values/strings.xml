@@ -9,10 +9,10 @@
     <string name="title_activity_change_password">Change Password</string>
     <string name="title_activity_main_menu">Main Menu</string>
     <string name="title_activity_games_library">Library</string>
-    <string name="title_activity_deals_library">Deals Library</string>
+    <string name="title_activity_deals_library">Deals</string>
     <string name="title_activity_marketplace">Marketplace</string>
     <string name="title_activity_wishlist">Wishlist</string>
-    <string name="title_activity_deals_view">Deals View</string>
+    <string name="title_activity_deals_view">View Deal</string>
     <string name="title_activity_search">Search</string>
     <string name="search_hint">Game Search</string>
 
