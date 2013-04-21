@@ -14,9 +14,8 @@ public class Game {
 	private int key;
 	private Drawable Cover;
 	private String price;
-	private Context ctxt;
 
-	public Game(Context context) {
+	public Game() {
 		gameUrl = " ";
 		title = " ";
 		platform = " ";
@@ -24,10 +23,7 @@ public class Game {
 		genre = " ";
 		developer = " ";
 		key = -1;
-		price = " ";
-		ctxt = context;
-		Cover = ctxt.getResources().getDrawable(R.drawable.no_image);
-		
+		price = " ";	
 		
 	}
 	

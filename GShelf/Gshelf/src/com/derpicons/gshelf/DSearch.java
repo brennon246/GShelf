@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class DSearch extends Activity {
 	
@@ -49,7 +49,7 @@ public class DSearch extends Activity {
 				if (search.length() != 0) {
 					AGames = new Network(ctx).getGames(search);
 				}
-				listViewGames.setAdapter(new GameListAdapter(ctx, R.layout.result_item,
+				listViewGames.setAdapter(new GameListAdapter(ctx, R.layout.dresult_item,
 						AGames));
 				
 			}
@@ -70,23 +70,12 @@ public class DSearch extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View view,
 					int position, long id) {
 
+				CheckBox cBox = (CheckBox) view.findViewById(R.id.RCheckBox);
+				cBox.toggle();
 				Toast.makeText(getApplicationContext(),
 						"Click GameItemNumber " + position, Toast.LENGTH_LONG)
 						.show();
-				// Takes user to GameView page with required data.
-				/*
-				 * Intent i = new Intent(getApplicationContext(),
-				 * GameView.class); i.putExtra("key",
-				 * LGames.getShowGames().get(position).getKey());
-				 * i.putExtra("title", LGames.getShowGames().get(position)
-				 * .getTitle()); i.putExtra("platform",
-				 * LGames.getShowGames().get(position) .getPlatform());
-				 * i.putExtra("overview", LGames.getShowGames().get(position)
-				 * .getOverview()); i.putExtra("genre",
-				 * LGames.getShowGames().get(position) .getGenre());
-				 * i.putExtra("developer", LGames.getShowGames().get(position)
-				 * .getDeveloper()); startActivity(i);
-				 */
+				
 		
 			}
 		});
