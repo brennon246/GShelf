@@ -10,20 +10,25 @@ public class Game {
 	private String platform;
 	private String overview;
 	private String genre;
+	private String priceThreshold;
 	private String developer;
 	private int key;
 	private Drawable Cover;
 	private String price;
+	private Context ctxt;
 
-	public Game() {
-		gameUrl = " ";
+	public Game(Context context) {
+		//gameUrl = " ";
 		title = " ";
 		platform = " ";
 		overview = " ";
 		genre = " ";
 		developer = " ";
 		key = -1;
-		price = " ";	
+		price = " ";
+		ctxt = context;
+		Cover = ctxt.getResources().getDrawable(R.drawable.no_image);
+		
 		
 	}
 	
@@ -102,6 +107,14 @@ public class Game {
 
 	public void setGameUrl(String gameUrl) {
 		this.gameUrl = gameUrl;
+	}
+
+	public String getPriceThreshold() {
+		return priceThreshold;
+	}
+
+	public void setPriceThreshold(String priceThreshold) {
+		this.priceThreshold = priceThreshold;
 	}
 
 }

@@ -20,6 +20,8 @@ public class DSearch extends Activity {
 	
 	private ListView listViewGames;
 	private Context ctx;
+	private ArrayList<Game> AGames;
+	private ArrayList<Integer> SelectedGames;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class DSearch extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String search = SearchText.getText().toString();
-				ArrayList<Game> AGames = new ArrayList<Game>();
+				AGames = new ArrayList<Game>();
 				if (search.length() != 0) {
 					AGames = new Network(ctx).getGames(search);
 				}
@@ -72,11 +74,14 @@ public class DSearch extends Activity {
 
 				CheckBox cBox = (CheckBox) view.findViewById(R.id.RCheckBox);
 				cBox.toggle();
-				Toast.makeText(getApplicationContext(),
-						"Click GameItemNumber " + position, Toast.LENGTH_LONG)
-						.show();
-				
-		
+				if(cBox.isActivated())
+				{
+					SelectedGames.add(AGames.get(position).getKey());
+				}
+				else
+				{
+					SelectedGames.remove(AGames.get(position).getKey());
+				}
 			}
 		});
 		
