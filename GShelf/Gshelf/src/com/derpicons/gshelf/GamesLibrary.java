@@ -58,9 +58,9 @@ public class GamesLibrary extends Base_Activity {
 						.show();
 				// Takes user to GameView page with required data.
 				
-				//Intent i = new Intent(getApplicationContext(), GameInfo.class);
-				//i.putExtra("GameKey", LGames.getShowGames().get(position).getKey());
-				//startActivity(i);
+				Intent i = new Intent(getApplicationContext(), GameInfo.class);
+				i.putExtra("GameKey", LGames.getShowGames().get(position).getKey());
+				startActivity(i);
 				
 			}
 		});

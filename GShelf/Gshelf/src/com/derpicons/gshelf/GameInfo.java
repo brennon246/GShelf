@@ -10,8 +10,6 @@ import android.widget.TextView;
 
 public class GameInfo extends Activity {
 	
-	final Button ButtonSell = (Button) findViewById(R.id.buttonSell);
-	final Button ButtonRemove = (Button) findViewById(R.id.buttonRemove);
 	private String Username;
 	private int Userkey;
 	private int GameKey;
@@ -24,7 +22,8 @@ public class GameInfo extends Activity {
 		Intent intent = getIntent();
 		Username = intent.getStringExtra("UserName");
 		Userkey = intent.getIntExtra("UKey", 0);
-		
+		final Button ButtonSell = (Button) findViewById(R.id.buttonSell);
+		final Button ButtonRemove = (Button) findViewById(R.id.buttonRemove);
 		final TextView GameTitle = (TextView) findViewById(R.id.textViewGameTitle);
 		final TextView GameConsle = (TextView) findViewById(R.id.imageViewGameConsole);
 		final TextView GameDeveloper = (TextView) findViewById(R.id.textViewDeveloper);
@@ -37,7 +36,7 @@ public class GameInfo extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//GameKey = intent.getIntExtra("GameKey", 0);
+			
 			}
 		});
 		
@@ -46,7 +45,9 @@ public class GameInfo extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//GameKey
+				//LocalDatabase LD = new LocalDatabase(ctx);
+				//LD.RemoveFromLibrary(game, game.getPrice());
+				//LD.close();
 
 			}
 		});
