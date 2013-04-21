@@ -20,6 +20,7 @@ public class SearchActivity extends Base_Activity {
 	
 	private ListView listViewGames;
 	private Context ctx;
+	private ArrayList<Game> AGames;
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) 
@@ -60,7 +61,7 @@ public class SearchActivity extends Base_Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String search = SearchText.getText().toString();
-				ArrayList<Game> AGames = new ArrayList<Game>();
+				AGames = new ArrayList<Game>();
 				if (search.length() != 0) {
 					AGames = new Network(ctx).getGames(search);
 				}
@@ -79,21 +80,10 @@ public class SearchActivity extends Base_Activity {
 				Toast.makeText(getApplicationContext(),
 						"Click GameItemNumber " + position, Toast.LENGTH_LONG)
 						.show();
-				// Takes user to GameView page with required data.
-				/*
-				 * Intent i = new Intent(getApplicationContext(),
-				 * GameView.class); i.putExtra("key",
-				 * LGames.getShowGames().get(position).getKey());
-				 * i.putExtra("title", LGames.getShowGames().get(position)
-				 * .getTitle()); i.putExtra("platform",
-				 * LGames.getShowGames().get(position) .getPlatform());
-				 * i.putExtra("overview", LGames.getShowGames().get(position)
-				 * .getOverview()); i.putExtra("genre",
-				 * LGames.getShowGames().get(position) .getGenre());
-				 * i.putExtra("developer", LGames.getShowGames().get(position)
-				 * .getDeveloper()); startActivity(i);
-				 */
-		
+				
+				Intent i = new Intent(getApplicationContext(), SearchInfo.class);
+				i.putExtra("GameKey", AGames.get(position).getKey());
+				startActivity(i);
 			}
 		});
 		

@@ -32,7 +32,7 @@ public class SearchInfo extends Activity {
 		final TextView GameOverview = (TextView) findViewById(R.id.SOverview);
 		final TextView TradeImage = (TextView) findViewById(R.id.SImage);
 		GameKey = intent.getIntExtra("GameKey", 0);
-		 
+		
 		ButtonAddWishlist.setOnClickListener(new View.OnClickListener() {
 
 			@Override

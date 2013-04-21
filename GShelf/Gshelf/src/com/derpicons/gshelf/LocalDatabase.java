@@ -116,7 +116,7 @@ public class LocalDatabase extends SQLiteOpenHelper {
 
 		ArrayList<Game> games = new ArrayList<Game>();
 
-		Game game = new Game();
+		Game game = new Game(context);
 
 		while (cursor.moveToNext()) {
 
@@ -141,11 +141,11 @@ public class LocalDatabase extends SQLiteOpenHelper {
 			game.setTitle(cursor.getString(cursor
 					.getColumnIndex(LocalDatabase.ELEMENT_TITLE)));
 
-			game.setThreshold(cursor.getString(cursor
+			game.setPriceThreshold(cursor.getString(cursor
 					.getColumnIndex(LocalDatabase.ELEMENT_THRESHOLD)));
 
 			games.add(game);
-			game = new Game();
+			game = new Game(context);
 		}
 
 		cursor.close();
@@ -159,7 +159,7 @@ public class LocalDatabase extends SQLiteOpenHelper {
 
 		ArrayList<Game> games = new ArrayList<Game>();
 
-		Game game = new Game();
+		Game game = new Game(context);
 
 		while (cursor.moveToNext()) {
 
@@ -184,7 +184,7 @@ public class LocalDatabase extends SQLiteOpenHelper {
 					.getColumnIndex(LocalDatabase.ELEMENT_TITLE)));
 
 			games.add(game);
-			game = new Game();
+			game = new Game(context);
 		}
 
 		cursor.close();

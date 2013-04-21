@@ -37,8 +37,6 @@ public class GameInfo extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = getIntent();
-				String Username = intent.getStringExtra("UserName");
 				//GameKey = intent.getIntExtra("GameKey", 0);
 			}
 		});

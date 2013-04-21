@@ -21,12 +21,12 @@ public class DSearch extends Activity {
 	private ListView listViewGames;
 	private Context ctx;
 	private ArrayList<Game> AGames;
-	private ArrayList<Integer> SelectedGames;
+	//private ArrayList<Integer> SelectedGames;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_search);
+		setContentView(R.layout.activity_dsearch);
 		
 		final EditText SearchText = (EditText) findViewById(R.id.editTextSearch);
 		Button SearchButton = (Button) findViewById(R.id.buttonSearch);
@@ -71,7 +71,7 @@ public class DSearch extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View view,
 					int position, long id) {
-
+/*
 				CheckBox cBox = (CheckBox) view.findViewById(R.id.RCheckBox);
 				cBox.toggle();
 				if(cBox.isActivated())
@@ -82,6 +82,7 @@ public class DSearch extends Activity {
 				{
 					SelectedGames.remove(AGames.get(position).getKey());
 				}
+				*/
 			}
 		});
 		
