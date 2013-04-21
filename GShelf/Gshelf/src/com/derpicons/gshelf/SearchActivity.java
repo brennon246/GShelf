@@ -48,7 +48,6 @@ public class SearchActivity extends Base_Activity {
 		
 		//ArrayList<Game> AGames = new ArrayList<Game>();
 
-		Game newGame = new Game(this);
 		// Display list of games
 		listViewGames = (ListView) findViewById(R.id.result_item);
 		listViewGames.setClickable(true);
