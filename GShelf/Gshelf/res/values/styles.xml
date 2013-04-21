@@ -99,7 +99,6 @@
         <item name="android:textColor">#ffffff</item>
         <item name="android:layout_marginLeft">16dp</item>
         <item name="android:layout_marginTop">20dp</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:textSize">20dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -243,16 +242,16 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
     <style name="Wishlist_Item_Info">
-        <item name="android:textSize">10dp</item>
-        <item name="android:layout_width">184dp </item>
-        <item name ="android:layout_height">50dp</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name ="android:layout_height">20dp</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:layout_gravity">right|top</item>  
         <item name="android:layout_marginTop">10dp</item>
     </style>
     <style name="Game_Info_Pic">
-        <item name="android:layout_width">150dp</item>
-        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">120dp</item>
         <item name="android:layout_marginRight">30dp</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:scaleType">fitXY</item>
@@ -266,11 +265,10 @@
     </style>
     <style name="Game_Info_Title">
         <item name="android:textColor">#ffffff</item>
-        <item name="android:layout_marginRight">40dp</item>
          <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">25dp</item>
         <item name="android:textSize">20dp</item>
-        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginTop">40dp</item>
     </style>
     <style name="Deal_Item_Text">
         <item name="android:textColor">#ffffff</item>
