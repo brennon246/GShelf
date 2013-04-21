@@ -15,7 +15,7 @@ import android.graphics.drawable.Drawable;
 
 public class LocalDatabase extends SQLiteOpenHelper {
 
-	private static final String DATABASE_NAME = "LocalDb";
+	public static final String DATABASE_NAME = "LocalDb";
 	private static final int SCHEMA_VERSION = 1;
 	private static final String GAMES_TABLE_NAME = "Games";
 	private static final String NOTIFICATIONS_TABLE_NAME = "Notifications";
@@ -53,7 +53,7 @@ public class LocalDatabase extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL("CREATE TABLE Games (_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, gameUrl TEXT,"
 				+ "platform TEXT, overview TEXT, genre TEXT, developer TEXT, key INTEGER not null unique, cover BLOB,"
-				+ "price TEXT, isWishlist INTEGER, threshold REAL);"
+				+ "price TEXT, isWishlist INTEGER, threshold TEXT);"
 				+ " CREATE TABLE Notifications(_id INTEGER PRIMARY KEY AUTOINCREMENT, activity TEXT, message Text);"
 				+ "CREATE TABLE UserId (_id INTEGER PRIMARY KEY AUTOINCREMENT, userId INTEGER);");
 
@@ -81,11 +81,10 @@ public class LocalDatabase extends SQLiteOpenHelper {
 		cv.put(LocalDatabase.ELEMENT_OVERVIEW, game.getOverview());
 		cv.put(LocalDatabase.ELEMENT_PLATFORM, game.getPlatform());
 		cv.put(LocalDatabase.ELEMENT_PRICE, game.getPrice());
-		cv.put(LocalDatabase.ELEMENT_THRESHOLD, thresh);
+		cv.put(LocalDatabase.ELEMENT_THRESHOLD, String.valueOf(thresh));
 		cv.put(LocalDatabase.ELEMENT_TITLE, game.getTitle());
 
-		this.getWritableDatabase().insert(LocalDatabase.GAMES_TABLE_NAME, null,
-				cv);
+		getWritableDatabase().insert(LocalDatabase.GAMES_TABLE_NAME, null, cv);
 	}
 
 	public void addGameToLibrary(Game game) {
@@ -100,11 +99,10 @@ public class LocalDatabase extends SQLiteOpenHelper {
 		cv.put(LocalDatabase.ELEMENT_OVERVIEW, game.getOverview());
 		cv.put(LocalDatabase.ELEMENT_PLATFORM, game.getPlatform());
 		cv.put(LocalDatabase.ELEMENT_PRICE, game.getPrice());
-		cv.put(LocalDatabase.ELEMENT_THRESHOLD, 0);
+	    cv.put(LocalDatabase.ELEMENT_THRESHOLD, game.getPrice());
 		cv.put(LocalDatabase.ELEMENT_TITLE, game.getTitle());
 
-		this.getWritableDatabase().insert(LocalDatabase.GAMES_TABLE_NAME, null,
-				cv);
+		getWritableDatabase().insert(LocalDatabase.GAMES_TABLE_NAME, null, cv);
 	}
 
 	public ArrayList<Game> getGamesFromWishlist() {
@@ -113,17 +111,19 @@ public class LocalDatabase extends SQLiteOpenHelper {
 
 		args[0] = String.valueOf(1);
 
-		Cursor cursor = this.getWritableDatabase().rawQuery(
+		Cursor cursor = getWritableDatabase().rawQuery(
 				"SELECT * FROM Games WHERE isWishList=? ORDER BY title", args);
 
 		ArrayList<Game> games = new ArrayList<Game>();
 
-		Game game = new Game(context);
+		Game game = new Game();
 
 		while (cursor.moveToNext()) {
 
-			game.setCover(byteArrayToDrawable(cursor.getBlob(cursor
-					.getColumnIndex(LocalDatabase.ELEMENT_COVER))));
+			//game.setCover(byteArrayToDrawable(cursor.getBlob(cursor
+				//	.getColumnIndex(LocalDatabase.ELEMENT_COVER))));
+			
+			game.setCover(null);
 			game.setDeveloper(cursor.getString(cursor
 					.getColumnIndex(LocalDatabase.ELEMENT_DEVELOPER)));
 			game.setGameUrl(cursor.getString(cursor
@@ -141,8 +141,11 @@ public class LocalDatabase extends SQLiteOpenHelper {
 			game.setTitle(cursor.getString(cursor
 					.getColumnIndex(LocalDatabase.ELEMENT_TITLE)));
 
+			game.setThreshold(cursor.getString(cursor
+					.getColumnIndex(LocalDatabase.ELEMENT_THRESHOLD)));
+
 			games.add(game);
-			game = new Game(context);
+			game = new Game();
 		}
 
 		cursor.close();
@@ -156,12 +159,13 @@ public class LocalDatabase extends SQLiteOpenHelper {
 
 		ArrayList<Game> games = new ArrayList<Game>();
 
-		Game game = new Game(context);
+		Game game = new Game();
 
 		while (cursor.moveToNext()) {
 
-			game.setCover(byteArrayToDrawable(cursor.getBlob(cursor
-					.getColumnIndex(LocalDatabase.ELEMENT_COVER))));
+			//game.setCover(byteArrayToDrawable(cursor.getBlob(cursor
+			//		.getColumnIndex(LocalDatabase.ELEMENT_COVER))));
+			game.setCover(null);
 			game.setDeveloper(cursor.getString(cursor
 					.getColumnIndex(LocalDatabase.ELEMENT_DEVELOPER)));
 			game.setGameUrl(cursor.getString(cursor
@@ -180,7 +184,7 @@ public class LocalDatabase extends SQLiteOpenHelper {
 					.getColumnIndex(LocalDatabase.ELEMENT_TITLE)));
 
 			games.add(game);
-			game = new Game(context);
+			game = new Game();
 		}
 
 		cursor.close();
