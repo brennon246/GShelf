@@ -21,6 +21,8 @@ public class ListViewCache {
 	private TextView textWGamePrice;
 	private TextView textWGameConsole;
 	private ImageView WGameCover;
+	private TextView textNotificationActivity;
+	private TextView textNotificationMessage;
 
 
 	public ListViewCache(View baseView) {
@@ -39,13 +41,6 @@ public class ListViewCache {
 					.findViewById(R.id.DealEffectTextView);
 		}
 		return textDealEffect;
-	}
-
-	public ImageView getDealImage(int resource) {
-		if (DealImage == null) {
-			DealImage = (ImageView) baseView.findViewById(R.id.DealImageView);
-		}
-		return DealImage;
 	}
 	
 	//Game Library
@@ -137,6 +132,20 @@ public class ListViewCache {
 			WGameCover = (ImageView) baseView.findViewById(R.id.WCoverImageView);
 		}
 		return WGameCover;
+	}
+	
+	public TextView getTextNotificationActivity(int resource) {
+		if (textNotificationActivity == null) {
+			textNotificationActivity = (TextView) baseView.findViewById(R.id.NotificationActivity);
+		}
+		return textNotificationActivity;
+	}
+	
+	public TextView getTextNotificationMessage(int resource) {
+		if (textNotificationMessage == null) {
+			textNotificationMessage = (TextView) baseView.findViewById(R.id.NotificationMessage);
+		}
+		return textNotificationMessage;
 	}
 	
 }

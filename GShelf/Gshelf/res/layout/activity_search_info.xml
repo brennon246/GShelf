@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/STitle"
+        style="@style/Info_Title"
+        android:text="Title" />
+
+    <ImageView
+        android:id="@+id/SImage"
+        style="@style/Info_pic"
+        android:layout_below="@+id/STitle"
+        android:src="@drawable/ac3" />
+
+    <TextView
+        android:id="@+id/SConsole"
+        style="@style/Info_Console"
+        android:layout_alignTop="@+id/SImage"
+        android:layout_toRightOf="@+id/STitle"
+        android:text="Console" />
+
+    <TextView
+        android:id="@+id/SDeveloper"
+        style="@style/Info_Developer"
+        android:layout_alignLeft="@+id/SGenre"
+        android:layout_below="@+id/SGenre"
+        android:text="Developer" />
+
+    <TextView
+        android:id="@+id/SGenre"
+        style="@style/Info_Genre"
+        android:layout_below="@+id/SConsole"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/STitle"
+        android:text="Genre" />
+
+    <TextView
+        android:id="@+id/SOverview"
+        style="@style/Info_Overview"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/SImage"
+        android:layout_marginTop="20dp"
+        android:text="Overview of Game" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/SOverview"
+        android:layout_marginTop="36dp"
+        android:background="#03773b" />
+
+    <Button
+        android:id="@+id/buttonAddWishlist"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/view1"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="20dp"
+        android:text="Add to Wishlist" />
+
+    <Button
+        android:id="@+id/buttonAddLibrary"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_marginBottom="30dp"
+        android:layout_toRightOf="@+id/button1"
+        android:text="Add to Library" />
+
+    <TextView
+        android:id="@+id/SPrice"
+        style="@style/Info_Price"
+        android:layout_alignLeft="@+id/SDeveloper"
+        android:layout_below="@+id/SDeveloper"
+        android:text="Price" />
+
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.derpicons.gshelf;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 public class Game {
@@ -13,8 +14,21 @@ public class Game {
 	private int key;
 	private Drawable Cover;
 	private String price;
+	private Context ctxt;
 
-	public Game() {
+	public Game(Context context) {
+		gameUrl = " ";
+		title = " ";
+		platform = " ";
+		overview = " ";
+		genre = " ";
+		developer = " ";
+		key = -1;
+		price = " ";
+		ctxt = context;
+		Cover = ctxt.getResources().getDrawable(R.drawable.no_image);
+		
+		
 	}
 	
 	public Game(String t, String o) {

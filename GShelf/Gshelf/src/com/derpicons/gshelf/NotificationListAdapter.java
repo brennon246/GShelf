@@ -11,12 +11,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class DealListAdapter extends ArrayAdapter<Deal> {
+public class NotificationListAdapter extends ArrayAdapter<NotificationItem> {
+
 	private int resource;
 	private LayoutInflater inflater;
 	private Context context;
 
-	public DealListAdapter(Context ctx, int resourceId, List<Deal> objects) {
+	public NotificationListAdapter(Context ctx, int resourceId, List<NotificationItem> objects) {
 
 		super(ctx, resourceId, objects);
 		resource = resourceId;
@@ -27,7 +28,7 @@ public class DealListAdapter extends ArrayAdapter<Deal> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		Deal deal = getItem(position);
+		NotificationItem not = getItem(position);
 		ListViewCache viewCache;
 
 		if (convertView == null) {
@@ -39,23 +40,11 @@ public class DealListAdapter extends ArrayAdapter<Deal> {
 			viewCache = (ListViewCache) convertView.getTag();
 		}
 
-		TextView txtDealLink = viewCache.getTextDealEffect(resource);
-		txtDealLink.setText(deal.getDescription());
-		
-		/* Take the ImageView from layout and set the city's image */
-		/*
-		ImageView imageDeal = viewCache.getDealImageView(resource);
-		imageDeal.setImageDrawable(deal.getImage());
-		*/
-		/*
-		 * ImageView imageCity = (ImageView)
-		 * convertView.findViewById(R.id.ImageCity); String uri = "drawable/" +
-		 * city.getImage(); int imageResource =
-		 * context.getResources().getIdentifier(uri, null,
-		 * context.getPackageName()); Drawable image =
-		 * context.getResources().getDrawable(imageResource);
-		 * imageCity.setImageDrawable(image);
-		 */
+		TextView txtGameTitle = viewCache.getTextNotificationActivity(resource);
+		txtGameTitle.setText(not.getActivity());
+
+		TextView txtGameInfo = viewCache.getTextNotificationMessage(resource);
+		txtGameInfo.setText(not.getMessage());
 
 		return convertView;
 

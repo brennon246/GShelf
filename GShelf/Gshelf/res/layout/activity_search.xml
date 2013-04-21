@@ -20,7 +20,6 @@
             android:hint="Enter game title" >
 
             <requestFocus android:layout_width="wrap_content" />
-
         </EditText>
 
         <Button
@@ -33,20 +32,7 @@
             android:id="@+id/result_item"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
-
         </ListView>
-        
-        
-        
     </LinearLayout>
 
-    <Button 
-        android:id="@+id/buttonDeal"
-        android:layout_height="wrap_content" android:layout_width="fill_parent" 
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:text="Add to Deals"
-        />
-
-    
 </RelativeLayout>

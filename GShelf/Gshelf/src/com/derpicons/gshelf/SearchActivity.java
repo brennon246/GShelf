@@ -57,10 +57,6 @@ public class SearchActivity extends Base_Activity {
 
 		// Display list of games
 		
-		//Removes Deal Button for regular search
-		Button DealsButton = (Button) findViewById(R.id.buttonDeal);
-		DealsButton.setVisibility(View.GONE);
-		
 		SearchButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override

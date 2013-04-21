@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/textViewGameTitle"
+        style="@style/Info_Title"
+        android:text="Title" />
+
+    <ImageView
+        android:id="@+id/imageViewGameCover"
+        style="@style/Info_pic"
+        android:layout_below="@+id/textViewGameTitle"
+        android:src="@drawable/ac3" />
+
+    <TextView
+        android:id="@+id/imageViewGameConsole"
+        style="@style/Info_Console"
+        android:layout_alignTop="@+id/imageViewGameCover"
+        android:layout_toRightOf="@+id/textViewGameTitle"
+        android:text="Console" />
+
+    <TextView
+        android:id="@+id/textViewDeveloper"
+        style="@style/Info_Developer"
+        android:layout_alignLeft="@+id/textViewGameGenre"
+        android:layout_below="@+id/textViewGameGenre"
+        android:text="Developer" />
+
+    <TextView
+        android:id="@+id/textViewGameGenre"
+        style="@style/Info_Genre"
+        android:layout_below="@+id/imageViewGameConsole"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/textViewGameTitle"
+        android:text="Genre" />
+
+    <TextView
+        android:id="@+id/textViewGameOverview"
+        style="@style/Info_Overview"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/imageViewGameCover"
+        android:layout_marginTop="20dp"
+        android:text="Overview of Game" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textViewGameOverview"
+        android:layout_marginTop="36dp"
+        android:background="#03773b" />
+
+    <Button
+        android:id="@+id/buttonSell"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/view1"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="10dp"
+        android:text="Sell game" />
+
+    <Button
+        android:id="@+id/buttonRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/buttonSell"
+        android:layout_alignBottom="@+id/buttonSell"
+        android:layout_marginBottom="30dp"
+        android:layout_toRightOf="@+id/buttonSell"
+        android:text="Remove From Library" />
+
+    <TextView
+        android:id="@+id/textViewGamePrice"
+        style="@style/Info_Price"
+        android:layout_alignLeft="@+id/textViewDeveloper"
+        android:layout_below="@+id/textViewDeveloper"
+        android:text="Price" />
+
+</RelativeLayout>

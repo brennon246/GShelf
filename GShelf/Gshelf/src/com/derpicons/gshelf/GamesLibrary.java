@@ -1,18 +1,15 @@
 package com.derpicons.gshelf;
 
 import java.util.ArrayList;
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import android.widget.Toast;
 
 public class GamesLibrary extends Base_Activity {
 
@@ -61,19 +58,11 @@ public class GamesLibrary extends Base_Activity {
 						"Click GameItemNumber " + position, Toast.LENGTH_LONG)
 						.show();
 				// Takes user to GameView page with required data.
-				/*
-				 * Intent i = new Intent(getApplicationContext(),
-				 * GameView.class); i.putExtra("key",
-				 * LGames.getShowGames().get(position).getKey());
-				 * i.putExtra("title", LGames.getShowGames().get(position)
-				 * .getTitle()); i.putExtra("platform",
-				 * LGames.getShowGames().get(position) .getPlatform());
-				 * i.putExtra("overview", LGames.getShowGames().get(position)
-				 * .getOverview()); i.putExtra("genre",
-				 * LGames.getShowGames().get(position) .getGenre());
-				 * i.putExtra("developer", LGames.getShowGames().get(position)
-				 * .getDeveloper()); startActivity(i);
-				 */
+				
+				//Intent i = new Intent(getApplicationContext(), GameInfo.class);
+				//i.putExtra("GameKey", LGames.getShowGames().get(position).getKey());
+				//startActivity(i);
+				
 			}
 		});
 
