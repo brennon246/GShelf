@@ -20,7 +20,6 @@ public class GamesLibrary extends Base_Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_games_library);
-		final Network Net = new Network(this);
 		ctx = this;
 
 		Intent intent = getIntent();
@@ -39,7 +38,7 @@ public class GamesLibrary extends Base_Activity {
 		 * Game("Disco", "Dance")); AGames.add(new Game("Thermonuclear Warfare",
 		 * "There is only one winning move"));
 		 */
-		AGames = Net.getGames("halo");
+		AGames = new Network(this).getGames("halo");
 		final Games LGames = new Games(AGames);
 
 		// Display list of games

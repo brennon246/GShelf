@@ -1,69 +1,53 @@
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/GridLayout1"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#000000"
-    android:columnCount="1"
-    android:orientation="horizontal"
-    android:useDefaultMargins="false" >
+    tools:context=".SearchActivity" >
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_gravity="right|top"
-        android:src="@drawable/ic_launcher" />
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:padding="10dip" >
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_column="0"
-        android:layout_gravity="left|top"
-        android:layout_row="0"
-        android:src="@drawable/ic_launcher" />
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter game title" >
 
-    <TextView
-        android:id="@+id/textView1"
-        style="@style/PageName"
-        android:layout_column="0"
-        android:layout_row="0"
-        android:text="Marketplace" />
+            <requestFocus android:layout_width="wrap_content" />
+        </EditText>
 
-    <Space android:id="@+id/space1" />
+        <Button
+            android:id="@+id/buttonSearch"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Search" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_column="0"
-        android:layout_gravity="left|top"
-        android:layout_row="0"
-        android:src="@drawable/ic_launcher" />
+        <ListView
+            android:id="@+id/owned_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="20sp" >
+        </ListView>
 
-    <TextView
-        android:id="@+id/textView1"
-        style="@style/PageName"
-        android:layout_column="0"
-        android:layout_row="0"
-        android:text="Marketplace" />
+        <ListView
+            android:id="@+id/wtb_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="20sp" >
+        </ListView>
 
-    <Space android:id="@+id/space1" />
+        <ListView
+            android:id="@+id/trade_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="20sp" >
+        </ListView>
+    </LinearLayout>
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_column="0"
-        android:layout_gravity="left|top"
-        android:layout_row="6"
-        android:background="#03773b" />
-
-    <Space
-        android:id="@+id/space2"
-        android:layout_width="1dp"
-        android:layout_height="15dp"
-        android:layout_row="20" />
-
-    <ListView
-        android:id="@+id/trade_list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:paddingTop="20sp" >
-    </ListView>
-
-</GridLayout>
+</RelativeLayout>
