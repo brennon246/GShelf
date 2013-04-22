@@ -1417,7 +1417,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 					progressDialog.show();
 
 					String url = "http://thegamesdb.net/api/GetGame.php?id="
-							+ params[2];
+							+ params[1];
 
 					// create the http get from the url
 					HttpGet getMethod = new HttpGet(url);
