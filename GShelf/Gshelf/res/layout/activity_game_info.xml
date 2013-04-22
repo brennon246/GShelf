@@ -66,7 +66,6 @@
         android:layout_height="40dp"
         android:layout_alignBaseline="@+id/buttonSell"
         android:layout_alignBottom="@+id/buttonSell"
-        android:layout_below="@+id/textViewGameOverview"
         android:layout_alignLeft="@+id/textViewGamePrice"
         android:text="Remove" />
 

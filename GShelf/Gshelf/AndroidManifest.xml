@@ -62,27 +62,35 @@
         </activity>
         <activity
             android:name="com.derpicons.gshelf.AddDeal"
-            android:label="@string/app_name" >
+            android:label="@string/title_add_deal" >
         </activity>
         <activity
             android:name="com.derpicons.gshelf.DSearch"
-            android:label="@string/app_name" >
+            android:label="@string/title_d_search" >
         </activity>
         <activity
             android:name="com.derpicons.gshelf.SearchInfo"
-            android:label="@string/app_name" >
+            android:label="@string/title_search_info" >
         </activity>
         <activity
             android:name="com.derpicons.gshelf.SellGame"
-            android:label="@string/app_name" >
+            android:label="@string/title_sell_game" >
         </activity>
         <activity
             android:name="com.derpicons.gshelf.WishlistInfo"
-            android:label="@string/app_name" >
+            android:label="@string/title_wishlist_info" >
         </activity>
         <activity
             android:name="com.derpicons.gshelf.GameInfo"
-            android:label="@string/app_name" >
+            android:label="@string/title_game_info" >
+        </activity>
+        <activity
+            android:name="com.derpicons.gshelf.OwnedTradeInfo"
+            android:label="@string/title_owned_trade_info" >
+        </activity>
+        <activity
+            android:name="com.derpicons.gshelf.TradeInfo"
+            android:label="@string/title_trade_info" >
         </activity>
         <activity
             android:name="com.derpicons.gshelf.SearchActivity"
@@ -97,8 +105,12 @@
         </activity>
       <activity android:name=".OtherActivity" >
         <meta-data android:name="android.app.default_searchable"
-                   android:value=".SearchableActivity" />
+                   android:value=".SearchableActivity" />
             -->
+        </activity>
+        <activity
+            android:name="com.derpicons.gshelf.YourTrades"
+            android:label="@string/title_activity_your_trades" >
         </activity>
     </application>
 

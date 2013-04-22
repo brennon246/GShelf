@@ -15,10 +15,11 @@ import android.widget.Toast;
 
 public class Marketplace extends Base_Activity {
 
-	private ListView listViewOwned;
-	private ListView listViewWTB;
 	private ListView listViewTrades;
 	private Context ctx;
+	String Username;
+	int Userkey;
+	ArrayList<Game> TradeGames;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,63 +27,27 @@ public class Marketplace extends Base_Activity {
 		setContentView(R.layout.activity_marketplace);
 		
 		Button SearchButton = (Button) findViewById(R.id.buttonSearch);
+		Button YourTradesButton = (Button) findViewById(R.id.buttonYourTrades);
 		final EditText SearchText = (EditText) findViewById(R.id.editTextSearch);
 		ctx = this;
 
 		Intent intent = getIntent();
-		String Username = intent.getStringExtra("UserName");
-		int Userkey = intent.getIntExtra("UKey", 0);
-
-		// Get list of trades
-				
-		ArrayList<Trade> ownedTrades = new ArrayList<Trade>();
-		ArrayList<Trade> WTBTrades = new ArrayList<Trade>();
-
-		// Display list of owned trades
-		listViewOwned = (ListView) findViewById(R.id.owned_list);
-		listViewOwned.setAdapter(new TradeListAdapter(ctx, R.layout.trade_item,
-				ownedTrades));
-		
-		// Display list of wtb trades
-		listViewWTB = (ListView) findViewById(R.id.wtb_list);
-		listViewWTB.setAdapter(new TradeListAdapter(ctx, R.layout.trade_item,
-				WTBTrades));
+		Username = intent.getStringExtra("UserName");
+		Userkey = intent.getIntExtra("UKey", 0);
 		
 		listViewTrades = (ListView) findViewById(R.id.trade_list);
-		listViewOwned.setClickable(true);
-		listViewWTB.setClickable(true);
 		listViewTrades.setClickable(true);
-
-		listViewOwned.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View view,
-					int position, long id) {
-
-				Toast.makeText(getApplicationContext(),
-						"Click GameItemNumber " + position, Toast.LENGTH_LONG)
-						.show();
-				// Takes user to GameView page with required data.
-				
-				//Intent i = new Intent(getApplicationContext(), GameInfo.class);
-				//i.putExtra("GameKey", LGames.getShowGames().get(position).getKey());
-				//startActivity(i);
-				
-			}
-		});
 		
-		listViewWTB.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View view,
-					int position, long id) {
+		YourTradesButton.setOnClickListener(new View.OnClickListener() {
 
-				Toast.makeText(getApplicationContext(),
-						"Click GameItemNumber " + position, Toast.LENGTH_LONG)
-						.show();
-				// Takes user to GameView page with required data.
-				
-				//Intent i = new Intent(getApplicationContext(), GameInfo.class);
-				//i.putExtra("GameKey", LGames.getShowGames().get(position).getKey());
-				//startActivity(i);
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(getApplicationContext(),
+						YourTrades.class);
+				i.putExtra("UserName", Username);
+				i.putExtra("UKey", Userkey);
+				startActivity(i);
 				
 			}
 		});
@@ -93,11 +58,12 @@ public class Marketplace extends Base_Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String search = SearchText.getText().toString();
-				ArrayList<Trade> TradeGames = new ArrayList<Trade>();
+				TradeGames = new ArrayList<Game>();
 				if (search.length() != 0) {
 					//TradeGames = new Network(ctx).getTrades(search);
 				}
-				listViewTrades.setAdapter(new TradeListAdapter(ctx, R.layout.trade_item,
+				TradeGames = new Network(ctx).getGames("halo");
+				listViewTrades.setAdapter(new SearchListAdapter(ctx, R.layout.result_item,
 						TradeGames));
 				
 			}
@@ -107,25 +73,12 @@ public class Marketplace extends Base_Activity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View view,
 					int position, long id) {
-
-				Toast.makeText(getApplicationContext(),
-						"Click GameItemNumber " + position, Toast.LENGTH_LONG)
-						.show();
-				// Takes user to GameView page with required data.
-				/*
-				 * Intent i = new Intent(getApplicationContext(),
-				 * GameView.class); i.putExtra("key",
-				 * LGames.getShowGames().get(position).getKey());
-				 * i.putExtra("title", LGames.getShowGames().get(position)
-				 * .getTitle()); i.putExtra("platform",
-				 * LGames.getShowGames().get(position) .getPlatform());
-				 * i.putExtra("overview", LGames.getShowGames().get(position)
-				 * .getOverview()); i.putExtra("genre",
-				 * LGames.getShowGames().get(position) .getGenre());
-				 * i.putExtra("developer", LGames.getShowGames().get(position)
-				 * .getDeveloper()); startActivity(i);
-				 */
-		
+				Intent i = new Intent(getApplicationContext(), TradeInfo.class);
+				i.putExtra("GameKey", TradeGames.get(position)
+						.getKey());
+				i.putExtra("UserName", Username);
+				i.putExtra("UKey", Userkey);
+				startActivity(i);
 			}
 		});
 	}

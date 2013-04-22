@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class SellGame extends Activity {
 	private int Userkey;
 	private int GameKey;
 	private Context ctx;
+	private Game game;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +37,17 @@ public class SellGame extends Activity {
 		final EditText zipCode = (EditText) findViewById(R.id.editTextZipCode);
 		final TextView priceTextView = (TextView) findViewById(R.id.textViewPrice);
 		final TextView zipCodeTextView = (TextView) findViewById(R.id.textViewZipCode);
+		final TextView GameTitle = (TextView) findViewById(R.id.textViewGameTitle);
+		final TextView GameConsole = (TextView) findViewById(R.id.textViewGameConsole);
 		final RadioButton local = (RadioButton) findViewById(R.id.radioLocal);
+		final ImageView GameImage = (ImageView) findViewById(R.id.imageViewGameCover);
+		
+		game = new Network(ctx).getGame(GameKey);
 
+		GameTitle.setText(game.getTitle());
+		GameConsole.setText(game.getPlatform());
+		GameImage.setImageDrawable(new Network(ctx).getImage(game.getGameUrl()));
+		
 		ButtonSell.setOnClickListener(new View.OnClickListener() {
 
 			@Override

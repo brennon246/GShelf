@@ -25,7 +25,7 @@ public class Game {
 		genre = " ";
 		developer = " ";
 		key = -1;
-		price = " ";
+		price = "15.99";
 		ctxt = context;
 		Cover = ctxt.getResources().getDrawable(R.drawable.no_image);
 		

@@ -21,6 +21,8 @@ public class SearchActivity extends Base_Activity {
 	private ListView listViewGames;
 	private Context ctx;
 	private ArrayList<Game> AGames;
+	String Username;
+	int Userkey;
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) 
@@ -44,8 +46,8 @@ public class SearchActivity extends Base_Activity {
 		ctx = this;
 		
 		Intent intent = getIntent();
-		String Username = intent.getStringExtra("UserName");
-		int Userkey = intent.getIntExtra("UKey", 0);
+		Username = intent.getStringExtra("UserName");
+		Userkey = intent.getIntExtra("UKey", 0);
 		
 		//ArrayList<Game> AGames = new ArrayList<Game>();
 
@@ -77,12 +79,14 @@ public class SearchActivity extends Base_Activity {
 			public void onItemClick(AdapterView<?> arg0, View view,
 					int position, long id) {
 
-				Toast.makeText(getApplicationContext(),
-						"Click GameItemNumber " + position, Toast.LENGTH_LONG)
-						.show();
+				//Toast.makeText(getApplicationContext(),
+				//		"Click GameItemNumber " + position, Toast.LENGTH_LONG)
+				//		.show();
 				
 				Intent i = new Intent(getApplicationContext(), SearchInfo.class);
 				i.putExtra("GameKey", AGames.get(position).getKey());
+				i.putExtra("UserName", Username);
+				i.putExtra("UKey", Userkey);
 				startActivity(i);
 			}
 		});

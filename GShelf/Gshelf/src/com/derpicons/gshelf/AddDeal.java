@@ -120,7 +120,7 @@ public class AddDeal extends Activity {
 					if (GameKeys != null) {
 						// new Network(ctx).addToDeals(GameKeys, src, des,
 						// UserKey, expD);
-						// finish();
+						finish();
 					}
 				}
 			}

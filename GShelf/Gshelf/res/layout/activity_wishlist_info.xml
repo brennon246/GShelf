@@ -103,7 +103,7 @@
        android:background="#33b5e5" />
 
    <Button
-       android:id="@+id/buttonChangeThreshold"
+       android:id="@+id/buttonThreshold"
        android:layout_width="wrap_content"
        android:layout_height="40dp"
        android:layout_below="@+id/WOverview"
@@ -124,7 +124,7 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_alignLeft="@+id/WOverview"
-       android:layout_alignTop="@+id/buttonChangeThreshold"
+       android:layout_alignTop="@+id/buttonThreshold"
        android:text="Price Threshold*" />
 
 </RelativeLayout>

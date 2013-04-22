@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".SearchActivity" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/ownedTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Your trades:" />
+
+        <ListView
+            android:id="@+id/o_trade_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:background="#33b5e5" />
+
+        <TextView
+            android:id="@+id/wtbTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Wants to buy:" />
+
+        <ListView
+            android:id="@+id/w_trade_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</RelativeLayout>

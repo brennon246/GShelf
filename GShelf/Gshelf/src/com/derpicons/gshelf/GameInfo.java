@@ -44,7 +44,11 @@ public class GameInfo extends Activity {
 		GameDeveloper.setText(game.getDeveloper());
 		GameGenre.setText(game.getGenre());
 		GameOverview.setText(game.getOverview());
-		GameImage.setImageDrawable(game.getCover());
+		GameImage.setImageDrawable(new Network(ctx).getImage(game.getGameUrl()));
+		//GameImage.setImageDrawable(game.getCover());
+		
+		if(GameImage.getDrawable() == null)
+			GameImage.setImageDrawable(game.getCover());
 		
 		ButtonSell.setOnClickListener(new View.OnClickListener() {
 
@@ -74,12 +78,4 @@ public class GameInfo extends Activity {
 		});
 		
 	}
-
-	//@Override
-	//public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.game_info, menu);
-	//	return true;
-	//}
-
 }

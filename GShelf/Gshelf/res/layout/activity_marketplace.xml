@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:padding="10dip" >
-
+        
         <EditText
             android:id="@+id/editTextSearch"
             android:layout_width="fill_parent"
@@ -29,25 +29,17 @@
             android:text="Search" />
 
         <ListView
-            android:id="@+id/owned_list"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:paddingTop="20sp" >
-        </ListView>
-
-        <ListView
-            android:id="@+id/wtb_list"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:paddingTop="20sp" >
-        </ListView>
-
-        <ListView
             android:id="@+id/trade_list"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:paddingTop="20sp" >
         </ListView>
     </LinearLayout>
-
+<Button 
+        android:id="@+id/buttonYourTrades"
+        android:layout_height="wrap_content" android:layout_width="fill_parent" 
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text="Your Trades"
+        />
 </RelativeLayout>

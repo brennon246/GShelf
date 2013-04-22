@@ -2,6 +2,7 @@ package com.derpicons.gshelf;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,10 @@ public class GamesLibrary extends Base_Activity {
 
 	private ListView listViewGames;
 	private Context ctx;
+	private SearchListAdapter SelectedSearchListAdapter;
+	private String Username;
+	private int Userkey;
+	private Games LGames;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,32 +28,23 @@ public class GamesLibrary extends Base_Activity {
 		ctx = this;
 
 		Intent intent = getIntent();
-		String Username = intent.getStringExtra("UserName");
-		int Userkey = intent.getIntExtra("UKey", 0);
+		Username = intent.getStringExtra("UserName");
+		Userkey = intent.getIntExtra("UKey", 0);
 
 		// Get list of games
-				
+
 		ArrayList<Game> AGames = new ArrayList<Game>();
-		// Test Data
-		/*
-		 * AGames.add(new Game("Dino Chase", "Chase dinos around"));
-		 * AGames.add(new Game("Half Life 4", "They just skipped 3"));
-		 * AGames.add(new Game("Rock Band", "Rock your socks off"));
-		 * AGames.add(new Game("Blah", "Blah blah blah")); AGames.add(new
-		 * Game("Disco", "Dance")); AGames.add(new Game("Thermonuclear Warfare",
-		 * "There is only one winning move"));
-		 */
 		LocalDatabase LD = new LocalDatabase(ctx);
 		AGames = LD.getGamesFromDb(Userkey);
 		LD.close();
-		
-		//AGames = new Network(this).getGames("halo");
-		final Games LGames = new Games(AGames);
+
+		LGames = new Games(AGames);
 
 		// Display list of games
 		listViewGames = (ListView) findViewById(R.id.game_item);
-		listViewGames.setAdapter(new GameListAdapter(ctx, R.layout.game_item,
-				LGames.getShowGames()));
+		SelectedSearchListAdapter = new SearchListAdapter(ctx,
+				R.layout.result_item, LGames.getShowGames());
+		listViewGames.setAdapter(SelectedSearchListAdapter);
 
 		listViewGames.setClickable(true);
 
@@ -57,15 +53,18 @@ public class GamesLibrary extends Base_Activity {
 			public void onItemClick(AdapterView<?> arg0, View view,
 					int position, long id) {
 
-				//Toast.makeText(getApplicationContext(),
-				//		"Click GameItemNumber " + position, Toast.LENGTH_LONG)
-				//		.show();
+				// Toast.makeText(getApplicationContext(),
+				// "Click GameItemNumber " + position, Toast.LENGTH_LONG)
+				// .show();
 				// Takes user to GameView page with required data.
-				
+
 				Intent i = new Intent(getApplicationContext(), GameInfo.class);
-				i.putExtra("GameKey", LGames.getShowGames().get(position).getKey());
+				i.putExtra("GameKey", LGames.getShowGames().get(position)
+						.getKey());
+				i.putExtra("UserName", Username);
+				i.putExtra("UKey", Userkey);
 				startActivity(i);
-				
+
 			}
 		});
 
@@ -87,6 +86,23 @@ public class GamesLibrary extends Base_Activity {
 		 * if (LSearch.length() != 0) { Tag SearchTag = new Tag(LSearch, Type);
 		 * LGames.Search(SearchTag); } else { LGames.Refresh(); } } });
 		 */
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	
+		ArrayList<Game> AGames = new ArrayList<Game>();
+		LocalDatabase LD = new LocalDatabase(ctx);
+		AGames = LD.getGamesFromDb(Userkey);
+		LD.close();
+		LGames.setShowGames(AGames);
+		if(LGames.getShowGames() != null)
+		{
+			SelectedSearchListAdapter.notifyDataSetChanged();
+		}
+		
+
 	}
 
 }

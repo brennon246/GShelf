@@ -11,8 +11,16 @@
     <string name="title_activity_games_library">Library</string>
     <string name="title_activity_deals_library">Deals</string>
     <string name="title_activity_marketplace">Marketplace</string>
+    <string name="title_add_deal">Add Deal</string>
+    <string name="title_d_search">Add Games to Deal</string>
     <string name="title_activity_wishlist">Wishlist</string>
     <string name="title_activity_deals_view">View Deal</string>
+    <string name="title_search_info">Game</string>
+    <string name="title_sell_game">Sell Game</string>
+    <string name="title_wishlist_info">Game</string>
+    <string name="title_game_info">Game</string>
+    <string name="title_owned_trade_info">Trade</string>
+    <string name="title_trade_info">Trade</string>
     <string name="title_activity_search">Search</string>
     <string name="search_hint">Game Search</string>
 
@@ -21,5 +29,7 @@
         <item>What is the name of your first pet?</item>
         <item>What city were you born in?</item>
     </string-array>
+
+    <string name="title_activity_your_trades">YourTrades</string>
 
 </resources>

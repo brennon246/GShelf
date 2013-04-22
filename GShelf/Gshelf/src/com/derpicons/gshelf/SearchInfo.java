@@ -46,7 +46,9 @@ public class SearchInfo extends Activity {
 		GameGenre.setText(game.getGenre());
 		GameOverview.setText(game.getOverview());
 		GamePrice.setText(game.getPrice());
-		GameImage.setImageDrawable(game.getCover());
+		GameImage.setImageDrawable(new Network(ctx).getImage(game.getGameUrl()));
+		if(GameImage.getDrawable() == null)
+			GameImage.setImageDrawable(game.getCover());
 		
 		ButtonAddWishlist.setOnClickListener(new View.OnClickListener() {
 

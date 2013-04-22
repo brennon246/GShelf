@@ -50,8 +50,7 @@
         android:layout_height="40dp"
         android:layout_alignRight="@+id/TradePriceTextView"
         android:layout_centerVertical="true"
-        
-        android:layout_below="@+id/TradeCoverImageView"
+        android:layout_marginRight="16dp"
         android:text="Buy Game" />
 
 </RelativeLayout>
