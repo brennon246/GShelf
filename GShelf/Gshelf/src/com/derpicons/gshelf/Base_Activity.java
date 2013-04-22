@@ -45,7 +45,7 @@ public class Base_Activity extends Activity
 			Log.i(TAG, "Action Logout Clicked");
 			
 			//delete shared preferences
-			SharedPreferences settings = getSharedPreferences("GSHELF_LOGIN", 0);
+			SharedPreferences settings = getSharedPreferences("GSHELF_LOGIN", Activity.MODE_PRIVATE);
 			SharedPreferences.Editor editor = settings.edit();
 				editor.remove("username");
 				editor.remove("password");
