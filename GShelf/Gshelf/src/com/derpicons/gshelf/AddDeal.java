@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class AddDeal extends Activity {
+public class AddDeal extends Base_Activity {
 
 	private String Username;
 	private int UserKey;

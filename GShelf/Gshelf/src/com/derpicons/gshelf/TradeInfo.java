@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class TradeInfo extends Activity {
+public class TradeInfo extends Base_Activity {
 	
 	final Button ButtonBuy = (Button) findViewById(R.id.buttonBuy);
 	

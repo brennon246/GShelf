@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class GameInfo extends Activity {
+public class GameInfo extends Base_Activity {
 	
 	private String Username;
 	private int Userkey;

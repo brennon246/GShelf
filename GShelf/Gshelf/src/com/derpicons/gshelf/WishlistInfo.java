@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class WishlistInfo extends Activity {
+public class WishlistInfo extends Base_Activity {
 	
 	private String Username;
 	private int Userkey;
@@ -97,13 +97,6 @@ public class WishlistInfo extends Activity {
 			}
 		});
 		
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.game_info, menu);
-		return true;
 	}
 
 }
