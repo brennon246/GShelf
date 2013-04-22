@@ -10,6 +10,7 @@
         style="@style/Deal_Source"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp"
         android:text="Source" />
 
     <EditText
@@ -19,15 +20,6 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textViewDescription"
         android:ems="10" />
-
-    <TextView
-        android:id="@+id/textViewDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editTextSource"
-        android:layout_marginTop="16dp"
-        android:text="Description" />
 
     <EditText
         android:id="@+id/editTextSource"
@@ -76,5 +68,14 @@
         android:layout_above="@+id/view1"
         android:layout_alignParentLeft="true"
         android:text="Submit Deal" />
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="9dp"
+        android:layout_below="@+id/editTextSource"
+        android:text="Description" />
 
 </RelativeLayout>
