@@ -9,6 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -94,6 +95,129 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		return games.get(0).getCover();
 	}
 
+	
+	void getDeals(){
+		ArrayList<Game> result = new ArrayList<Game>();
+		try {
+			result = this.execute("12").get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Game g = result.get(0);
+		Log.i("DEALS", g.getTitle());
+		return;
+	}
+	
+	// gameid vendor desc userid expiration
+	boolean addToDeals(ArrayList<Integer> gameIds, String vendor,
+			String overview, int userId, Date expiration) {
+
+		StringBuilder builder = new StringBuilder();
+		for (int g : gameIds) {
+			builder.append("" + g + ",");
+		}
+
+		String gIds = builder.toString();
+
+		ArrayList<Game> result = new ArrayList<Game>();
+		try {
+			result = this.execute("11", gIds,vendor, overview,String.valueOf(userId), expiration.toString()).get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Game g = result.get(0);
+		int idVal;
+		try {
+			idVal = Integer.parseInt(g.getTitle());
+		} catch (NumberFormatException e) {
+			Log.i("MESSAGE", g.getTitle());
+			return false;
+		}
+
+		return idVal == 1 ? true : false;
+
+	}
+
+	// userid,gameid,buy,sell,trade
+	boolean addToMarket(int userId, int gameId, String price) {
+		ArrayList<Game> result = new ArrayList<Game>();
+
+		try {
+			result = this.execute("9", String.valueOf(userId),
+					String.valueOf(gameId), price).get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Game g = result.get(0);
+		int idVal;
+		try {
+			idVal = Integer.parseInt(g.getTitle());
+		} catch (NumberFormatException e) {
+			Log.i("MESSAGE", g.getTitle());
+			return false;
+		}
+
+		return idVal == 1 ? true : false;
+	}
+
+	// userId
+	void pullMessage(int userId) {
+		ArrayList<Game> result = new ArrayList<Game>();
+		try {
+			result = this.execute("8", String.valueOf(userId)).get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Game g = result.get(0);
+
+		// int idVal = Integer.parseInt(g.getTitle());
+		Log.i("The Result", result.get(0).getTitle());
+
+		return;
+	}
+
+	// receiver sendid sendername message
+	boolean pushMessage(int receiverId, int senderId, String senderName,
+			String message) {
+		ArrayList<Game> result = new ArrayList<Game>();
+		try {
+			result = this.execute("7", String.valueOf(receiverId),
+					String.valueOf(senderId), senderName, message).get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Game g = result.get(0);
+
+		int idVal = Integer.parseInt(g.getTitle());
+
+		return idVal == 1 ? true : false;
+	}
+
 	int login(String username, String password) {
 
 		ArrayList<Game> result = new ArrayList<Game>();
@@ -112,6 +236,23 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		int idVal = Integer.parseInt(g.getTitle());
 
 		return idVal;
+	}
+
+	Game getGame(int gameId) {
+
+		Game game = null;
+		try {
+			game = (this.execute("5", String.valueOf(gameId)).get()).get(0);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+		return game;
 	}
 
 	// returns one game or null if not found
@@ -133,7 +274,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		}
 
 		else {
-			//gamList.get(0).setCover(getImage(gamList.get(0).getGameUrl()));
+			// gamList.get(0).setCover(getImage(gamList.get(0).getGameUrl()));
 			return gamList.get(0);
 		}
 
@@ -158,8 +299,25 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		// for (Game g : gameResults) {
 		// g.setCover(getImage(g.getGameUrl()));
 		// }
-
+		Log.i("NUM GAME RESULTS", "COUNT: " + gameResults.size());
 		return gameResults;
+	}
+
+	void getMarket() {
+		ArrayList<Game> result = new ArrayList<Game>();
+		try {
+			result = this.execute("10").get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Game g = result.get(0);
+		Log.i("MARKET", g.getTitle());
+		return;
 	}
 
 	// key: username , key: password
@@ -238,7 +396,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 	Game parseGame(XmlPullParser parser) throws XmlPullParserException,
 			IOException {
 
-		Game newGame = new Game(ctxt);
+		Game newGame = new Game();
 		while (parser.next() != XmlPullParser.END_TAG) {
 			if (parser.getEventType() != XmlPullParser.START_TAG) {
 				continue;
@@ -269,10 +427,6 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 				if (newGame.getGameUrl() == null)
 					newGame.setGameUrl(BASEURLIMG + parseImage(parser, newGame));
-				Log.i("looking for one",
-						""
-								+ newGame.getGameUrl().charAt(
-										newGame.getGameUrl().length() - 5));
 
 			}
 
@@ -302,7 +456,6 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 				temp = parseBanner(parser, null);
 				bannerData = temp;
-				Log.i("getting", bannerData);
 				gotArt = true;
 			}
 
@@ -370,7 +523,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 	String parseKey(XmlPullParser parser, Game game) throws IOException,
 			XmlPullParserException {
-		
+
 		parser.require(XmlPullParser.START_TAG, null, "id");
 		String key = "null";
 
@@ -460,13 +613,13 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		progressDialog.setMessage("Loading...");
 		progressDialog.show();
 
-		Log.i("PREXECUTE", "something");
+		Log.i("PREXECUTE", "EXECUTING");
 
 	}
 
 	@Override
 	protected void onPostExecute(ArrayList<Game> unused) {
-		Log.i("THREAD FINISHED", "Words");
+		Log.i("POSTEXECUTE", "EXECUTING");
 
 		if (progressDialog.isShowing()) {
 			progressDialog.dismiss();
@@ -482,6 +635,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 		ctrl = Integer.parseInt(params[0]);
 
+		Log.i("CONTROL LINE", "" + ctrl);
 		if (ctrl == 1) {
 
 			String result = null;
@@ -497,7 +651,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			HttpPost httppost = new HttpPost(
 					"http://gshelf.epyon-tech.net/addtolibrary.php");
 			try {
-				Log.i("user", paramList.get(0).toString());
+				// Log.i("user", paramList.get(0).toString());
 				// Log.i("game", bigList.get(1).toString());
 				httppost.setEntity(new UrlEncodedFormEntity(paramList));
 				HttpResponse response = httpclient.execute(httppost);
@@ -578,9 +732,9 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 				e.printStackTrace();
 			}
 
-			Log.i("LINE", line.toString());
+			// Log.i("LINE", line.toString());
 
-			Game returnGame = new Game(ctxt);
+			Game returnGame = new Game();
 
 			returnGame.setTitle(line);
 
@@ -605,8 +759,8 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			HttpPost httppost = new HttpPost(
 					"http://gshelf.epyon-tech.net/login.php");
 			try {
-				Log.i("user", paramList.get(0).toString());
-				Log.i("password", paramList.get(1).toString());
+				// Log.i("user", paramList.get(0).toString());
+				// Log.i("password", paramList.get(1).toString());
 				// Log.i("game", bigList.get(1).toString());
 				httppost.setEntity(new UrlEncodedFormEntity(paramList));
 				HttpResponse response = httpclient.execute(httppost);
@@ -615,7 +769,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 				input = entity.getContent();
 
-				Log.i("INPUT", input.toString());
+				// Log.i("INPUT", input.toString());
 			} catch (UnsupportedEncodingException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -646,9 +800,9 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 				e.printStackTrace();
 			}
 
-			Log.i("LINE", line.toString());
+			// Log.i("LINE", line.toString());
 
-			Game returnGame = new Game(ctxt);
+			Game returnGame = new Game();
 
 			returnGame.setTitle(line);
 
@@ -675,8 +829,8 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			HttpPost httppost = new HttpPost(
 					"http://gshelf.epyon-tech.net/register.php");
 			try {
-				Log.i("user", paramList.get(0).toString());
-				Log.i("password", paramList.get(1).toString());
+				// Log.i("user", paramList.get(0).toString());
+				// Log.i("password", paramList.get(1).toString());
 				// Log.i("game", bigList.get(1).toString());
 				httppost.setEntity(new UrlEncodedFormEntity(paramList));
 				HttpResponse response = httpclient.execute(httppost);
@@ -685,7 +839,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 				input = entity.getContent();
 
-				Log.i("INPUT", input.toString());
+				// Log.i("INPUT", input.toString());
 			} catch (UnsupportedEncodingException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -699,7 +853,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			// get data
 
-			Game returnGame = new Game(ctxt);
+			Game returnGame = new Game();
 
 			BufferedReader reader = null;
 			try {
@@ -719,7 +873,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			Log.i("Add user result", line);
+			// Log.i("Add user result", line);
 
 			returnGame.setTitle(line);
 
@@ -752,7 +906,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			} catch (Throwable t) {
 				// can use t as a string to pass to logcat to display error
-				Log.i("ERROR", t.toString());
+				// Log.i("ERROR", t.toString());
 
 				return null;
 			}
@@ -795,11 +949,11 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 				// obtain xml game data
 				responseBody = client.execute(getMethod, responseHandler);
-				Log.i("RESPONSE", responseBody);
+				// Log.i("RESPONSE", responseBody);
 
 			} catch (Throwable t) {
 				// can use t as a string to pass to logcat to display error
-				Log.i("ERROR", t.toString());
+				// Log.i("ERROR", t.toString());
 
 				return null;
 			}
@@ -847,7 +1001,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 				Drawable draw = Drawable.createFromStream(
 						connection.getInputStream(), "src");
 
-				Game returnGame = new Game(ctxt);
+				Game returnGame = new Game();
 				returnGame.setCover(draw);
 
 				ArrayList<Game> returnList = new ArrayList<Game>();
@@ -866,6 +1020,445 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			}
 
 		}
+
+		// push message receiver senderid sendsername message
+		else if (ctrl == 7) {
+
+			InputStream input = null;
+
+			ArrayList<NameValuePair> paramList = new ArrayList<NameValuePair>();
+
+			paramList.add(new BasicNameValuePair("receiver", params[1]));
+			paramList.add(new BasicNameValuePair("senderid", params[2]));
+			paramList.add(new BasicNameValuePair("sendername", params[3]));
+			paramList.add(new BasicNameValuePair("message", params[4]));
+
+			// access db and execute
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppost = new HttpPost(
+					"http://gshelf.epyon-tech.net/addmessage.php");
+			try {
+				// Log.i("user", paramList.get(0).toString());
+				// Log.i("password", paramList.get(1).toString());
+				// Log.i("game", bigList.get(1).toString());
+				httppost.setEntity(new UrlEncodedFormEntity(paramList));
+				HttpResponse response = httpclient.execute(httppost);
+
+				HttpEntity entity = response.getEntity();
+
+				input = entity.getContent();
+
+				// Log.i("INPUT", input.toString());
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			BufferedReader reader = null;
+			try {
+				reader = new BufferedReader(new InputStreamReader(input,
+						"iso-8859-1"), 8);
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			StringBuilder sbuilder = new StringBuilder();
+
+			String line = "pop";
+			try {
+				line = reader.readLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			// Log.i("LINE", line.toString());
+
+			Game returnGame = new Game();
+
+			returnGame.setTitle(line);
+
+			ArrayList<Game> returnList = new ArrayList<Game>();
+
+			returnList.add(returnGame);
+			return returnList;
+
+		}
+
+		// pull message userid
+		else if (ctrl == 8) {
+
+			InputStream input = null;
+
+			ArrayList<NameValuePair> paramList = new ArrayList<NameValuePair>();
+
+			paramList.add(new BasicNameValuePair("userid", params[1]));
+
+			// access db and execute
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppost = new HttpPost(
+					"http://gshelf.epyon-tech.net/getmessages.php");
+			try {
+				// Log.i("user", paramList.get(0).toString());
+				// Log.i("password", paramList.get(1).toString());
+				// Log.i("game", bigList.get(1).toString());
+				httppost.setEntity(new UrlEncodedFormEntity(paramList));
+				HttpResponse response = httpclient.execute(httppost);
+
+				HttpEntity entity = response.getEntity();
+
+				input = entity.getContent();
+
+				// Log.i("INPUT", input.toString());
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			BufferedReader reader = null;
+			try {
+				reader = new BufferedReader(new InputStreamReader(input,
+						"iso-8859-1"), 8);
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			StringBuilder sbuilder = new StringBuilder();
+
+			String line = "pop";
+			try {
+				line = reader.readLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			// Log.i("LINE", line.toString());
+
+			Game returnGame = new Game();
+
+			returnGame.setTitle(line);
+
+			ArrayList<Game> returnList = new ArrayList<Game>();
+
+			returnList.add(returnGame);
+			return returnList;
+
+		}
+
+		// addToMarket
+		else if (ctrl == 9) {
+
+			InputStream input = null;
+
+			ArrayList<NameValuePair> paramList = new ArrayList<NameValuePair>();
+
+			paramList.add(new BasicNameValuePair("userid", params[1]));
+			Log.i("USERID", params[1]);
+			paramList.add(new BasicNameValuePair("gameid", params[2]));
+			Log.i("GAMEID", params[2]);
+			paramList.add(new BasicNameValuePair("price", params[3]));
+			Log.i("PRICE", params[3]);
+
+			// access db and execute
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppost = new HttpPost(
+					"http://gshelf.epyon-tech.net/addtomarket.php");
+			try {
+				// Log.i("user", paramList.get(0).toString());
+				// Log.i("password", paramList.get(1).toString());
+				// Log.i("game", bigList.get(1).toString());
+				httppost.setEntity(new UrlEncodedFormEntity(paramList));
+				HttpResponse response = httpclient.execute(httppost);
+
+				HttpEntity entity = response.getEntity();
+
+				input = entity.getContent();
+				// Log.i("INPUT", input.toString());
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			BufferedReader reader = null;
+			try {
+				reader = new BufferedReader(new InputStreamReader(input,
+						"iso-8859-1"), 8);
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+
+			StringBuilder sbuilder = new StringBuilder();
+
+			String line = "pop";
+			try {
+				line = reader.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			// Log.i("LINE", line.toString());
+
+			Game returnGame = new Game();
+
+			returnGame.setTitle(line);
+
+			ArrayList<Game> returnList = new ArrayList<Game>();
+
+			returnList.add(returnGame);
+			return returnList;
+
+		}
+
+		else if (ctrl == 10) {
+
+			InputStream input = null;
+
+			// access db and execute
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppost = new HttpPost(
+					"http://gshelf.epyon-tech.net/getmarket.php");
+			try {
+				// Log.i("user", paramList.get(0).toString());
+				// Log.i("password", paramList.get(1).toString());
+				// Log.i("game", bigList.get(1).toString());
+				HttpResponse response = httpclient.execute(httppost);
+
+				HttpEntity entity = response.getEntity();
+
+				input = entity.getContent();
+				// Log.i("INPUT", input.toString());
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			BufferedReader reader = null;
+			try {
+				reader = new BufferedReader(new InputStreamReader(input,
+						"iso-8859-1"), 8);
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+
+			StringBuilder sbuilder = new StringBuilder();
+
+			String line = "pop";
+			try {
+				line = reader.readLine();
+				Log.i("LINE", line);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			// Log.i("LINE", line.toString());
+
+			Game returnGame = new Game();
+
+			returnGame.setTitle(line);
+
+			ArrayList<Game> returnList = new ArrayList<Game>();
+
+			returnList.add(returnGame);
+			return returnList;
+
+		}
+		
+		//adddeal gameid vendor desc userid expiration 
+		else if (ctrl == 11) {
+
+			InputStream input = null;
+
+			ArrayList<NameValuePair> paramList = new ArrayList<NameValuePair>();
+
+			paramList.add(new BasicNameValuePair("gameid", params[1]));
+			paramList.add(new BasicNameValuePair("vendor", params[2]));
+			paramList.add(new BasicNameValuePair("desc", params[3]));
+			paramList.add(new BasicNameValuePair("userid", params[4]));
+			paramList.add(new BasicNameValuePair("expiration", params[5]));
+
+			// access db and execute
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppost = new HttpPost(
+					"http://gshelf.epyon-tech.net/addtodeals.php");
+			try {
+				// Log.i("user", paramList.get(0).toString());
+				// Log.i("password", paramList.get(1).toString());
+				// Log.i("game", bigList.get(1).toString());
+				httppost.setEntity(new UrlEncodedFormEntity(paramList));
+				HttpResponse response = httpclient.execute(httppost);
+
+				HttpEntity entity = response.getEntity();
+
+				input = entity.getContent();
+				// Log.i("INPUT", input.toString());
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			BufferedReader reader = null;
+			try {
+				reader = new BufferedReader(new InputStreamReader(input,
+						"iso-8859-1"), 8);
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+
+			StringBuilder sbuilder = new StringBuilder();
+
+			String line = "pop";
+			try {
+				line = reader.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			// Log.i("LINE", line.toString());
+
+			Game returnGame = new Game();
+
+			returnGame.setTitle(line);
+
+			ArrayList<Game> returnList = new ArrayList<Game>();
+
+			returnList.add(returnGame);
+			return returnList;
+
+		}
+		
+		else if (ctrl == 12) {
+
+			InputStream input = null;
+
+			ArrayList<NameValuePair> paramList = new ArrayList<NameValuePair>();
+
+			// access db and execute
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppost = new HttpPost(
+					"http://gshelf.epyon-tech.net/getdeals.php");
+			try {
+				// Log.i("user", paramList.get(0).toString());
+				// Log.i("password", paramList.get(1).toString());
+				// Log.i("game", bigList.get(1).toString());
+				httppost.setEntity(new UrlEncodedFormEntity(paramList));
+				HttpResponse response = httpclient.execute(httppost);
+
+				HttpEntity entity = response.getEntity();
+
+				input = entity.getContent();
+				// Log.i("INPUT", input.toString());
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			BufferedReader reader = null;
+			try {
+				reader = new BufferedReader(new InputStreamReader(input,
+						"iso-8859-1"), 8);
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+
+			StringBuilder sbuilder = new StringBuilder();
+
+			String line = "pop";
+			try {
+				line = reader.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			// Log.i("LINE", line.toString());
+
+			Game returnGame = new Game();
+
+			returnGame.setTitle(line);
+
+			ArrayList<Game> returnList = new ArrayList<Game>();
+
+			returnList.add(returnGame);
+			return returnList;
+
+		}
+		
+		// get game
+				else if (ctrl == 13) {
+
+
+					progressDialog.setMessage("Working...");
+					progressDialog.show();
+
+					String url = "http://thegamesdb.net/api/GetGame.php?id="
+							+ params[2];
+
+					// create the http get from the url
+					HttpGet getMethod = new HttpGet(url);
+
+					// obtain game information
+					DefaultHttpClient client = new DefaultHttpClient();
+					String responseBody = "nil";
+
+					try {
+						ResponseHandler<String> responseHandler = new BasicResponseHandler();
+
+						// obtain xml game data
+						responseBody = client.execute(getMethod, responseHandler);
+						// Log.i("RESPONSE", responseBody);
+
+					} catch (Throwable t) {
+						// can use t as a string to pass to logcat to display error
+						// Log.i("ERROR", t.toString());
+
+						return null;
+					}
+					try {
+						progressDialog.dismiss();
+
+						// parse the xml into an array of Game objects and return
+						// HERE
+						// return parseResponse(responseBody);
+						searchResults = parseResponse(responseBody);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						progressDialog.dismiss();
+						return null;
+					}
+
+					
+
+					progressDialog.dismiss();
+
+					return searchResults;
+				}
 		return null;
 
 	}
