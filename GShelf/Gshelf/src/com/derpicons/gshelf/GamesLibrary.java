@@ -38,7 +38,11 @@ public class GamesLibrary extends Base_Activity {
 		 * Game("Disco", "Dance")); AGames.add(new Game("Thermonuclear Warfare",
 		 * "There is only one winning move"));
 		 */
-		AGames = new Network(this).getGames("halo");
+		LocalDatabase LD = new LocalDatabase(ctx);
+		AGames = LD.getGamesFromDb(Userkey);
+		LD.close();
+		
+		//AGames = new Network(this).getGames("halo");
 		final Games LGames = new Games(AGames);
 
 		// Display list of games
@@ -53,9 +57,9 @@ public class GamesLibrary extends Base_Activity {
 			public void onItemClick(AdapterView<?> arg0, View view,
 					int position, long id) {
 
-				Toast.makeText(getApplicationContext(),
-						"Click GameItemNumber " + position, Toast.LENGTH_LONG)
-						.show();
+				//Toast.makeText(getApplicationContext(),
+				//		"Click GameItemNumber " + position, Toast.LENGTH_LONG)
+				//		.show();
 				// Takes user to GameView page with required data.
 				
 				Intent i = new Intent(getApplicationContext(), GameInfo.class);

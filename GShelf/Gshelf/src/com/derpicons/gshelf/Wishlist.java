@@ -20,7 +20,7 @@ public class Wishlist extends Base_Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_games_library);
+		setContentView(R.layout.activity_wishlist);
 		ctx = this;
 
 		Intent intent = getIntent();

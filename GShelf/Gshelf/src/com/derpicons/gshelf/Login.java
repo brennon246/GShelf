@@ -37,7 +37,7 @@ public class Login extends Activity {
 			// Login is a success take user to default page
 			if (SPLoginResult != 0) {
 				Intent i = new Intent(getApplicationContext(),
-						DealsView.class);
+						Wishlist.class);
 				i.putExtra("UserName", SPuname);
 				i.putExtra("UKey", SPLoginResult);
 				startActivity(i);
@@ -92,7 +92,7 @@ public class Login extends Activity {
 							editor.commit();
 						}
 						Intent i = new Intent(getApplicationContext(),
-								DealsView.class);
+								Wishlist.class);
 						i.putExtra("UserName", un);
 						i.putExtra("UKey", LoginResult);
 						startActivity(i);

@@ -53,9 +53,9 @@ public class SearchInfo extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//LocalDatabase LD = new LocalDatabase(ctx);
-				//LD.addGameToWishlist(game, game.getPrice());
-				//LD.close();		
+				LocalDatabase LD = new LocalDatabase(ctx);
+				LD.addGameToWishlist(game, Float.parseFloat(game.getPrice()));
+				LD.close();		
 			}
 		});
 		
@@ -64,20 +64,20 @@ public class SearchInfo extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//LocalDatabase LD = new LocalDatabase(ctx);
-				//LD.addGameToLibrary(game, game.getPrice());
-				//LD.close();
+				LocalDatabase LD = new LocalDatabase(ctx);
+				LD.addGameToLibrary(game);
+				LD.close();
 
 			}
 		});
 		
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	//@Override
+	//public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		//getMenuInflater().inflate(R.menu.game_info, menu);
-		return true;
-	}
+	//	return true;
+	//}
 
 }

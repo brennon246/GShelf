@@ -78,17 +78,17 @@
         android:text="Add Affected Game" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editTextExpirationDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/textViewExpirationDate"
         android:ems="10"
         android:inputType="date" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textViewExpirationDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
