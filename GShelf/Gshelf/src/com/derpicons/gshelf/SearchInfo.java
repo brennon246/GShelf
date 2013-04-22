@@ -17,12 +17,12 @@ public class SearchInfo extends Base_Activity {
 	private int GameKey;
 	private Context ctx;
 	private Game game;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_info);
-		
+
 		ctx = this;
 		Intent intent = getIntent();
 		Username = intent.getStringExtra("UserName");
@@ -37,19 +37,20 @@ public class SearchInfo extends Base_Activity {
 		final TextView GamePrice = (TextView) findViewById(R.id.SPrice);
 		final ImageView GameImage = (ImageView) findViewById(R.id.SImage);
 		GameKey = intent.getIntExtra("GameKey", 0);
-		//Network call to get Game with GameKey
+		// Network call to get Game with GameKey
 		game = new Network(ctx).getGame(GameKey);
-		
+
 		GameTitle.setText(game.getTitle());
 		GameConsle.setText(game.getPlatform());
 		GameDeveloper.setText(game.getDeveloper());
 		GameGenre.setText(game.getGenre());
 		GameOverview.setText(game.getOverview());
 		GamePrice.setText(game.getPrice());
-		GameImage.setImageDrawable(new Network(ctx).getImage(game.getGameUrl()));
-		if(GameImage.getDrawable() == null)
+		GameImage
+				.setImageDrawable(new Network(ctx).getImage(game.getGameUrl()));
+		if (GameImage.getDrawable() == null)
 			GameImage.setImageDrawable(game.getCover());
-		
+
 		ButtonAddWishlist.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -57,10 +58,10 @@ public class SearchInfo extends Base_Activity {
 				// TODO Auto-generated method stub
 				LocalDatabase LD = new LocalDatabase(ctx);
 				LD.addGameToWishlist(game, Float.parseFloat(game.getPrice()));
-				LD.close();		
+				LD.close();
 			}
 		});
-		
+
 		ButtonAddLibrary.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -72,7 +73,13 @@ public class SearchInfo extends Base_Activity {
 
 			}
 		});
-		
+
+	}
+
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		this.finish();
 	}
 
 }

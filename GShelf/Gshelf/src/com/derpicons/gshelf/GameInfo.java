@@ -11,18 +11,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class GameInfo extends Base_Activity {
-	
+
 	private String Username;
 	private int Userkey;
 	private int GameKey;
 	private Game game;
 	private Context ctx;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_info);
-		
+
 		ctx = this;
 		Intent intent = getIntent();
 		Username = intent.getStringExtra("UserName");
@@ -36,46 +36,52 @@ public class GameInfo extends Base_Activity {
 		final TextView GameOverview = (TextView) findViewById(R.id.textViewGameOverview);
 		final ImageView GameImage = (ImageView) findViewById(R.id.imageViewGameCover);
 		GameKey = intent.getIntExtra("GameKey", 0);
-		 
+
 		game = new Network(ctx).getGame(GameKey);
-		
+
 		GameTitle.setText(game.getTitle());
 		GameConsle.setText(game.getPlatform());
 		GameDeveloper.setText(game.getDeveloper());
 		GameGenre.setText(game.getGenre());
 		GameOverview.setText(game.getOverview());
-		GameImage.setImageDrawable(new Network(ctx).getImage(game.getGameUrl()));
-		//GameImage.setImageDrawable(game.getCover());
-		
-		if(GameImage.getDrawable() == null)
+		GameImage
+				.setImageDrawable(new Network(ctx).getImage(game.getGameUrl()));
+		// GameImage.setImageDrawable(game.getCover());
+
+		if (GameImage.getDrawable() == null)
 			GameImage.setImageDrawable(game.getCover());
-		
+
 		ButtonSell.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-			
-				Intent i = new Intent(getApplicationContext(),
-						SellGame.class);
+
+				Intent i = new Intent(getApplicationContext(), SellGame.class);
 				i.putExtra("UserName", Username);
 				i.putExtra("UKey", Userkey);
 				i.putExtra("GameKey", GameKey);
 				startActivity(i);
 			}
 		});
-		
+
 		ButtonRemove.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//LocalDatabase LD = new LocalDatabase(ctx);
-				//LD.RemoveFromLibrary(game, game.getPrice());
-				//LD.close();
+				// LocalDatabase LD = new LocalDatabase(ctx);
+				// LD.RemoveFromLibrary(game, game.getPrice());
+				// LD.close();
 
 			}
 		});
-		
+
+	}
+
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		this.finish();
 	}
 }
