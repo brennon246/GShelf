@@ -41,22 +41,12 @@
        android:layout_marginBottom="20dp"
        android:background="#33b5e5" />
 
-    <Button
-        android:id="@+id/buttonAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@+id/editTextDescription"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:text="Add Affected Game" />
-
     <ListView
         android:id="@+id/games_added_list"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_above="@+id/buttonSubmit"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/buttonAdd"
         android:textSize="13dp" >
 
     </ListView>
@@ -77,5 +67,34 @@
         android:layout_marginBottom="9dp"
         android:layout_below="@+id/editTextSource"
         android:text="Description" />
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_above="@+id/games_added_list"
+        android:layout_marginBottom="26dp"
+        android:layout_toRightOf="@+id/textViewDescription"
+        android:text="Add Affected Game" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        
+        android:layout_below="@+id/textView1"
+        android:ems="10"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        
+        android:layout_marginBottom="9dp"
+        android:layout_below="@+id/editTextDescription"
+        android:text="Expiration Date" />
 
 </RelativeLayout>
