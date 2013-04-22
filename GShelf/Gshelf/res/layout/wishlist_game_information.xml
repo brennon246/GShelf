@@ -18,14 +18,15 @@
         android:id="@+id/WConsole"
         style="@style/Info_Console"
         android:layout_alignTop="@+id/WPic"
-        android:layout_toRightOf="@+id/WTitle"
+        android:layout_toRightOf="@+id/WPic"
         android:text="Console" />
 
     <TextView
         android:id="@+id/WDevlop"
         style="@style/Info_Developer"
-        android:layout_alignLeft="@+id/WGenre"
+    
         android:layout_below="@+id/WGenre"
+        android:layout_toRightOf="@+id/WPic"
         android:text="Developer" />
 
     <TextView
@@ -33,14 +34,14 @@
         style="@style/Info_Genre"
         android:layout_below="@+id/WConsole"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/WTitle"
+        android:layout_toRightOf="@+id/WPic"
         android:text="Genre" />
 
    <TextView
        android:id="@+id/WPrice"
        style="@style/Info_Price"
        android:layout_alignBottom="@+id/WPic"
-       android:layout_alignLeft="@+id/WDevlop"
+       android:layout_toRightOf="@+id/WPic"
        android:layout_marginBottom="19dp"
        android:text="Price" />
 

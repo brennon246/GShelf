@@ -69,6 +69,7 @@
         android:id="@+id/textViewZipCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
         android:layout_alignLeft="@+id/textViewGameConsole"
         android:layout_below="@+id/radioGroupLocation"
         android:text="Zip Code:" />
@@ -81,6 +82,7 @@
         android:layout_alignTop="@+id/textViewZipCode"
         android:layout_marginRight="14dp"
         android:ems="10"
+        android:textSize="10dp"
         android:inputType="number" >
 
         <requestFocus />
@@ -91,8 +93,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_marginTop="18dp"
         android:layout_below="@+id/editTextZipCode"
-        android:layout_marginTop="17dp"
+    
         android:layout_marginLeft="8dp"
         android:text="Selling Price:" />
 
@@ -102,6 +105,7 @@
         android:layout_height="23dp"
         android:layout_alignTop="@+id/textViewPrice"
         android:layout_toRightOf="@+id/textViewPrice"
+        android:textSize="10dp"
         android:ems="10" />
 
     <Button

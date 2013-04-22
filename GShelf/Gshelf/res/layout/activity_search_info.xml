@@ -18,7 +18,7 @@
         android:id="@+id/SConsole"
         style="@style/Info_Console"
         android:layout_alignTop="@+id/SImage"
-        android:layout_toRightOf="@+id/STitle"
+        android:layout_toRightOf="@+id/SImage"
         android:text="Console" />
 
     <TextView
@@ -27,14 +27,6 @@
         android:layout_alignLeft="@+id/SGenre"
         android:layout_below="@+id/SGenre"
         android:text="Developer" />
-
-    <TextView
-        android:id="@+id/SGenre"
-        style="@style/Info_Genre"
-        android:layout_below="@+id/SConsole"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/STitle"
-        android:text="Genre" />
 
     <TextView
         android:id="@+id/SOverview"
@@ -60,22 +52,28 @@
         android:layout_below="@+id/SDeveloper"
         android:text="Price" />
 
+    <TextView
+        android:id="@+id/SGenre"
+        style="@style/Info_Genre"
+        android:layout_alignLeft="@+id/SConsole"
+        android:layout_below="@+id/SConsole"
+        android:layout_marginTop="21dp"
+        android:text="Genre" />
+
     <Button
         android:id="@+id/buttonAddLibrary"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginLeft="5dp"
-        android:layout_alignBaseline="@+id/buttonAddWishlist"
-        android:layout_alignBottom="@+id/buttonAddWishlist"
-        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/SOverview"
+        android:layout_toLeftOf="@+id/STitle"
         android:text="Add to Library" />
 
     <Button
         android:id="@+id/buttonAddWishlist"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:layout_alignLeft="@+id/SPrice"
         android:layout_below="@+id/SOverview"
-        android:layout_toRightOf="@+id/SImage"
         android:text="Add to Wishlist" />
 
 </RelativeLayout>

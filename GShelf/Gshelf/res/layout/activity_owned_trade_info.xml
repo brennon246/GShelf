@@ -18,7 +18,7 @@
         android:id="@+id/TradeConsoleTextView"
         style="@style/TradeItem_Console"
         android:layout_alignTop="@+id/TradeCoverImageView"
-        android:layout_toRightOf="@+id/TradeTitleTextView"
+        android:layout_toRightOf="@+id/TradeCoverImageView"
         android:text="Console" />
 
     <View
@@ -48,7 +48,7 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_alignRight="@+id/TradeLocationTextView"
+        android:layout_centerInParent="true"
         android:layout_below="@+id/TradeCoverImageView"
         android:layout_marginTop="16dp"
         android:text="Remove From Trades" />

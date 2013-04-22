@@ -18,13 +18,13 @@
         android:id="@+id/WConsole"
         style="@style/Info_Console"
         android:layout_alignTop="@+id/WPic"
-        android:layout_toRightOf="@+id/WTitle"
+        android:layout_toRightOf="@+id/WPic"
         android:text="Console" />
 
     <TextView
         android:id="@+id/WDevlop"
         style="@style/Info_Developer"
-        android:layout_alignLeft="@+id/WGenre"
+        android:layout_toRightOf="@+id/WPic"
         android:layout_below="@+id/WGenre"
         android:text="Developer" />
 
@@ -33,33 +33,16 @@
         style="@style/Info_Genre"
         android:layout_below="@+id/WConsole"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/WTitle"
+        android:layout_toRightOf="@+id/WPic"
         android:text="Genre" />
-
-   <Button
-       android:id="@+id/buttonRemove"
-       android:layout_width="wrap_content"
-       android:layout_height="40dp"
-       android:layout_alignParentRight="true"
-       android:layout_below="@+id/buttonBuy"
-       android:layout_marginRight="20dp"
-       android:text="Remove From Wishlist" />
 
    <TextView
        android:id="@+id/WPrice"
        style="@style/Info_Price"
        android:layout_alignBottom="@+id/WPic"
-       android:layout_alignLeft="@+id/WDevlop"
+       android:layout_toRightOf="@+id/WPic"
        android:layout_marginBottom="19dp"
        android:text="Price" />
-
-   <Button
-       android:id="@+id/buttonChangeThreshold"
-       android:layout_width="wrap_content"
-       android:layout_height="40dp"
-       android:layout_alignLeft="@+id/WTitle"
-       android:layout_below="@+id/textView1"
-       android:text="Change Threshold" />
 
    <TextView
        android:id="@+id/textView2"
@@ -107,12 +90,13 @@
 
    <Button
        android:id="@+id/buttonAddLibrary"
-       android:layout_width="80dp"
+       android:layout_width="140dp"
        android:layout_height="40dp"
        android:layout_alignBaseline="@+id/buttonRemove"
        android:layout_alignBottom="@+id/buttonRemove"
-       android:layout_alignLeft="@+id/buttonBuy"
-       android:layout_toLeftOf="@+id/buttonRemove"
+       android:layout_alignParentLeft="true"
+       android:layout_marginLeft="15dp"
+       android:layout_marginRight="10dp"
        android:text="Add to Library" />
 
    <View
@@ -122,5 +106,22 @@
        android:layout_alignParentLeft="true"
        android:layout_below="@+id/buttonRemove"
        android:background="#33b5e5" />
+
+   <Button
+       android:id="@+id/buttonChangeThreshold"
+       android:layout_width="wrap_content"
+       android:layout_height="40dp"
+       android:layout_below="@+id/WOverview"
+       android:layout_toRightOf="@+id/editText1"
+       android:layout_marginLeft="8dp"
+       android:text="Change Threshold" />
+
+   <Button
+       android:id="@+id/buttonRemove"
+       android:layout_width="140dp"
+       android:layout_height="40dp"
+       android:layout_below="@+id/buttonBuy"
+       android:layout_toRightOf="@+id/buttonAddLibrary"
+       android:text="Remove" />
 
 </RelativeLayout>
