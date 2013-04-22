@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/STitle"
+        style="@style/Info_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trade" />
+
+    <View
+       android:id="@+id/view1"
+       android:layout_width="fill_parent"
+       android:layout_height="2dp"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentLeft="true"
+       android:layout_marginBottom="20dp"
+       android:background="#33b5e5" />
+
+    <TextView
+        android:id="@+id/textViewGameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/STitle"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="17dp"
+        android:text="Game: game title" />
+
+    <TextView
+        android:id="@+id/textViewGameConsole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewGameTitle"
+        android:layout_below="@+id/textViewGameTitle"
+        android:layout_marginTop="14dp"
+        android:text="Console: console" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/STitle"
+        android:layout_below="@+id/textViewGameConsole"
+        android:layout_marginTop="21dp"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radioGlobal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:textSize="13dp"
+            android:text="Global" />
+
+        <RadioButton
+            android:id="@+id/radioLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:text="Local" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textViewZipCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewGameConsole"
+        android:layout_below="@+id/radioGroupLocation"
+        android:text="Zip Code:" />
+
+    <EditText
+        android:id="@+id/editTextZipCode"
+        android:layout_width="100dp"
+        android:layout_height="23dp"
+        android:layout_alignRight="@+id/radioGroupLocation"
+        android:layout_alignTop="@+id/textViewZipCode"
+        android:layout_marginRight="14dp"
+        android:ems="10"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textViewPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editTextZipCode"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="8dp"
+        android:text="Selling Price:" />
+
+    <EditText
+        android:id="@+id/editTextPrice"
+        android:layout_width="100dp"
+        android:layout_height="23dp"
+        android:layout_alignTop="@+id/textViewPrice"
+        android:layout_toRightOf="@+id/textViewPrice"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/buttonSell"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/editTextPrice"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp"
+        android:text="Sell Game" />
+
+    <ImageView
+        android:id="@+id/imageViewGameCover"
+        android:layout_width="140dp"
+        android:layout_height="150dp"
+        android:layout_alignTop="@+id/textViewGameTitle"
+        android:layout_toRightOf="@+id/editTextPrice"
+        android:src="@drawable/ac3" />
+
+</RelativeLayout>

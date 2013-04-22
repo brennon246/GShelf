@@ -37,6 +37,12 @@ public class GameInfo extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 			
+				Intent i = new Intent(getApplicationContext(),
+						DealsView.class);
+				i.putExtra("UserName", Username);
+				i.putExtra("UKey", Userkey);
+				i.putExtra("GameKey", GameKey);
+				startActivity(i);
 			}
 		});
 		

@@ -9,21 +9,15 @@ public class Deal {
 
 	private Date ExpirationDate;
 	private ArrayList<Tag> Tags;
-	private String Link;
-	private String Overview;
+	private String Source;
 	private String Description;
-	private String Rating;
 	private int Key;
-	private Drawable Image;
 
-	public Deal(Date e, ArrayList<Tag> t, String l, String o, String dis,
-			String r, int k) {
+	public Deal(Date e, ArrayList<Tag> t, String s, String dis, int k) {
 		ExpirationDate = e;
+		setSource(s);
 		Tags = t;
-		Link = l;
-		Overview = o;
 		Description = dis;
-		Rating = r;
 		Key = k;
 	}
 	
@@ -42,10 +36,6 @@ public class Deal {
 
 	}
 
-	public String getLink() {
-		return Link;
-	}
-
 	public int getKey() {
 		return Key;
 	}
@@ -62,35 +52,19 @@ public class Deal {
 		return MatchedGames;
 	}
 
-	public String getOverview() {
-		return Overview;
+	public String setDescription() {
+		return Description;
 	}
-
-	public void setOverview(String overview) {
-		Overview = overview;
-	}
-
+	
 	public String getDescription() {
 		return Description;
 	}
 
-	public void setEffect(String description) {
-		Description = description;
+	public String getSource() {
+		return Source;
 	}
 
-	public String getRating() {
-		return Rating;
-	}
-
-	public void setRating(String rating) {
-		Rating = rating;
-	}
-
-	public Drawable getImage() {
-		return Image;
-	}
-
-	public void setImage(Drawable dealImage) {
-		Image = dealImage;
+	public void setSource(String source) {
+		Source = source;
 	}
 }
