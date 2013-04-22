@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class AddDeal extends Activity {
@@ -19,8 +20,10 @@ public class AddDeal extends Activity {
 	private String Username;
 	private int UserKey;
 	private ArrayList<Integer> GameKeys;
-	private ArrayList<Games> SelectedGames;
+	private ArrayList<Game> SelectedGames;
 	private Context ctx;
+	private ListView listViewGames;
+	private SearchListAdapter SelectedSearchListAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,19 @@ public class AddDeal extends Activity {
 		final TextView SourceText = (TextView) findViewById(R.id.textViewSource);
 		Button AddGames = (Button) findViewById(R.id.buttonAdd);
 		Button Submit = (Button) findViewById(R.id.buttonSubmit);
+		listViewGames = (ListView) findViewById(R.id.games_added_list);
+		listViewGames.setClickable(true);
+		SelectedGames = new ArrayList<Game>();
 		
+		//SelectedGames.add(new Game("Dino Chase", "Chase dinos around"));
+		//SelectedGames.add(new Game("Half Life 4", "They just skipped 3"));
+		//SelectedGames.add(new Game("Rock Band", "Rock your socks off"));
+		//SelectedGames.add(new Game("Blah", "Blah blah blah"));
+		//SelectedGames.add(new Game("Disco", "Dance"));
+		//SelectedGames.add(new Game("Thermonuclear Warfare", "There is only one winning move"));
+		//listViewGames.setAdapter(new SearchListAdapter(ctx, R.layout.result_item, SelectedGames));
+		SelectedSearchListAdapter = new SearchListAdapter(ctx, R.layout.result_item, SelectedGames);
+		listViewGames.setAdapter(SelectedSearchListAdapter);
 		Intent intent = getIntent();
 		Username = intent.getStringExtra("UserName");
 		UserKey = intent.getIntExtra("UKey", 0);
@@ -81,8 +96,10 @@ public class AddDeal extends Activity {
 					Date exp = new Date(2015, 3, 2);
 					if(GameKeys != null)
 					{
-						new Network(ctx).addToDeals(GameKeys, src, des, UserKey, exp);
-						finish();
+						SourceText.setText(new Integer(GameKeys.get(0).toString()));
+						//listViewGames.setAdapter(new SearchListAdapter(ctx, R.layout.result_item, SelectedGames));
+						//new Network(ctx).addToDeals(GameKeys, src, des, UserKey, exp);
+						//finish();
 					}
 				}
 			}
@@ -95,7 +112,11 @@ public class AddDeal extends Activity {
 	        ArrayList<Integer> Selected = data.getIntegerArrayListExtra("SelectedGames");
 	        GameKeys = Selected;	        
 	        // load the game objects
+	        for(Integer item : Selected){
+	        	SelectedGames.add(new Network(ctx).getGame(item.intValue()));
+	        }
+	        SelectedSearchListAdapter.notifyDataSetChanged();
+	        
 	    }
-	}
-
+	}	
 }

@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class DSearch extends Base_Activity {
 
@@ -79,7 +80,7 @@ public class DSearch extends Base_Activity {
 
 				CheckBox cBox = (CheckBox) view.findViewById(R.id.RCheckBox);
 				cBox.toggle();
-				if (cBox.isActivated()) {
+				if (cBox.isChecked()) {
 					SelectedGames
 							.add(new Integer(AGames.get(position).getKey()));
 				} else {

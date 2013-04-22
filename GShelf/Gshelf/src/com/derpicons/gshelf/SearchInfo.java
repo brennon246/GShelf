@@ -16,7 +16,7 @@ public class SearchInfo extends Activity {
 	private int Userkey;
 	private int GameKey;
 	private Context ctx;
-	//private Game game;
+	private Game game;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +35,18 @@ public class SearchInfo extends Activity {
 		final TextView GameGenre = (TextView) findViewById(R.id.SGenre);
 		final TextView GameOverview = (TextView) findViewById(R.id.SOverview);
 		final TextView GamePrice = (TextView) findViewById(R.id.SPrice);
-		final ImageView TradeImage = (ImageView) findViewById(R.id.SImage);
+		final ImageView GameImage = (ImageView) findViewById(R.id.SImage);
 		GameKey = intent.getIntExtra("GameKey", 0);
 		//Network call to get Game with GameKey
-		//new Network(ctx).getGame(GameKey);
+		game = new Network(ctx).getGame(GameKey);
 		
-		//GameTitle.setText(new Integer(GameKey).toString());
-		//GameConsle.setText(game.getPlatform());
-		//GameDeveloper.setText(game.getDeveloper());
-		//GameGenre.setText(game.getGenre());
-		//GameOverview.setText(game.getOverview());
-		//GamePrice.setText(game.getPrice());
+		GameTitle.setText(game.getTitle());
+		GameConsle.setText(game.getPlatform());
+		GameDeveloper.setText(game.getDeveloper());
+		GameGenre.setText(game.getGenre());
+		GameOverview.setText(game.getOverview());
+		GamePrice.setText(game.getPrice());
+		GameImage.setImageDrawable(game.getCover());
 		
 		ButtonAddWishlist.setOnClickListener(new View.OnClickListener() {
 
@@ -54,10 +55,7 @@ public class SearchInfo extends Activity {
 				// TODO Auto-generated method stub
 				//LocalDatabase LD = new LocalDatabase(ctx);
 				//LD.addGameToWishlist(game, game.getPrice());
-				//LD.close();
-				new Network(ctx).getGame(GameKey);
-				
-				
+				//LD.close();		
 			}
 		});
 		
