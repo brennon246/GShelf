@@ -8,20 +8,13 @@ import android.graphics.drawable.Drawable;
 public class Deal {
 
 	private Date ExpirationDate;
-	private ArrayList<Tag> Tags;
 	private String Source;
 	private String Description;
 	private int Key;
+	private ArrayList<Integer> GameKeys;
 
-	public Deal(Date e, ArrayList<Tag> t, String s, String dis, int k) {
-		ExpirationDate = e;
-		setSource(s);
-		Tags = t;
-		Description = dis;
-		Key = k;
-	}
-	
 	public Deal() {
+		
 	}
 
 	public Date getExpirationDate() {
@@ -40,18 +33,6 @@ public class Deal {
 		return Key;
 	}
 
-	public ArrayList<Game> CheckGames(ArrayList<Game> GamesList) {
-		ArrayList<Game> MatchedGames = new ArrayList<Game>();
-		for (int k = 0; k < GamesList.size(); k++) {
-			for (int i = 0; i < Tags.size(); i++) {
-				if (Tags.get(i).isMatch(GamesList.get(k))) {
-					MatchedGames.add(GamesList.get(k));
-				}
-			}
-		}
-		return MatchedGames;
-	}
-
 	public String setDescription() {
 		return Description;
 	}
@@ -66,5 +47,13 @@ public class Deal {
 
 	public void setSource(String source) {
 		Source = source;
+	}
+
+	public ArrayList<Integer> getGameKeys() {
+		return GameKeys;
+	}
+
+	public void setGameKeys(ArrayList<Integer> gameKeys) {
+		GameKeys = gameKeys;
 	}
 }
