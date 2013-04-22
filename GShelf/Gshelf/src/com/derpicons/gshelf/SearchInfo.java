@@ -16,6 +16,7 @@ public class SearchInfo extends Activity {
 	private int Userkey;
 	private int GameKey;
 	private Context ctx;
+	//private Game game;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,14 @@ public class SearchInfo extends Activity {
 		final ImageView TradeImage = (ImageView) findViewById(R.id.SImage);
 		GameKey = intent.getIntExtra("GameKey", 0);
 		//Network call to get Game with GameKey
-		Game game;
+		//new Network(ctx).getGame(GameKey);
+		
+		//GameTitle.setText(new Integer(GameKey).toString());
+		//GameConsle.setText(game.getPlatform());
+		//GameDeveloper.setText(game.getDeveloper());
+		//GameGenre.setText(game.getGenre());
+		//GameOverview.setText(game.getOverview());
+		//GamePrice.setText(game.getPrice());
 		
 		ButtonAddWishlist.setOnClickListener(new View.OnClickListener() {
 
@@ -47,6 +55,7 @@ public class SearchInfo extends Activity {
 				//LocalDatabase LD = new LocalDatabase(ctx);
 				//LD.addGameToWishlist(game, game.getPrice());
 				//LD.close();
+				new Network(ctx).getGame(GameKey);
 				
 				
 			}

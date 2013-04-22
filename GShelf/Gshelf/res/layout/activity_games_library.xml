@@ -8,13 +8,6 @@
     android:orientation="horizontal"
     android:useDefaultMargins="false" >
 
-  
-    <Space
-        android:id="@+id/space2"
-        android:layout_width="1dp"
-        android:layout_height="15dp"
-        android:layout_row="20" />
-
     <ListView
         android:id="@+id/game_item"
         android:layout_width="fill_parent"
