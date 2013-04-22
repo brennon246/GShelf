@@ -75,7 +75,6 @@
         android:layout_height="35dp"
         android:layout_above="@+id/view1"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="15dp"
         android:text="Submit Deal" />
 
 </RelativeLayout>
