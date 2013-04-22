@@ -242,7 +242,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 		Game game = null;
 		try {
-			game = (this.execute("5", String.valueOf(gameId)).get()).get(0);
+			game = (this.execute("13", String.valueOf(gameId)).get()).get(0);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -396,7 +396,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 	Game parseGame(XmlPullParser parser) throws XmlPullParserException,
 			IOException {
 
-		Game newGame = new Game();
+		Game newGame = new Game(ctxt);
 		while (parser.next() != XmlPullParser.END_TAG) {
 			if (parser.getEventType() != XmlPullParser.START_TAG) {
 				continue;
@@ -734,7 +734,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			// Log.i("LINE", line.toString());
 
-			Game returnGame = new Game();
+			Game returnGame = new Game(ctxt);
 
 			returnGame.setTitle(line);
 
@@ -802,7 +802,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			// Log.i("LINE", line.toString());
 
-			Game returnGame = new Game();
+			Game returnGame = new Game(ctxt);
 
 			returnGame.setTitle(line);
 
@@ -853,7 +853,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			// get data
 
-			Game returnGame = new Game();
+			Game returnGame = new Game(ctxt);
 
 			BufferedReader reader = null;
 			try {
@@ -1001,7 +1001,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 				Drawable draw = Drawable.createFromStream(
 						connection.getInputStream(), "src");
 
-				Game returnGame = new Game();
+				Game returnGame = new Game(ctxt);
 				returnGame.setCover(draw);
 
 				ArrayList<Game> returnList = new ArrayList<Game>();
@@ -1081,7 +1081,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			// Log.i("LINE", line.toString());
 
-			Game returnGame = new Game();
+			Game returnGame = new Game(ctxt);
 
 			returnGame.setTitle(line);
 
@@ -1149,7 +1149,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			// Log.i("LINE", line.toString());
 
-			Game returnGame = new Game();
+			Game returnGame = new Game(ctxt);
 
 			returnGame.setTitle(line);
 
@@ -1216,7 +1216,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			// Log.i("LINE", line.toString());
 
-			Game returnGame = new Game();
+			Game returnGame = new Game(ctxt);
 
 			returnGame.setTitle(line);
 
@@ -1273,7 +1273,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			// Log.i("LINE", line.toString());
 
-			Game returnGame = new Game();
+			Game returnGame = new Game(ctxt);
 
 			returnGame.setTitle(line);
 
@@ -1339,7 +1339,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			// Log.i("LINE", line.toString());
 
-			Game returnGame = new Game();
+			Game returnGame = new Game(ctxt);
 
 			returnGame.setTitle(line);
 
@@ -1398,7 +1398,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			// Log.i("LINE", line.toString());
 
-			Game returnGame = new Game();
+			Game returnGame = new Game(ctxt);
 
 			returnGame.setTitle(line);
 
