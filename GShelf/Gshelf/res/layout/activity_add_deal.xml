@@ -19,12 +19,14 @@
         android:layout_height="30dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textViewDescription"
+        android:layout_marginTop="5dp"
         android:ems="10" />
 
     <EditText
         android:id="@+id/editTextSource"
         android:layout_width="300dp"
         android:layout_height="30dp"
+        android:layout_marginTop="5dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textViewSource"
         android:ems="10" >
@@ -82,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/textViewExpirationDate"
         android:ems="10"
         android:inputType="date" />
