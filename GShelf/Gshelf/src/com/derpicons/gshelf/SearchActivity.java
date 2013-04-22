@@ -14,6 +14,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.app.Activity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 
 
 public class SearchActivity extends Base_Activity {
@@ -23,6 +26,13 @@ public class SearchActivity extends Base_Activity {
 	private ArrayList<Game> AGames;
 	String Username;
 	int Userkey;
+	
+	// swipe constants
+	private static final int SWIPE_MIN_DISTANCE = 120;
+	private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+
+	private GestureDetector gestureDetector;
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) 
@@ -41,6 +51,10 @@ public class SearchActivity extends Base_Activity {
 		//ActionBar actionBar = getActionBar();
 		//actionBar.setDisplayHomeAsUpEnabled(true);
 
+		// Listen for swipes
+		gestureDetector = new GestureDetector(this,
+				new OnSwipeGestureListener());
+		
 		final EditText SearchText = (EditText) findViewById(R.id.editTextSearch);
 		Button SearchButton = (Button) findViewById(R.id.buttonSearch);
 		ctx = this;
@@ -94,4 +108,45 @@ public class SearchActivity extends Base_Activity {
 		
 	}
 
+	// Swipe accessor function
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		return gestureDetector.onTouchEvent(event);
+	}
+
+	// Swipe Class
+	private class OnSwipeGestureListener extends
+			GestureDetector.SimpleOnGestureListener {
+		// Swipe movement evaluation
+		@Override
+		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+				float velocityY) {
+
+			float deltaX = e2.getX() - e1.getX();
+
+			if ((Math.abs(deltaX) < SWIPE_MIN_DISTANCE)
+					|| (Math.abs(velocityX) < SWIPE_THRESHOLD_VELOCITY)) {
+				return false; // insignificant swipe
+			} else {
+				if (deltaX < 0) { // left to right
+					handleSwipeLeftToRight();
+				} else { // right to left
+					handleSwipeRightToLeft();
+				}
+			}
+			return true;
+		}
+	}
+
+	// Handle swipe from left to right
+	private void handleSwipeLeftToRight() {
+		Intent i = new Intent(getApplicationContext(), DealsView.class);
+		startActivity(i);
+	}
+
+	// Handle swipe from right to left
+	private void handleSwipeRightToLeft() {
+		Intent i = new Intent(getApplicationContext(), GamesLibrary.class);
+		startActivity(i);
+	}	
 }
