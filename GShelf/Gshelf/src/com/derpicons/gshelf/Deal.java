@@ -37,8 +37,8 @@ public class Deal {
 		return Key;
 	}
 
-	public String setDescription() {
-		return Description;
+	public void setDescription(String des) {
+		Description = des;
 	}
 	
 	public String getDescription() {
