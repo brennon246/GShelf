@@ -18,8 +18,8 @@ public class Wishlist extends Base_Activity {
 	private ListView listViewGames;
 	private Context ctx;
 	private ArrayList<Game> WishListGames;
-	String Username;
-	int Userkey;
+	private String Username;
+	private int Userkey;
 	private SearchListAdapter SelectedSearchListAdapter;
 
 	// swipe constants
@@ -128,12 +128,16 @@ public class Wishlist extends Base_Activity {
 	// Handle swipe from left to right
 	private void handleSwipeLeftToRight() {
 		Intent i = new Intent(getApplicationContext(), GamesLibrary.class);
+		i.putExtra("UserName", Username);
+		i.putExtra("UKey", Userkey);
 		startActivity(i);
 	}
 
 	// Handle swipe from right to left
 	private void handleSwipeRightToLeft() {
 		Intent i = new Intent(getApplicationContext(), Marketplace.class);
+		i.putExtra("UserName", Username);
+		i.putExtra("UKey", Userkey);
 		startActivity(i);
 	}
 }
