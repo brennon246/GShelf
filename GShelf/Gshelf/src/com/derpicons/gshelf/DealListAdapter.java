@@ -44,20 +44,6 @@ public class DealListAdapter extends ArrayAdapter<Deal> {
 		
 		TextView txtDealSource = viewCache.getTextDealSource(resource);
 		txtDealSource.setText(deal.getSource());
-		/* Take the ImageView from layout and set the city's image */
-		/*
-		ImageView imageDeal = viewCache.getDealImageView(resource);
-		imageDeal.setImageDrawable(deal.getImage());
-		*/
-		/*
-		 * ImageView imageCity = (ImageView)
-		 * convertView.findViewById(R.id.ImageCity); String uri = "drawable/" +
-		 * city.getImage(); int imageResource =
-		 * context.getResources().getIdentifier(uri, null,
-		 * context.getPackageName()); Drawable image =
-		 * context.getResources().getDrawable(imageResource);
-		 * imageCity.setImageDrawable(image);
-		 */
 
 		return convertView;
 

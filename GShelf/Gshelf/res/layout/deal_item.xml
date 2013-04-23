@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/Deal"
+    android:id="@+id/Game"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/DealEffectTextView"
-        style="@style/Deal_Item_Text"
-        android:layout_toRightOf="@+id/DealImageView"
-        android:text="10% off Blizzard games" />
+        android:id="@+id/DealSource"
+        style="@style/Result_Item_Title"
+        android:layout_column="0"
+        android:layout_row="8" 
+        android:text="source" />
 
     <TextView
-        android:id="@+id/DealSource"
-        style="@style/Deal_Item_Text"
-        android:layout_alignBottom="@+id/DealEffectTextView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/DealEffectTextView"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:text="source" />
+        android:id="@+id/DealEffectTextView"
+        style="@style/Result_Item_Console"
+        android:layout_alignLeft="@+id/DealSource"
+        android:layout_below="@+id/DealSource"
+        android:text="10% off" />
 
 </RelativeLayout>

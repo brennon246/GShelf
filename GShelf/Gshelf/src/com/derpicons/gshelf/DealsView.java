@@ -25,7 +25,7 @@ public class DealsView extends Base_Activity {
 	private String Username;
 	private int Userkey;
 	ArrayList<Deal> AllDeals;
-	private DealListAdapter SelectedDealListAdapter;
+	private DealListAdapter AllDealListAdapter;
 
 	// swipe constants
 	private static final int SWIPE_MIN_DISTANCE = 120;
@@ -56,21 +56,9 @@ public class DealsView extends Base_Activity {
 		
 		// Display list of Deals
 		listViewDeals = (ListView) findViewById(R.id.deal_item);
-		AllDeals = new Network(ctx).getDeals();
-		if(AllDeals == null)
-		{
-			Toast.makeText(getApplicationContext(),
-					"no deals", Toast.LENGTH_LONG)
-					.show();
-		}
-		else
-		{Toast.makeText(getApplicationContext(),
-				AllDeals.get(0).getDescription(), Toast.LENGTH_LONG)
-				.show();
-		
-		}
-		listViewDeals.setAdapter(new DealListAdapter(ctx, R.layout.deal_item,
-				AllDeals));
+		//AllDeals = new Network(ctx).getDeals();
+		//listViewDeals.setAdapter(new DealListAdapter(ctx, R.layout.deal_item,
+		//		AllDeals));
 
 		listViewDeals.setClickable(true);
 
@@ -79,9 +67,9 @@ public class DealsView extends Base_Activity {
 			public void onItemClick(AdapterView<?> arg0, View view,
 					int position, long id) {
 
-				Toast.makeText(getApplicationContext(),
-						"Click GameItemNumber " + position, Toast.LENGTH_LONG)
-						.show();
+				//Toast.makeText(getApplicationContext(),
+				//		"Click GameItemNumber " + position, Toast.LENGTH_LONG)
+				//		.show();
 				// Takes user to DealInfo page with required data.
 				
 			//	Intent i = new Intent(getApplicationContext(), DealInfo.class);
@@ -108,10 +96,10 @@ public class DealsView extends Base_Activity {
 		super.onResume();
 
 		AllDeals = new ArrayList<Deal>();
-		//get deals
-		SelectedDealListAdapter = new DealListAdapter(ctx,
+		AllDeals = new Network(ctx).getDeals();
+		AllDealListAdapter = new DealListAdapter(ctx,
 				R.layout.deal_item, AllDeals);
-		listViewDeals.setAdapter(SelectedDealListAdapter);
+		listViewDeals.setAdapter(AllDealListAdapter);
 
 	}
 	

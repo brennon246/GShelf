@@ -248,7 +248,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 							"\"", ""));
 				} else {
 
-					int runs = 0;
+					//int runs = 0;
 					if (token.substring(1, 7).equalsIgnoreCase("GameID")
 							&& token.charAt(token.length() - 1) != '"') {
 						
@@ -259,10 +259,10 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 						while (!token.equals("\"")) {
 							//Log.i("TOKENIN", token);
 
-							runs++;
+							//runs++;
 							builder.append(token + ",");
-							if (runs > 30)
-								break;
+							//if (runs > 30)
+							//	break;
 							try {
 								token = tokenizer2.nextToken();
 							}
