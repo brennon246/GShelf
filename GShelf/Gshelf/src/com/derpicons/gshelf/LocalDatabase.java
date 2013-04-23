@@ -89,18 +89,26 @@ public class LocalDatabase extends SQLiteOpenHelper {
 
 	public String getThreshold(int gameKey){
 		int threshold = 0;
-		
+
 		String[] args = new String[1];
 
 
-		
+
 		args[0] = String.valueOf(gameKey);
-	
+
 		Cursor cursor = getReadableDatabase().rawQuery("SELECT "+LocalDatabase.ELEMENT_THRESHOLD +
 				" FROM " + LocalDatabase.GAMES_TABLE_NAME +" WHERE "+ LocalDatabase.ELEMENT_KEY
 				+ "=?", args);
 		cursor.moveToFirst();
 		return cursor.getString(cursor.getColumnIndex(LocalDatabase.ELEMENT_THRESHOLD));
+	}
+
+	public void removeGameFromLibraryOrWishlist(int gameKey){
+		
+		String[] args = new String[1];
+
+		args[0] = String.valueOf(gameKey);
+		getWritableDatabase().delete(GAMES_TABLE_NAME, LocalDatabase.ELEMENT_KEY+"=?" , args);
 	}
 	
 	public void updateGameInWishlist(String threshold, int gameKey){
@@ -112,7 +120,7 @@ public class LocalDatabase extends SQLiteOpenHelper {
 		args[0] = String.valueOf(gameKey);
 		getWritableDatabase().update(GAMES_TABLE_NAME, cv, LocalDatabase.ELEMENT_KEY+"=?" , args);
 	}
-	
+
 	public void addGameToLibrary(Game game) {
 		ContentValues cv = new ContentValues();
 		//cv.put(LocalDatabase.ELEMENT_COVER,
@@ -128,8 +136,8 @@ public class LocalDatabase extends SQLiteOpenHelper {
 	    cv.put(LocalDatabase.ELEMENT_THRESHOLD, game.getPrice());
 		cv.put(LocalDatabase.ELEMENT_TITLE, game.getTitle());
 
-		
-		
+
+
 		getWritableDatabase().insert(LocalDatabase.GAMES_TABLE_NAME, null, cv);
 	}
 
@@ -150,7 +158,7 @@ public class LocalDatabase extends SQLiteOpenHelper {
 
 			//game.setCover(byteArrayToDrawable(cursor.getBlob(cursor
 				//	.getColumnIndex(LocalDatabase.ELEMENT_COVER))));
-			
+
 			game.setCover(null);
 			game.setDeveloper(cursor.getString(cursor
 					.getColumnIndex(LocalDatabase.ELEMENT_DEVELOPER)));
