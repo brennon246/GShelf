@@ -21,6 +21,10 @@ public class Deal {
 		return ExpirationDate;
 	}
 
+	public void setExpirationDate(Date d){
+		ExpirationDate = d;	
+	}
+
 	public boolean isValid() {
 		Date CurrentDate = new Date(System.currentTimeMillis());
 		if (CurrentDate.before(ExpirationDate))
