@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class WishlistInfo extends Activity {
 
@@ -70,6 +71,8 @@ public class WishlistInfo extends Activity {
 				LD.addGameToLibrary(game);
 				// need to remove from wishlist
 				LD.close();
+				Toast.makeText(getApplicationContext(), "Added to Library",
+						Toast.LENGTH_LONG).show();
 			}
 		});
 
@@ -87,8 +90,8 @@ public class WishlistInfo extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				// GameKey
-
+				Toast.makeText(getApplicationContext(), "Changed Threshold",
+						Toast.LENGTH_LONG).show();
 			}
 		});
 		ButtonRemove.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +99,8 @@ public class WishlistInfo extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				// GameKey
+				Toast.makeText(getApplicationContext(), "Removed from Wishlist",
+						Toast.LENGTH_LONG).show();
 
 			}
 		});

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SearchInfo extends Activity {
 
@@ -62,6 +63,8 @@ public class SearchInfo extends Activity {
 				LocalDatabase LD = new LocalDatabase(ctx);
 				LD.addGameToWishlist(game, Float.parseFloat(game.getPrice()));
 				LD.close();
+				Toast.makeText(getApplicationContext(), "Added to Wishlist",
+						Toast.LENGTH_LONG).show();
 			}
 		});
 
@@ -73,6 +76,8 @@ public class SearchInfo extends Activity {
 				LocalDatabase LD = new LocalDatabase(ctx);
 				LD.addGameToLibrary(game);
 				LD.close();
+				Toast.makeText(getApplicationContext(), "Added to Library",
+						Toast.LENGTH_LONG).show();
 
 			}
 		});

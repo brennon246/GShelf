@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GameInfo extends Activity {
 
@@ -76,6 +77,8 @@ public class GameInfo extends Activity {
 				// LocalDatabase LD = new LocalDatabase(ctx);
 				// LD.RemoveFromLibrary(game, game.getPrice());
 				// LD.close();
+				Toast.makeText(getApplicationContext(), "Removed from Library",
+						Toast.LENGTH_LONG).show();
 
 			}
 		});
