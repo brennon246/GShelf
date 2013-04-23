@@ -16,19 +16,17 @@
     <TextView
         android:id="@+id/T_Console"
         style="@style/TConsole"
-        android:layout_alignBaseline="@+id/T_Title"
-        android:layout_alignBottom="@+id/T_Title"
-        android:layout_marginLeft="21dp"
-        android:layout_toRightOf="@+id/T_Title"
+        android:layout_alignLeft="@+id/T_Title"
+        android:layout_below="@+id/T_Title"
         android:text="Console" />
 
     <TextView
         android:id="@+id/T_Price"
         style="@style/Info_Genre"
         android:layout_alignLeft="@+id/T_Title"
-        android:layout_below="@+id/T_Title"
-        android:layout_marginTop="-5dp" 
-        android:textStyle="italic"
-        android:text="Price" />
+        android:layout_below="@+id/T_Console"
+        android:text="Price"
+        android:layout_marginTop="-5dp"
+        android:textStyle="italic" />
 
 </RelativeLayout>
