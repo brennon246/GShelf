@@ -36,6 +36,9 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/SImage"
         android:layout_marginTop="20dp"
+         android:maxLines="4"
+         android:ellipsize="marquee" 
+android:singleLine="false" 
         android:text="Overview of Game" />
 
     <View
@@ -64,20 +67,19 @@
 
     <Button
         android:id="@+id/buttonAddLibrary"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/SOverview"
-        android:layout_toLeftOf="@+id/STitle"
         android:text="Add to Library" />
 
     <Button
         android:id="@+id/buttonAddWishlist"
-        android:layout_width="150dp"
+        android:layout_width="8dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="30dp"
-        android:layout_alignBaseline="@+id/buttonAddLibrary"
         android:layout_alignBottom="@+id/buttonAddLibrary"
-        android:layout_alignLeft="@+id/STitle"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/SImage"
         android:text="Add to Wishlist" />
 
 </RelativeLayout>

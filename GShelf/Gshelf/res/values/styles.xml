@@ -208,7 +208,7 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginTop">3dp</item>
-        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:textSize">10dp</item>
     </style>
@@ -285,9 +285,10 @@
     <style name="Result_Item_Title">
         <item name="android:textColor">#ffffff</item>
         <item name="android:layout_marginRight">10dp</item>
-         <item name="android:layout_width">wrap_content</item>
+         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">25dp</item>
         <item name="android:textSize">15dp</item>
+        <item name="android:singleLine">true</item>
         <item name="android:layout_marginLeft">10dp</item>
     </style>
     <style name="Result_Item_Console">
@@ -295,6 +296,7 @@
         <item name="android:layout_marginRight">10dp</item>     
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">25dp</item>
+        <item name="android:layout_marginTop">-10dp</item>
          <item name="android:textSize">13dp</item>       
          <item name="android:textStyle">italic</item>
     </style>

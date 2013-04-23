@@ -62,6 +62,9 @@
        style="@style/Info_Overview"
        android:layout_alignParentRight="true"
        android:layout_below="@+id/WPic"
+        android:maxLines="4"
+         android:ellipsize="marquee" 
+android:singleLine="false" 
        android:text="Overview of Game" />
 
    <EditText
