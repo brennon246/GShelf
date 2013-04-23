@@ -92,8 +92,7 @@ public class Marketplace extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View view,
 					int position, long id) {
 				Intent i = new Intent(getApplicationContext(), TradeInfo.class);
-				i.putExtra("GameKey", TradeGames.get(position)
-						.getKey());
+				i.putExtra("GameKey", TradeGames.get(position).getGameKey());
 				i.putExtra("UserName", Username);
 				i.putExtra("UKey", Userkey);
 				startActivity(i);

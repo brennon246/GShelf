@@ -44,7 +44,7 @@ public class TradeInfo extends Activity {
 
 		TradeTitle.setText(game.getTitle());
 		TradeConsole.setText(game.getPlatform());
-		TradePrice.setText(game.getPrice());
+		TradePrice.setText("$ " + game.getPrice());
 		TradeImage
 				.setImageDrawable(new Network(ctx).getImage(game.getGameUrl()));
 		if (TradeImage.getDrawable() == null)

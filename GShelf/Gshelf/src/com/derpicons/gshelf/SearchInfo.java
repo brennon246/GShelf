@@ -49,7 +49,7 @@ public class SearchInfo extends Activity {
 		GameDeveloper.setText(game.getDeveloper());
 		GameGenre.setText(game.getGenre());
 		GameOverview.setText(game.getOverview());
-		GamePrice.setText(game.getPrice());
+		GamePrice.setText("$ " + game.getPrice());
 		GameImage
 				.setImageDrawable(new Network(ctx).getImage(game.getGameUrl()));
 		if (GameImage.getDrawable() == null)
