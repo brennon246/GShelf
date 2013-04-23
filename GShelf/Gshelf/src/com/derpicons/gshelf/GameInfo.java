@@ -38,9 +38,10 @@ public class GameInfo extends Activity {
 		final TextView GameDeveloper = (TextView) findViewById(R.id.textViewDeveloper);
 		final TextView GameGenre = (TextView) findViewById(R.id.textViewGameGenre);
 		final TextView GameOverview = (TextView) findViewById(R.id.textViewGameOverview);
+		final TextView GamePrice = (TextView) findViewById(R.id.textViewGamePrice);
 		final ImageView GameImage = (ImageView) findViewById(R.id.imageViewGameCover);
 		GameKey = intent.getIntExtra("GameKey", 0);
-
+	
 		game = new Network(ctx).getGame(GameKey);
 
 		GameTitle.setText(game.getTitle());
@@ -48,6 +49,7 @@ public class GameInfo extends Activity {
 		GameDeveloper.setText(game.getDeveloper());
 		GameGenre.setText(game.getGenre());
 		GameOverview.setText(game.getOverview());
+		GamePrice.setText(game.getPrice());
 		GameImage
 				.setImageDrawable(new Network(ctx).getImage(game.getGameUrl()));
 		// GameImage.setImageDrawable(game.getCover());

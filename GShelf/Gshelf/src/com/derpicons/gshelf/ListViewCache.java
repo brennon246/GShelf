@@ -72,37 +72,23 @@ public class ListViewCache {
 	public TextView getTextTGameTitle(int resource) {
 		if (textTGameTitle == null) {
 			textTGameTitle = (TextView) baseView
-					.findViewById(R.id.TradeTitleTextView);
+					.findViewById(R.id.T_Title);
 		}
 		return textTGameTitle;
 	}
 	
 	public TextView getTextTGamePrice(int resource) {
 		if (textTGamePrice == null) {
-			textTGamePrice = (TextView) baseView.findViewById(R.id.TradePriceTextView);
+			textTGamePrice = (TextView) baseView.findViewById(R.id.T_Price);
 		}
 		return textTGamePrice;
 	}
 	
-	public TextView getTextTradeLocation(int resource) {
-		if (textTradeLocation == null) {
-			textTradeLocation = (TextView) baseView.findViewById(R.id.TradeLocationTextView);
-		}
-		return textTradeLocation;
-	}
-	
 	public TextView getTextTGameConsole(int resource) {
 		if (textTGameConsole == null) {
-			textTGameConsole = (TextView) baseView.findViewById(R.id.TradeConsoleTextView);
+			textTGameConsole = (TextView) baseView.findViewById(R.id.T_Console);
 		}
 		return textTGameConsole;
-	}
-	
-	public ImageView getTGameCover(int resource) {
-		if (TGameCover == null) {
-			TGameCover = (ImageView) baseView.findViewById(R.id.TradeCoverImageView);
-		}
-		return TGameCover;
 	}
 	
 	//Wishlist

@@ -92,7 +92,7 @@ public class Login extends Activity {
 							editor.commit();
 						}
 						Intent i = new Intent(getApplicationContext(),
-								SearchActivity.class);
+								GamesLibrary.class);
 						i.putExtra("UserName", un);
 						i.putExtra("UKey", LoginResult);
 						startActivity(i);

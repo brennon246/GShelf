@@ -32,7 +32,7 @@ public class Game {
 		int Low = 15;
 		int High = 45;
 		int randomNum = random.nextInt(High-Low) + Low;
-		price = "$ " + Integer.toString(randomNum) + ".99";
+		price = Integer.toString(randomNum) + ".99";
 		ctxt = context;
 		Cover = ctxt.getResources().getDrawable(R.drawable.no_image);
 		

@@ -22,10 +22,11 @@ import android.view.MotionEvent;
 public class Marketplace extends Activity {
 
 	private ListView listViewTrades;
+	private TradeListAdapter SelectedTradeListAdapter;
 	private Context ctx;
 	private String Username;
 	private int Userkey;
-	ArrayList<Game> TradeGames;
+	ArrayList<Trade> TradeGames;
 	
 	// swipe constants
 	private static final int SWIPE_MIN_DISTANCE = 120;
@@ -43,9 +44,9 @@ public class Marketplace extends Activity {
 		gestureDetector = new GestureDetector(this,
 				new OnSwipeGestureListener());
 		
-		Button SearchButton = (Button) findViewById(R.id.buttonSearch);
+		//Button SearchButton = (Button) findViewById(R.id.buttonSearch);
 		Button YourTradesButton = (Button) findViewById(R.id.buttonYourTrades);
-		final EditText SearchText = (EditText) findViewById(R.id.editTextSearch);
+		//final EditText SearchText = (EditText) findViewById(R.id.editTextSearch);
 		ctx = this;
 
 		Intent intent = getIntent();
@@ -68,7 +69,7 @@ public class Marketplace extends Activity {
 				
 			}
 		});
-		
+		/*
 		SearchButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -85,7 +86,7 @@ public class Marketplace extends Activity {
 				
 			}
 		});
-
+		*/
 		listViewTrades.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View view,
@@ -98,6 +99,18 @@ public class Marketplace extends Activity {
 				startActivity(i);
 			}
 		});
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		TradeGames = new ArrayList<Trade>();
+		TradeGames = new Network(ctx).getMarket();
+		SelectedTradeListAdapter = new TradeListAdapter(ctx,
+				R.layout.trade_item, TradeGames);
+		listViewTrades.setAdapter(SelectedTradeListAdapter);
+
 	}
 
 	// Swipe accessor function

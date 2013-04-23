@@ -39,17 +39,18 @@ public class TradeListAdapter extends ArrayAdapter<Trade> {
 			viewCache = (ListViewCache) convertView.getTag();
 		}
 
-		//TextView txtGameTitle = viewCache.getTextTGameTitle(resource);
-		//txtGameTitle.setText(trade.gettGame().getTitle());
+		TextView txtGameTitle = viewCache.getTextTGameTitle(resource);
+		Game game = new Network(context).getGame(trade.getGameKey());
+		txtGameTitle.setText(game.getTitle());
 
+		TextView txtGameConsole = viewCache.getTextTGameConsole(resource);
+		txtGameConsole.setText(game.getPlatform());
+		
 		TextView txtGamePrice = viewCache.getTextTGamePrice(resource);
-		txtGamePrice.setText(trade.getPrice());
+		txtGamePrice.setText("$" + trade.getPrice());
 		
-		TextView txtTradeLocation = viewCache.getTextTradeLocation(resource);
-		txtTradeLocation.setText(trade.getLocation());
-		
-		//TextView txtGameConsole = viewCache.getTextTGameConsole(resource);
-		//txtGameConsole.setText(trade.gettGame().getPlatform());
+		//TextView txtTradeLocation = viewCache.getTextTradeLocation(resource);
+		//txtTradeLocation.setText(trade.getLocation());
 
 		//ImageView TGameCover = viewCache.getTGameCover(resource);
 		//TGameCover.setImageDrawable(trade.gettGame().getCover());
