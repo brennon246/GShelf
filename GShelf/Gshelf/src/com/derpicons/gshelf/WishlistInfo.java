@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,12 +44,18 @@ public class WishlistInfo extends Activity {
 		final TextView GameDeveloper = (TextView) findViewById(R.id.WDevlop);
 		final TextView GameGenre = (TextView) findViewById(R.id.WGenre);
 		final TextView GamePrice = (TextView) findViewById(R.id.WPrice);
+		final EditText pthreshold = (EditText) findViewById(R.id.editText1);
 		final TextView GameOverview = (TextView) findViewById(R.id.WOverview);
 		final ImageView GameImage = (ImageView) findViewById(R.id.WPic);
-		GameKey = intent.getIntExtra("GameKey", 0);
-
+		GameKey = intent.getIntExtra("GameKey", 0);		
+		
 		game = new Network(ctx).getGame(GameKey);
 
+
+		LocalDatabase LD = new LocalDatabase(ctx);
+		pthreshold.setText(LD.getThreshold(game.getKey()));
+		LD.close();
+		
 		GameTitle.setText(game.getTitle());
 		GameConsle.setText(game.getPlatform());
 		GameDeveloper.setText(game.getDeveloper());
@@ -90,6 +97,9 @@ public class WishlistInfo extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				LocalDatabase LD1 = new LocalDatabase(ctx);
+				LD1.updateGameInWishlist(pthreshold.getText().toString(), GameKey);
+				LD1.close();
 				Toast.makeText(getApplicationContext(), "Changed Threshold",
 						Toast.LENGTH_LONG).show();
 			}
@@ -99,6 +109,9 @@ public class WishlistInfo extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				//LocalDatabase LD1 = new LocalDatabase(ctx);
+				//remove
+				//LD1.close();
 				Toast.makeText(getApplicationContext(), "Removed from Wishlist",
 						Toast.LENGTH_LONG).show();
 
