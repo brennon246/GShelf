@@ -1,4 +1,4 @@
-package  com.derpicons.gshelf;
+package com.derpicons.gshelf;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -114,9 +114,10 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 		ArrayList<Integer> gameIds = null;
 		ArrayList<Deal> deals = new ArrayList<Deal>();
-		for (String string : tokenizeJson(g.getTitle())) {
+		for (String string : tokenizeJsonDeals(g.getTitle())) {
+		
+			Log.i("IN GET DEALS", string);
 			StringTokenizer tokenz = new StringTokenizer(string, ":");
-			deal = new Deal();
 			token = tokenz.nextToken();
 			if (token.equals("DealID")) {
 				deal = new Deal();
@@ -192,6 +193,71 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 					 */
 					tokens.add(token.substring(1, token.length() - 1).replace(
 							"\"", ""));
+				}
+			}
+
+		}
+
+		return tokens;
+	}
+
+	ArrayList<String> tokenizeJsonDeals(String raw) {
+
+		Log.i("RAW", raw);
+
+		StringTokenizer tokenizer = new StringTokenizer(raw, "}");
+		StringTokenizer tokenizer2 = null;
+		String token;
+
+		ArrayList<String> tokens = new ArrayList<String>();
+		boolean first = true;
+		;
+		while (tokenizer.hasMoreTokens()) {
+			token = tokenizer.nextToken();
+
+			if (token.equals("]"))
+				break;
+			tokenizer2 = new StringTokenizer(token, ",");
+			while (tokenizer2.hasMoreTokens()) {
+				token = tokenizer2.nextToken();
+
+				if (first) {
+					first = false;
+					tokens.add(token.substring(2, token.length() - 1).replace(
+							"\"", ""));
+				} else {
+
+					int runs = 0;
+					if (token.substring(1, 7).equalsIgnoreCase("GameID")
+							&& token.charAt(token.length() - 1) != '"') {
+						
+						//Log.i("TOKEN IF", token);
+
+						StringBuilder builder = new StringBuilder();
+			
+						while (!token.equals("\"")) {
+							//Log.i("TOKENIN", token);
+
+							runs++;
+							builder.append(token + ",");
+							if (runs > 30)
+								break;
+							try {
+								token = tokenizer2.nextToken();
+							}
+
+							catch (java.util.NoSuchElementException e) {
+
+							}
+						}
+						//Log.i("ADDING STR", builder.toString());
+						tokens.add(builder.toString().replace("\"", ""));
+					} else {
+						
+						Log.i("TOKEN ELSE", token);
+						tokens.add(token.substring(1, token.length() - 1)
+								.replace("\"", ""));
+					}
 				}
 			}
 
@@ -391,8 +457,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		return gameResults;
 	}
 
-	
-	boolean removeFromMarket(int marketId){
+	boolean removeFromMarket(int marketId) {
 
 		ArrayList<Game> result = new ArrayList<Game>();
 		try {
@@ -408,10 +473,10 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		Game g = result.get(0);
 
 		Log.i("result", "VAL: " + g.getTitle());
-		
 
 		return false;
 	}
+
 	ArrayList<Trade> getMarket() {
 		ArrayList<Game> result = new ArrayList<Game>();
 		ArrayList<Trade> trades = new ArrayList<Trade>();
@@ -436,7 +501,6 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		for (String string : tokenizeJson(g.getTitle())) {
 			StringTokenizer tokenz = new StringTokenizer(string, ":");
 			token = tokenz.nextToken();
-		
 
 			// Log.i("TOKEN", token);
 			if (token.equals("MarketID")) {
@@ -504,7 +568,6 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		for (String string : tokenizeJson(g.getTitle())) {
 			StringTokenizer tokenz = new StringTokenizer(string, ":");
 			token = tokenz.nextToken();
-			
 
 			if (token.equals("MarketID")) {
 				trade = new Trade();
@@ -1681,15 +1744,14 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 			return searchResults;
 		}
-		
-		else if(ctrl == 14){
+
+		else if (ctrl == 14) {
 
 			InputStream input = null;
 
 			ArrayList<NameValuePair> paramList = new ArrayList<NameValuePair>();
 
 			paramList.add(new BasicNameValuePair("marketid", params[1]));
-			
 
 			// access db and execute
 			HttpClient httpclient = new DefaultHttpClient();
