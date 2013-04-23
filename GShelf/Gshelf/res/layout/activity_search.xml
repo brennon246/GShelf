@@ -12,7 +12,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:orientation="vertical"
-        android:padding="10dip" >
+        android:padding="20dip" >
 
         <EditText
             android:id="@+id/editTextSearch"
