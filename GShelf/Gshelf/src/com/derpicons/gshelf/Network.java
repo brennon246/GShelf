@@ -13,6 +13,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringTokenizer;
 import java.util.concurrent.ExecutionException;
 
 import org.apache.http.HttpEntity;
@@ -44,7 +45,6 @@ import android.util.Xml;
 
 //Class to handle API interactions
 public class Network extends AsyncTask<String, String, ArrayList<Game>> {
-
 	private static final Map<Integer, String> errorMap = new HashMap<Integer, String>();
 
 	// calling activity context
@@ -95,8 +95,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		return games.get(0).getCover();
 	}
 
-	
-	void getDeals(){
+	ArrayList<Deal> getDeals() {
 		ArrayList<Game> result = new ArrayList<Game>();
 		try {
 			result = this.execute("12").get();
@@ -109,10 +108,101 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		}
 
 		Game g = result.get(0);
-		Log.i("DEALS", g.getTitle());
-		return;
+
+		Deal deal = new Deal();
+		String token;
+
+		ArrayList<Integer> gameIds = null;
+		ArrayList<Deal> deals = new ArrayList<Deal>();
+		for (String string : tokenizeJson(g.getTitle())) {
+			StringTokenizer tokenz = new StringTokenizer(string, ":");
+			deal = new Deal();
+			token = tokenz.nextToken();
+			if (token.equals("DealID")) {
+				deal = new Deal();
+			}
+
+			else if (token.equals("GameID")) {
+				StringTokenizer tokenizer = new StringTokenizer(
+						tokenz.nextToken(), ",");
+				gameIds = new ArrayList<Integer>();
+				while (tokenizer.hasMoreElements()) {
+					String aToken = tokenizer.nextToken();
+					gameIds.add(Integer.parseInt(aToken));
+				}
+
+				deal.setGameKeys(gameIds);
+				gameIds = null;
+			}
+
+			else if (token.equals("Vendor")) {
+				deal.setSource(tokenz.nextToken());
+			}
+
+			else if (token.equals("PostedBy")) {
+
+			}
+
+			else if (token.equals("Expiration")) {
+				StringTokenizer tokenizer = new StringTokenizer(
+						tokenz.nextToken(), "-");
+				int year = Integer.parseInt(tokenizer.nextToken());
+				int month = Integer.parseInt(tokenizer.nextToken());
+				int day = Integer.parseInt(tokenizer.nextToken());
+
+				deal.setExpirationDate(new Date(year, month, day));
+				deals.add(deal);
+				deal = null;
+			}
+
+		}
+
+		return deals;
 	}
-	
+
+	ArrayList<String> tokenizeJson(String raw) {
+
+		StringTokenizer tokenizer = new StringTokenizer(raw, "}");
+		StringTokenizer tokenizer2 = null;
+		String token;
+
+		ArrayList<String> tokens = new ArrayList<String>();
+		boolean first = true;
+		;
+		while (tokenizer.hasMoreTokens()) {
+			token = tokenizer.nextToken();
+
+			if (token.equals("]"))
+				break;
+			tokenizer2 = new StringTokenizer(token, ",");
+			while (tokenizer2.hasMoreTokens()) {
+				token = tokenizer2.nextToken();
+
+				if (first) {
+					first = false;
+					tokens.add(token.substring(2, token.length() - 1).replace(
+							"\"", ""));
+				} else {
+					/*if (token.length() == 1) {
+						String str = "";
+						while (token.length() == 1) {
+							str = token + ",";
+							token = tokenizer2.nextToken();
+						}
+						Log.i("STRING", str.substring(0, str.length()-2));
+						tokens.add(str);
+					}
+					else*/
+						tokens.add(token.substring(1, token.length() - 1).replace(
+							"\"", ""));
+				}
+			}
+
+		}
+
+		return tokens;
+	}
+
 	// gameid vendor desc userid expiration
 	boolean addToDeals(ArrayList<Integer> gameIds, String vendor,
 			String overview, int userId, Date expiration) {
@@ -124,9 +214,11 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 		String gIds = builder.toString();
 
+		Log.i("EXPIRATION", expiration.toString());
 		ArrayList<Game> result = new ArrayList<Game>();
 		try {
-			result = this.execute("11", gIds,vendor, overview,String.valueOf(userId), expiration.toString()).get();
+			result = this.execute("11", gIds, vendor, overview,
+					String.valueOf(userId), expiration.toString()).get();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -251,7 +343,6 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			e.printStackTrace();
 		}
 
-		
 		return game;
 	}
 
@@ -303,8 +394,10 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		return gameResults;
 	}
 
-	void getMarket() {
+	ArrayList<Trade> getMarket() {
 		ArrayList<Game> result = new ArrayList<Game>();
+		ArrayList<Trade> trades = new ArrayList<Trade>();
+
 		try {
 			result = this.execute("10").get();
 		} catch (InterruptedException e) {
@@ -316,16 +409,53 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		}
 
 		Game g = result.get(0);
-		Log.i("MARKET", g.getTitle());
-		return;
+
+		// for (String it : tokenizeJson(g.getTitle()))
+		// Log.i("MARKET", it);
+		Trade trade = null;
+		String token;
+		for (String string : tokenizeJson(g.getTitle())) {
+			StringTokenizer tokenz = new StringTokenizer(string, ":");
+			token = tokenz.nextToken();
+			trade = new Trade();
+
+			if (token.equals("MarketID")) {
+				trade = new Trade();
+				trade.setKey(Integer.parseInt(tokenz.nextToken()));
+			}
+
+			else if (token.equals("UserID")) {
+
+			}
+
+			else if (token.equals("GameID")) {
+				trade.setGameKey(Integer.parseInt(tokenz.nextToken()));
+			}
+
+			else if (token.equals("Status")) {
+				trade.setPrice(tokenz.nextToken());
+				trades.add(trade);
+				trade = null;
+			}
+
+		}
+
+		return trades;
+
 	}
 
-	// key: username , key: password
-	boolean addUser(String username, String password) {
+	boolean removeFromMarket(int marketId) {
+
+		return false;
+	}
+
+	ArrayList<Trade> getMyMarket(int userId) {
 
 		ArrayList<Game> result = new ArrayList<Game>();
+		ArrayList<Trade> trades = new ArrayList<Trade>();
+
 		try {
-			result = this.execute("3", username, encrypt(password)).get();
+			result = this.execute("10").get();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -336,8 +466,66 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 		Game g = result.get(0);
 
-		return g.getTitle().equalsIgnoreCase("1") ? true : false;
+		// for (String it : tokenizeJson(g.getTitle()))
+		// Log.i("MARKET", it);
+		Trade trade = null;
+		String token;
 
+		int temp = 0;
+		for (String string : tokenizeJson(g.getTitle())) {
+			StringTokenizer tokenz = new StringTokenizer(string, ":");
+			token = tokenz.nextToken();
+			trade = new Trade();
+
+			if (token.equals("MarketID")) {
+				trade = new Trade();
+				trade.setKey(Integer.parseInt(tokenz.nextToken()));
+
+			}
+
+			else if (token.equals("UserID")) {
+				temp = Integer.parseInt(tokenz.nextToken());
+			}
+
+			else if (token.equals("GameID")) {
+				trade.setGameKey(Integer.parseInt(tokenz.nextToken()));
+			}
+
+			else if (token.equals("Status")) {
+				trade.setPrice(tokenz.nextToken());
+				if (userId == temp)
+					trades.add(trade);
+
+				trade = null;
+			}
+
+		}
+
+		return trades;
+
+	}
+
+	// key: username , key: password
+	int addUser(String username, String password, String question, String answer) {
+
+		ArrayList<Game> result = new ArrayList<Game>();
+		try {
+			result = this.execute("3", username, encrypt(password), question,
+					answer).get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Game g = result.get(0);
+
+		if (g.getTitle() == null)
+			return -1;
+
+		return Integer.parseInt(g.getTitle());
 	}
 
 	boolean addGameForUser(int userId, int gameId) {
@@ -822,7 +1010,13 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			ArrayList<NameValuePair> paramList = new ArrayList<NameValuePair>();
 
 			paramList.add(new BasicNameValuePair("username", params[1]));
+			Log.i("PARAM", params[1]);
 			paramList.add(new BasicNameValuePair("password", params[2]));
+			Log.i("PARAM", params[2]);
+			paramList.add(new BasicNameValuePair("question", params[3]));
+			Log.i("PARAM", params[3]);
+			paramList.add(new BasicNameValuePair("answer", params[4]));
+			Log.i("PARAM", params[4]);
 
 			// access db and execute
 			HttpClient httpclient = new DefaultHttpClient();
@@ -841,13 +1035,13 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 				// Log.i("INPUT", input.toString());
 			} catch (UnsupportedEncodingException e1) {
-				// TODO Auto-generated catch block
+				Log.i("ERR", "EX1");
 				e1.printStackTrace();
 			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
+				Log.i("ERR", "EX2");
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				Log.i("ERR", "EX3");
 				e.printStackTrace();
 			}
 
@@ -860,7 +1054,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 				reader = new BufferedReader(new InputStreamReader(input,
 						"iso-8859-1"), 8);
 			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
+				Log.i("ERR", "EX4");
 				e.printStackTrace();
 			}
 
@@ -870,7 +1064,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			try {
 				line = reader.readLine();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				Log.i("READ LINE", "EXCEPTION");
 				e.printStackTrace();
 			}
 			// Log.i("Add user result", line);
@@ -878,8 +1072,10 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			returnGame.setTitle(line);
 
 			ArrayList<Game> returnList = new ArrayList<Game>();
-
+			Log.i("RETURNLIST COUNT PRE", "" + returnList.size());
 			returnList.add(returnGame);
+			Log.i("RETURNLIST COUNT POST", "" + returnList.size());
+
 			return returnList;
 		}
 
@@ -1283,8 +1479,8 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			return returnList;
 
 		}
-		
-		//adddeal gameid vendor desc userid expiration 
+
+		// adddeal gameid vendor desc userid expiration
 		else if (ctrl == 11) {
 
 			InputStream input = null;
@@ -1349,7 +1545,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			return returnList;
 
 		}
-		
+
 		else if (ctrl == 12) {
 
 			InputStream input = null;
@@ -1408,57 +1604,54 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			return returnList;
 
 		}
-		
+
 		// get game
-				else if (ctrl == 13) {
+		else if (ctrl == 13) {
 
+			progressDialog.setMessage("Working...");
+			progressDialog.show();
 
-					progressDialog.setMessage("Working...");
-					progressDialog.show();
+			String url = "http://thegamesdb.net/api/GetGame.php?id="
+					+ params[1];
 
-					String url = "http://thegamesdb.net/api/GetGame.php?id="
-							+ params[1];
+			// create the http get from the url
+			HttpGet getMethod = new HttpGet(url);
 
-					// create the http get from the url
-					HttpGet getMethod = new HttpGet(url);
+			// obtain game information
+			DefaultHttpClient client = new DefaultHttpClient();
+			String responseBody = "nil";
 
-					// obtain game information
-					DefaultHttpClient client = new DefaultHttpClient();
-					String responseBody = "nil";
+			try {
+				ResponseHandler<String> responseHandler = new BasicResponseHandler();
 
-					try {
-						ResponseHandler<String> responseHandler = new BasicResponseHandler();
+				// obtain xml game data
+				responseBody = client.execute(getMethod, responseHandler);
+				// Log.i("RESPONSE", responseBody);
 
-						// obtain xml game data
-						responseBody = client.execute(getMethod, responseHandler);
-						// Log.i("RESPONSE", responseBody);
+			} catch (Throwable t) {
+				// can use t as a string to pass to logcat to display error
+				// Log.i("ERROR", t.toString());
 
-					} catch (Throwable t) {
-						// can use t as a string to pass to logcat to display error
-						// Log.i("ERROR", t.toString());
+				return null;
+			}
+			try {
+				progressDialog.dismiss();
 
-						return null;
-					}
-					try {
-						progressDialog.dismiss();
+				// parse the xml into an array of Game objects and return
+				// HERE
+				// return parseResponse(responseBody);
+				searchResults = parseResponse(responseBody);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				progressDialog.dismiss();
+				return null;
+			}
 
-						// parse the xml into an array of Game objects and return
-						// HERE
-						// return parseResponse(responseBody);
-						searchResults = parseResponse(responseBody);
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-						progressDialog.dismiss();
-						return null;
-					}
+			progressDialog.dismiss();
 
-					
-
-					progressDialog.dismiss();
-
-					return searchResults;
-				}
+			return searchResults;
+		}
 		return null;
 
 	}
