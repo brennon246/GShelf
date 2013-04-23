@@ -24,6 +24,8 @@ public class DealsView extends Base_Activity {
 	private Context ctx;
 	private String Username;
 	private int Userkey;
+	ArrayList<Deal> AllDeals;
+	private DealListAdapter SelectedDealListAdapter;
 
 	// swipe constants
 	private static final int SWIPE_MIN_DISTANCE = 120;
@@ -47,15 +49,15 @@ public class DealsView extends Base_Activity {
 
 		// Get list of Deals
 				
-		ArrayList<Deal> AllDeals = new ArrayList<Deal>();
+		//AllDeals = new ArrayList<Deal>();
 		//AllDeals = new Network(this).getDeals();
 		
 		Button AddDeals = (Button) findViewById(R.id.buttonAddDeal);
 		
 		// Display list of Deals
 		listViewDeals = (ListView) findViewById(R.id.deal_item);
-		listViewDeals.setAdapter(new DealListAdapter(ctx, R.layout.deal_item,
-				AllDeals));
+		//listViewDeals.setAdapter(new DealListAdapter(ctx, R.layout.deal_item,
+		//		AllDeals));
 
 		listViewDeals.setClickable(true);
 
@@ -88,6 +90,18 @@ public class DealsView extends Base_Activity {
 		});
 	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		AllDeals = new ArrayList<Deal>();
+		//get deals
+		SelectedDealListAdapter = new DealListAdapter(ctx,
+				R.layout.deal_item, AllDeals);
+		listViewDeals.setAdapter(SelectedDealListAdapter);
+
+	}
+	
 	// Swipe accessor function
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {

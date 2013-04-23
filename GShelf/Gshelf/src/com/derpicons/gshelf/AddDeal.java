@@ -106,7 +106,7 @@ public class AddDeal extends Activity {
 					complete = false;
 				} else
 					ExpDateText.setTextColor(Color.WHITE);
-				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+				SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 				java.util.Date dateObject = new java.util.Date();
 				try {
 					dateObject = formatter.parse(exp);
@@ -122,8 +122,7 @@ public class AddDeal extends Activity {
 					java.sql.Date expD = new java.sql.Date(dateObject.getTime());
 					//Date exp1 = new Date(2015, 3, 2);
 					if (GameKeys != null) {
-						// new Network(ctx).addToDeals(GameKeys, src, des,
-						// UserKey, expD);
+						new Network(ctx).addToDeals(GameKeys, src, des, UserKey, expD);
 						finish();
 					}
 				}

@@ -18,6 +18,7 @@ public class Game {
 	private Drawable Cover;
 	private String price;
 	private Context ctxt;
+	private String PriceThreshold;
 
 	public Game(Context context) {
 		//gameUrl = " ";
@@ -58,7 +59,7 @@ public class Game {
 	public void setPlatform(String platform) {
 		this.platform = platform;
 	}
-
+	
 	public String getOverview() {
 		return overview;
 	}

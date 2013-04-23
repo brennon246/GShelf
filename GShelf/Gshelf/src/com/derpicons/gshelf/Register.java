@@ -5,25 +5,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class Register extends Activity {
 
-	private String Question = null;
+	private String Question;
 	private Context ctx;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
 
 		ctx = this;
-		
+
 		Button register = (Button) findViewById(R.id.register);
 		TextView loginScreen = (TextView) findViewById(R.id.login);
 		final TextView errorDis = (TextView) findViewById(R.id.errorDisplay);
@@ -41,6 +40,7 @@ public class Register extends Activity {
 				final TextView confirmPasswordTextView = (TextView) findViewById(R.id.confirmPassword);
 				final EditText desiredUsername = (EditText) findViewById(R.id.desiredUsernameField);
 				final TextView desiredUsernameTextView = (TextView) findViewById(R.id.desiredUsername);
+				final Spinner QuestionSpinner = (Spinner) findViewById(R.id.securityQuestions);
 				final EditText answer = (EditText) findViewById(R.id.answerField);
 				final TextView answerTextView = (TextView) findViewById(R.id.answer);
 				boolean complete = true;
@@ -66,7 +66,7 @@ public class Register extends Activity {
 					complete = false;
 				} else
 					answerTextView.setTextColor(Color.WHITE);
-				//Check Question
+				// Check Question
 
 				if (complete) {
 					// test passwords
@@ -74,20 +74,27 @@ public class Register extends Activity {
 							.equals(ConPassword.getText().toString())) {
 						confirmPasswordTextView.setTextColor(Color.RED);
 					} else {
-						//String RegisterResult = Net.register(desiredUsername
-						//		.getText().toString(), password.getText()
-						//		.toString(), Question, answer.getText()
-						//		.toString());
-						boolean RegisterResult = new Network(ctx).addUser(desiredUsername.getText().toString(), password.getText().toString());
-						if (RegisterResult == true) {
-								//Intent i = new Intent(getApplicationContext(),
-								//		GamesLibrary.class);
-								//i.putExtra("UserName", desiredUsername.getText().toString());
-								//i.putExtra("UKey", RegisterResult);
-								//startActivity(i);
-							finish();
+						// String RegisterResult = Net.register(desiredUsername
+						// .getText().toString(), password.getText()
+						// .toString(), Question, answer.getText()
+						// .toString());
+						String usrnm = desiredUsername.getText().toString();
+						String pss = password.getText().toString();
+						String anwr = answer.getText().toString();
+						String ques = QuestionSpinner.getSelectedItem()
+								.toString();
+						int RegisterResult = new Network(ctx).addUser(usrnm,
+								pss, ques, anwr);
+						if (RegisterResult >= 0) {
+							Intent i = new Intent(getApplicationContext(),
+									GamesLibrary.class);
+							i.putExtra("UserName", desiredUsername.getText()
+									.toString());
+							i.putExtra("UKey", RegisterResult);
+							startActivity(i);
+
 						} else {
-							errorDis.setText("Failed to register user");
+							errorDis.setText("Username in use");
 						}
 					}
 				}
