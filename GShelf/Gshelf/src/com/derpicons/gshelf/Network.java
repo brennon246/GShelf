@@ -149,6 +149,13 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 				deal.setSource(tokenz.nextToken());
 			}
+			
+			else if (token.equalsIgnoreCase("Description")) {
+				
+
+					deal.setDescription(tokenz.nextToken());
+				}
+
 
 			else if (token.equalsIgnoreCase("PostedBy")) {
 				//Log.i("SETTING POSTED","posted");
