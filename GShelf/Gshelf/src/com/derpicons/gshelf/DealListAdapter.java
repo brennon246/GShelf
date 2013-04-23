@@ -39,9 +39,11 @@ public class DealListAdapter extends ArrayAdapter<Deal> {
 			viewCache = (ListViewCache) convertView.getTag();
 		}
 
-		TextView txtDealLink = viewCache.getTextDealEffect(resource);
-		txtDealLink.setText(deal.getDescription());
+		TextView txtDealEffect = viewCache.getTextDealEffect(resource);
+		txtDealEffect.setText(deal.getDescription());
 		
+		TextView txtDealSource = viewCache.getTextDealSource(resource);
+		txtDealSource.setText(deal.getSource());
 		/* Take the ImageView from layout and set the city's image */
 		/*
 		ImageView imageDeal = viewCache.getDealImageView(resource);

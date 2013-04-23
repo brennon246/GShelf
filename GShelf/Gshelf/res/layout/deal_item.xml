@@ -12,7 +12,7 @@
         android:text="10% off Blizzard games" />
 
     <TextView
-        android:id="@+id/DealImageView"
+        android:id="@+id/DealSource"
         style="@style/Deal_Item_Text"
         android:layout_alignBottom="@+id/DealEffectTextView"
         android:layout_alignParentLeft="true"

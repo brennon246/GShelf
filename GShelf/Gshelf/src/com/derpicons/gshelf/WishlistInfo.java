@@ -75,8 +75,8 @@ public class WishlistInfo extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				LocalDatabase LD = new LocalDatabase(ctx);
+				LD.removeGameFromLibraryOrWishlist(game.getKey());
 				LD.addGameToLibrary(game);
-				// need to remove from wishlist
 				LD.close();
 				Toast.makeText(getApplicationContext(), "Added to Library",
 						Toast.LENGTH_LONG).show();
@@ -109,11 +109,12 @@ public class WishlistInfo extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//LocalDatabase LD1 = new LocalDatabase(ctx);
-				//remove
-				//LD1.close();
+				LocalDatabase LD = new LocalDatabase(ctx);
+				LD.removeGameFromLibraryOrWishlist(game.getKey());
+				LD.close();
 				Toast.makeText(getApplicationContext(), "Removed from Wishlist",
 						Toast.LENGTH_LONG).show();
+				finish();
 
 			}
 		});

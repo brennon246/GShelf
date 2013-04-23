@@ -79,8 +79,12 @@ public class GameInfo extends Activity {
 				// LocalDatabase LD = new LocalDatabase(ctx);
 				// LD.RemoveFromLibrary(game, game.getPrice());
 				// LD.close();
+				LocalDatabase LD = new LocalDatabase(ctx);
+				LD.removeGameFromLibraryOrWishlist(game.getKey());
+				LD.close();
 				Toast.makeText(getApplicationContext(), "Removed from Library",
 						Toast.LENGTH_LONG).show();
+				finish();
 
 			}
 		});

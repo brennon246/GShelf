@@ -8,6 +8,7 @@ public class ListViewCache {
 
 	private View baseView;
 	private TextView textDealEffect;
+	private TextView textDealSource;
 	private TextView textGameTitle;
 	private TextView textGameConsole;
 	private ImageView GameCover;
@@ -42,6 +43,13 @@ public class ListViewCache {
 					.findViewById(R.id.DealEffectTextView);
 		}
 		return textDealEffect;
+	}
+	public TextView getTextDealSource(int resource) {
+		if (textDealSource == null) {
+			textDealSource = (TextView) baseView
+					.findViewById(R.id.DealSource);
+		}
+		return textDealSource;
 	}
 	
 	//Game Library

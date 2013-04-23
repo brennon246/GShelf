@@ -56,8 +56,21 @@ public class DealsView extends Base_Activity {
 		
 		// Display list of Deals
 		listViewDeals = (ListView) findViewById(R.id.deal_item);
-		//listViewDeals.setAdapter(new DealListAdapter(ctx, R.layout.deal_item,
-		//		AllDeals));
+		AllDeals = new Network(ctx).getDeals();
+		if(AllDeals == null)
+		{
+			Toast.makeText(getApplicationContext(),
+					"no deals", Toast.LENGTH_LONG)
+					.show();
+		}
+		else
+		{Toast.makeText(getApplicationContext(),
+				AllDeals.get(0).getDescription(), Toast.LENGTH_LONG)
+				.show();
+		
+		}
+		listViewDeals.setAdapter(new DealListAdapter(ctx, R.layout.deal_item,
+				AllDeals));
 
 		listViewDeals.setClickable(true);
 
