@@ -504,7 +504,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		for (String string : tokenizeJson(g.getTitle())) {
 			StringTokenizer tokenz = new StringTokenizer(string, ":");
 			token = tokenz.nextToken();
-			trade = new Trade();
+			
 
 			if (token.equals("MarketID")) {
 				trade = new Trade();
