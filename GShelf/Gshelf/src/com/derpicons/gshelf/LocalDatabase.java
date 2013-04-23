@@ -169,7 +169,7 @@ public class LocalDatabase extends SQLiteOpenHelper {
 			game.setTitle(cursor.getString(cursor
 					.getColumnIndex(LocalDatabase.ELEMENT_TITLE)));
 
-			game.setThreshold(cursor.getString(cursor
+			game.setPriceThreshold(cursor.getString(cursor
 					.getColumnIndex(LocalDatabase.ELEMENT_THRESHOLD)));
 
 			games.add(game);

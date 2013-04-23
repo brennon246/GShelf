@@ -58,8 +58,8 @@ public class Trade {
 		return GameKey;
 	}
 	
-	public int setGameKey() {
-		return GameKey;
+	public void setGameKey( int key) {
+		GameKey = key;
 	}
 
 	public int getSellerid() {
