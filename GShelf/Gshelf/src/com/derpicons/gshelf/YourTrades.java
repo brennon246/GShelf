@@ -25,6 +25,7 @@ public class YourTrades extends Activity {
 	private int Userkey;
 	private ArrayList<Game> OwnedGames;
 	private ArrayList<Game> WTBGames;
+	private SearchListAdapter SelectedSearchListAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +38,17 @@ public class YourTrades extends Activity {
 		Userkey = intent.getIntExtra("UKey", 0);
 
 		// Get list of trades
-		OwnedGames = new ArrayList<Game>();
+		//OwnedGames = new ArrayList<Game>();
 		WTBGames = new ArrayList<Game>();
 		//Get owned games
-		OwnedGames = new Network(ctx).getGames("halo");
+		//OwnedGames = new Network(ctx).getGames("halo");
 		//get WTB games
 		WTBGames = new Network(ctx).getGames("halo");
 
 		// Display list of games
 		listViewOwned = (ListView) findViewById(R.id.o_trade_list);
-		listViewOwned.setAdapter(new SearchListAdapter(ctx, R.layout.result_item,
-				OwnedGames));
+		//listViewOwned.setAdapter(new SearchListAdapter(ctx, R.layout.result_item,
+		//		OwnedGames));
 
 		listViewOwned.setClickable(true);
 		
@@ -94,6 +95,18 @@ public class YourTrades extends Activity {
 				
 			}
 		});
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		OwnedGames = new ArrayList<Game>();
+		OwnedGames = new Network(ctx).getGames("halo");
+		SelectedSearchListAdapter = new SearchListAdapter(ctx,
+				R.layout.result_item, OwnedGames);
+		listViewOwned.setAdapter(SelectedSearchListAdapter);
+
 	}
 	
 	private final String TAG = "Base_Activity";

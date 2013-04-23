@@ -24,20 +24,20 @@ public class GamesLibrary extends Activity {
 	private SearchListAdapter SelectedSearchListAdapter;
 	private String Username;
 	private int Userkey;
-	private Games LGames;
+	private ArrayList<Game> AGames;
 
 	// swipe constants
 	private static final int SWIPE_MIN_DISTANCE = 120;
 	private static final int SWIPE_THRESHOLD_VELOCITY = 200;
 
 	private GestureDetector gestureDetector;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_games_library);
 		ctx = this;
-		
+
 		// Listen for swipes
 		gestureDetector = new GestureDetector(this,
 				new OnSwipeGestureListener());
@@ -46,20 +46,11 @@ public class GamesLibrary extends Activity {
 		Username = intent.getStringExtra("UserName");
 		Userkey = intent.getIntExtra("UKey", 0);
 
-		// Get list of games
-
-		ArrayList<Game> AGames = new ArrayList<Game>();
-		LocalDatabase LD = new LocalDatabase(ctx);
-		AGames = LD.getGamesFromDb(Userkey);
-		LD.close();
-
-		LGames = new Games(AGames);
-
 		// Display list of games
 		listViewGames = (ListView) findViewById(R.id.game_item);
-		SelectedSearchListAdapter = new SearchListAdapter(ctx,
-				R.layout.result_item, LGames.getShowGames());
-		listViewGames.setAdapter(SelectedSearchListAdapter);
+		//SelectedSearchListAdapter = new SearchListAdapter(ctx,
+		//		R.layout.result_item, LGames.getShowGames());
+		//listViewGames.setAdapter(SelectedSearchListAdapter);
 
 		listViewGames.setClickable(true);
 
@@ -74,7 +65,7 @@ public class GamesLibrary extends Activity {
 				// Takes user to GameView page with required data.
 
 				Intent i = new Intent(getApplicationContext(), GameInfo.class);
-				i.putExtra("GameKey", LGames.getShowGames().get(position)
+				i.putExtra("GameKey", AGames.get(position)
 						.getKey());
 				i.putExtra("UserName", Username);
 				i.putExtra("UKey", Userkey);
@@ -106,17 +97,14 @@ public class GamesLibrary extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-	
-		ArrayList<Game> AGames = new ArrayList<Game>();
+
+		AGames = new ArrayList<Game>();
 		LocalDatabase LD = new LocalDatabase(ctx);
 		AGames = LD.getGamesFromDb(Userkey);
 		LD.close();
-		LGames.setShowGames(AGames);
-		if(LGames.getShowGames() != null)
-		{
-			SelectedSearchListAdapter.notifyDataSetChanged();
-		}
-		
+		SelectedSearchListAdapter = new SearchListAdapter(ctx,
+				R.layout.result_item, AGames);
+		listViewGames.setAdapter(SelectedSearchListAdapter);
 
 	}
 
@@ -167,57 +155,58 @@ public class GamesLibrary extends Activity {
 	}
 
 	private final String TAG = "Base_Activity";
-	
+
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) 
-	{
+	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu
 		getMenuInflater().inflate(R.menu.main_menu, menu);
-		//SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-		//return super.onCreateOptionsMenu(menu);
+		// SearchView searchView = (SearchView)
+		// menu.findItem(R.id.action_search).getActionView();
+		// return super.onCreateOptionsMenu(menu);
 		return true;
 	}
-	
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
-		switch (item.getItemId())
-		{
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
 		case R.id.action_search:
 			Log.i(TAG, "Action Search Clicked");
-			
+
 			Intent i = new Intent(getApplicationContext(), SearchActivity.class);
 			i.putExtra("UserName", Username);
 			i.putExtra("UKey", Userkey);
 			startActivity(i);
 
 			return true;
-			
+
 		case R.id.action_settings:
 			Log.i(TAG, "Action Settings Clicked");
 			return true;
-			
+
 		case R.id.action_logout:
 			Log.i(TAG, "Action Logout Clicked");
-			
-			//delete shared preferences
-			SharedPreferences settings = getSharedPreferences("GSHELF_LOGIN", Activity.MODE_PRIVATE);
+
+			// delete shared preferences
+			SharedPreferences settings = getSharedPreferences("GSHELF_LOGIN",
+					Activity.MODE_PRIVATE);
 			SharedPreferences.Editor editor = settings.edit();
-				editor.remove("username");
-				editor.remove("password");
-				editor.commit();
-			
-			//intent return to login
+			editor.remove("username");
+			editor.remove("password");
+			editor.commit();
+
+			// intent return to login
 			Intent j = new Intent(getApplicationContext(), Login.class);
-			j.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			j.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY
+					| Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
+					| Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(j);
-			
+
 			return true;
-			
+
 		default:
 			return super.onOptionsItemSelected(item);
 		}
-	//return true;	
+		// return true;
 	}
-	
+
 }

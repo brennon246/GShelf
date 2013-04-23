@@ -15,8 +15,6 @@ import android.widget.TextView;
 
 public class TradeInfo extends Activity {
 
-	final Button ButtonBuy = (Button) findViewById(R.id.buttonBuy);
-
 	private String Username;
 	private int Userkey;
 	private int GameKey;
@@ -32,13 +30,14 @@ public class TradeInfo extends Activity {
 		Intent intent = getIntent();
 		Username = intent.getStringExtra("UserName");
 		Userkey = intent.getIntExtra("UKey", 0);
-
+		
+		final Button ButtonBuy = (Button) findViewById(R.id.buttonBuy);
 		final TextView TradeTitle = (TextView) findViewById(R.id.TradeTitleTextView);
 		final ImageView TradeImage = (ImageView) findViewById(R.id.TradeCoverImageView);
 		final TextView TradeConsole = (TextView) findViewById(R.id.TradeConsoleTextView);
-		// final TextView TradeLocation = (TextView)
-		// findViewById(R.id.TradeLocationTextView);
+		final TextView TradeLocation = (TextView) findViewById(R.id.TradeLocationTextView);
 		final TextView TradePrice = (TextView) findViewById(R.id.TradePriceTextView);
+		TradeLocation.setText(" ");
 		GameKey = intent.getIntExtra("GameKey", 0);
 
 		game = new Network(ctx).getGame(GameKey);

@@ -1,5 +1,7 @@
 package com.derpicons.gshelf;
 
+import java.util.Random;
+
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
@@ -25,7 +27,11 @@ public class Game {
 		genre = " ";
 		developer = " ";
 		key = -1;
-		price = "15.99";
+		Random random = new Random();
+		int Low = 15;
+		int High = 45;
+		int randomNum = random.nextInt(High-Low) + Low;
+		price = "$ " + Integer.toString(randomNum) + ".99";
 		ctxt = context;
 		Cover = ctxt.getResources().getDrawable(R.drawable.no_image);
 		

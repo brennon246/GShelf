@@ -48,16 +48,16 @@ public class Wishlist extends Activity {
 
 		// Get list of wishlist games
 
-		WishListGames = new ArrayList<Game>();
-		LocalDatabase LD = new LocalDatabase(ctx);
-		WishListGames = LD.getGamesFromWishlist();
-		LD.close();
+		//WishListGames = new ArrayList<Game>();
+		//LocalDatabase LD = new LocalDatabase(ctx);
+		//WishListGames = LD.getGamesFromWishlist();
+		//LD.close();
 
 		// Display list of wishlist games
 		listViewGames = (ListView) findViewById(R.id.wishlist_item);
-		SelectedSearchListAdapter = new SearchListAdapter(ctx,
-				R.layout.result_item, WishListGames);
-		listViewGames.setAdapter(SelectedSearchListAdapter);
+		//SelectedSearchListAdapter = new SearchListAdapter(ctx,
+		//		R.layout.result_item, WishListGames);
+		//listViewGames.setAdapter(SelectedSearchListAdapter);
 
 		listViewGames.setClickable(true);
 
@@ -85,16 +85,14 @@ public class Wishlist extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-	
+
 		WishListGames = new ArrayList<Game>();
 		LocalDatabase LD = new LocalDatabase(ctx);
-		WishListGames = LD.getGamesFromDb(Userkey);
+		WishListGames = LD.getGamesFromWishlist();
 		LD.close();
-		if(WishListGames != null)
-		{
-			SelectedSearchListAdapter.notifyDataSetChanged();
-		}
-		
+		SelectedSearchListAdapter = new SearchListAdapter(ctx,
+				R.layout.result_item, WishListGames);
+		listViewGames.setAdapter(SelectedSearchListAdapter);
 
 	}
 
@@ -146,16 +144,6 @@ public class Wishlist extends Activity {
 	}
 	
 	private final String TAG = "Base_Activity";
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) 
-	{
-		// Inflate the menu
-		getMenuInflater().inflate(R.menu.main_menu, menu);
-		//SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-		//return super.onCreateOptionsMenu(menu);
-		return true;
-	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
