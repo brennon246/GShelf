@@ -190,9 +190,14 @@ public class LocalDatabase extends SQLiteOpenHelper {
 
 	public ArrayList<Game> getGamesFromDb(int userId) {
 
-		Cursor cursor = this.getWritableDatabase().rawQuery(
-				"SELECT * FROM Games ORDER BY title", null);
+		String[] args = new String[1];
 
+		args[0] = String.valueOf(0);
+
+		Cursor cursor = getWritableDatabase().rawQuery(
+				"SELECT * FROM Games WHERE isWishList=? ORDER BY title", args);
+		
+		
 		ArrayList<Game> games = new ArrayList<Game>();
 
 		Game game = new Game(context);

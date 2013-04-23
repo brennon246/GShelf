@@ -109,26 +109,33 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 		Game g = result.get(0);
 
-		Deal deal = new Deal();
+		Deal deal = null;
 		String token;
 
 		ArrayList<Integer> gameIds = null;
 		ArrayList<Deal> deals = new ArrayList<Deal>();
 		for (String string : tokenizeJsonDeals(g.getTitle())) {
 		
-			Log.i("IN GET DEALS", string);
+		//	Log.i("OUTER", string);
 			StringTokenizer tokenz = new StringTokenizer(string, ":");
 			token = tokenz.nextToken();
+		//	Log.i("COMP", token);
+			
 			if (token.equals("DealID")) {
 				deal = new Deal();
 			}
 
 			else if (token.equals("GameID")) {
+				
+				//Log.i("TOKENIN GAME", token);
+				
 				StringTokenizer tokenizer = new StringTokenizer(
 						tokenz.nextToken(), ",");
 				gameIds = new ArrayList<Integer>();
 				while (tokenizer.hasMoreElements()) {
 					String aToken = tokenizer.nextToken();
+					//Log.i("A GAMEID",aToken);
+
 					gameIds.add(Integer.parseInt(aToken));
 				}
 
@@ -136,15 +143,21 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 				gameIds = null;
 			}
 
-			else if (token.equals("Vendor")) {
+			else if (token.equalsIgnoreCase("Vendor")) {
+				
+			//	Log.i("VENDOR","vendor");
+
 				deal.setSource(tokenz.nextToken());
 			}
 
-			else if (token.equals("PostedBy")) {
-
+			else if (token.equalsIgnoreCase("PostedBy")) {
+				//Log.i("SETTING POSTED","posted");
+				tokenz.nextToken();
 			}
 
-			else if (token.equals("Expiration")) {
+			else if (token.equalsIgnoreCase("Expiration")) {
+				//Log.i("SETTING EXPIRATION","exp");
+
 				StringTokenizer tokenizer = new StringTokenizer(
 						tokenz.nextToken(), "-");
 				int year = Integer.parseInt(tokenizer.nextToken());
@@ -158,6 +171,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 		}
 
+		//Log.i("COUNT", ""+deals.size());
 		return deals;
 	}
 
@@ -254,7 +268,7 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 						tokens.add(builder.toString().replace("\"", ""));
 					} else {
 						
-						Log.i("TOKEN ELSE", token);
+						//Log.i("TOKEN ELSE", token);
 						tokens.add(token.substring(1, token.length() - 1)
 								.replace("\"", ""));
 					}
