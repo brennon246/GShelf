@@ -1,11 +1,12 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/GridLayout1"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#000000"
     android:columnCount="1"
     android:orientation="horizontal"
+    android:layout_marginBottom="100dp"
     android:useDefaultMargins="false" >
 
     <Space android:id="@+id/space1" />
