@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 
-public class GamesLibrary extends Base_Activity {
+public class GamesLibrary extends Activity {
 
 	private ListView listViewGames;
 	private Context ctx;
@@ -160,6 +164,60 @@ public class GamesLibrary extends Base_Activity {
 		i.putExtra("UserName", Username);
 		i.putExtra("UKey", Userkey);
 		startActivity(i);
+	}
+
+	private final String TAG = "Base_Activity";
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) 
+	{
+		// Inflate the menu
+		getMenuInflater().inflate(R.menu.main_menu, menu);
+		//SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+		//return super.onCreateOptionsMenu(menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+		case R.id.action_search:
+			Log.i(TAG, "Action Search Clicked");
+			
+			Intent i = new Intent(getApplicationContext(), SearchActivity.class);
+			i.putExtra("UserName", Username);
+			i.putExtra("UKey", Userkey);
+			startActivity(i);
+
+			return true;
+			
+		case R.id.action_settings:
+			Log.i(TAG, "Action Settings Clicked");
+			return true;
+			
+		case R.id.action_logout:
+			Log.i(TAG, "Action Logout Clicked");
+			
+			//delete shared preferences
+			SharedPreferences settings = getSharedPreferences("GSHELF_LOGIN", Activity.MODE_PRIVATE);
+			SharedPreferences.Editor editor = settings.edit();
+				editor.remove("username");
+				editor.remove("password");
+				editor.commit();
+			
+			//intent return to login
+			Intent j = new Intent(getApplicationContext(), Login.class);
+			j.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(j);
+			
+			return true;
+			
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	//return true;	
 	}
 	
 }

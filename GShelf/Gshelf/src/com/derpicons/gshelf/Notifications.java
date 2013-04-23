@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
-public class Notifications extends Base_Activity {
+public class Notifications extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -12,4 +12,5 @@ public class Notifications extends Base_Activity {
 		setContentView(R.layout.activity_notifications);
 	}
 
+	
 }

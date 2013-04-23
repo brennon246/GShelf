@@ -11,6 +11,9 @@ import android.widget.SearchView;
 
 public class Base_Activity extends Activity 
 {
+	
+	private String Username;
+	private int Userkey;
 
 	private final String TAG = "Base_Activity";
 	
