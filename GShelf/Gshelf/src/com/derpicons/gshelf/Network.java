@@ -1,4 +1,4 @@
-package com.derpicons.gshelf;
+package  com.derpicons.gshelf;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -183,17 +183,14 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 					tokens.add(token.substring(2, token.length() - 1).replace(
 							"\"", ""));
 				} else {
-					/*if (token.length() == 1) {
-						String str = "";
-						while (token.length() == 1) {
-							str = token + ",";
-							token = tokenizer2.nextToken();
-						}
-						Log.i("STRING", str.substring(0, str.length()-2));
-						tokens.add(str);
-					}
-					else*/
-						tokens.add(token.substring(1, token.length() - 1).replace(
+					/*
+					 * if (token.length() == 1) { String str = ""; while
+					 * (token.length() == 1) { str = token + ","; token =
+					 * tokenizer2.nextToken(); } Log.i("STRING",
+					 * str.substring(0, str.length()-2)); tokens.add(str); }
+					 * else
+					 */
+					tokens.add(token.substring(1, token.length() - 1).replace(
 							"\"", ""));
 				}
 			}
@@ -394,6 +391,27 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		return gameResults;
 	}
 
+	
+	boolean removeFromMarket(int marketId){
+
+		ArrayList<Game> result = new ArrayList<Game>();
+		try {
+			result = this.execute("14", String.valueOf(marketId)).get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Game g = result.get(0);
+
+		Log.i("result", "VAL: " + g.getTitle());
+		
+
+		return false;
+	}
 	ArrayList<Trade> getMarket() {
 		ArrayList<Game> result = new ArrayList<Game>();
 		ArrayList<Trade> trades = new ArrayList<Trade>();
@@ -414,27 +432,43 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 		// Log.i("MARKET", it);
 		Trade trade = null;
 		String token;
+		String temp;
 		for (String string : tokenizeJson(g.getTitle())) {
 			StringTokenizer tokenz = new StringTokenizer(string, ":");
 			token = tokenz.nextToken();
-			trade = new Trade();
+		
 
+			// Log.i("TOKEN", token);
 			if (token.equals("MarketID")) {
 				trade = new Trade();
-				trade.setKey(Integer.parseInt(tokenz.nextToken()));
+				temp = tokenz.nextToken();
+				Log.i("MARKETID", temp);
+				trade.setKey(Integer.parseInt(temp));
 			}
 
 			else if (token.equals("UserID")) {
+				temp = tokenz.nextToken();
+				Log.i("Userid", temp);
 
 			}
 
 			else if (token.equals("GameID")) {
-				trade.setGameKey(Integer.parseInt(tokenz.nextToken()));
+				temp = tokenz.nextToken();
+				Log.i("GAMEID", temp);
+				trade.setGameKey(Integer.parseInt(temp));
 			}
 
 			else if (token.equals("Status")) {
-				trade.setPrice(tokenz.nextToken());
-				trades.add(trade);
+				try {
+					temp = tokenz.nextToken();
+					Log.i("STATUS", temp);
+					trade.setPrice(temp);
+					trades.add(trade);
+				}
+
+				catch (java.util.NoSuchElementException n) {
+					trades.add(trade);
+				}
 				trade = null;
 			}
 
@@ -442,11 +476,6 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 
 		return trades;
 
-	}
-
-	boolean removeFromMarket(int marketId) {
-
-		return false;
 	}
 
 	ArrayList<Trade> getMyMarket(int userId) {
@@ -1651,6 +1680,67 @@ public class Network extends AsyncTask<String, String, ArrayList<Game>> {
 			progressDialog.dismiss();
 
 			return searchResults;
+		}
+		
+		else if(ctrl == 14){
+
+			InputStream input = null;
+
+			ArrayList<NameValuePair> paramList = new ArrayList<NameValuePair>();
+
+			paramList.add(new BasicNameValuePair("marketid", params[1]));
+			
+
+			// access db and execute
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppost = new HttpPost(
+					"http://gshelf.epyon-tech.net/removefrommarket.php");
+			try {
+				// Log.i("user", paramList.get(0).toString());
+				// Log.i("password", paramList.get(1).toString());
+				// Log.i("game", bigList.get(1).toString());
+				httppost.setEntity(new UrlEncodedFormEntity(paramList));
+				HttpResponse response = httpclient.execute(httppost);
+
+				HttpEntity entity = response.getEntity();
+
+				input = entity.getContent();
+				// Log.i("INPUT", input.toString());
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			BufferedReader reader = null;
+			try {
+				reader = new BufferedReader(new InputStreamReader(input,
+						"iso-8859-1"), 8);
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+
+			StringBuilder sbuilder = new StringBuilder();
+
+			String line = "pop";
+			try {
+				line = reader.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			// Log.i("LINE", line.toString());
+
+			Game returnGame = new Game(ctxt);
+
+			returnGame.setTitle(line);
+
+			ArrayList<Game> returnList = new ArrayList<Game>();
+
+			returnList.add(returnGame);
+			return returnList;
 		}
 		return null;
 
