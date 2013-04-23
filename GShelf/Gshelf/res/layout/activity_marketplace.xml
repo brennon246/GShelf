@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:orientation="vertical"
-        android:padding="20dip" >
+        android:orientation="vertical">
         
         <EditText
             android:id="@+id/editTextSearch"
@@ -33,7 +32,7 @@
             android:id="@+id/trade_list"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" 
-            android:paddingBottom="25dp">
+            android:paddingBottom="42dp">
         </ListView>
     </LinearLayout>
 <Button 
