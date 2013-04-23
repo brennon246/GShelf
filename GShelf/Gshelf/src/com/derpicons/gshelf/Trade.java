@@ -3,7 +3,7 @@ package com.derpicons.gshelf;
 
 public class Trade {
 
-	private Game tGame;
+	private int GameKey;
 	private String Price;
 	private Boolean isLocal;
 	private Boolean isGlobal;
@@ -12,14 +12,6 @@ public class Trade {
 	private int key;
 	
 	public Trade() {
-	}
-
-	public Game gettGame() {
-		return tGame;
-	}
-
-	public void settGame(Game tGame) {
-		this.tGame = tGame;
 	}
 
 	public String getPrice() {
@@ -60,6 +52,22 @@ public class Trade {
 
 	public void setIsGlobal(Boolean isGlobal) {
 		this.isGlobal = isGlobal;
+	}
+
+	public int getGameKey() {
+		return GameKey;
+	}
+	
+	public int setGameKey() {
+		return GameKey;
+	}
+
+	public int getSellerid() {
+		return Sellerid;
+	}
+
+	public void setSellerid(int sellerid) {
+		Sellerid = sellerid;
 	}
 
 }

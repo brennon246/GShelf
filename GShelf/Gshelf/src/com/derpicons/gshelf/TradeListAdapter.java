@@ -39,8 +39,8 @@ public class TradeListAdapter extends ArrayAdapter<Trade> {
 			viewCache = (ListViewCache) convertView.getTag();
 		}
 
-		TextView txtGameTitle = viewCache.getTextTGameTitle(resource);
-		txtGameTitle.setText(trade.gettGame().getTitle());
+		//TextView txtGameTitle = viewCache.getTextTGameTitle(resource);
+		//txtGameTitle.setText(trade.gettGame().getTitle());
 
 		TextView txtGamePrice = viewCache.getTextTGamePrice(resource);
 		txtGamePrice.setText(trade.getPrice());
@@ -48,11 +48,11 @@ public class TradeListAdapter extends ArrayAdapter<Trade> {
 		TextView txtTradeLocation = viewCache.getTextTradeLocation(resource);
 		txtTradeLocation.setText(trade.getLocation());
 		
-		TextView txtGameConsole = viewCache.getTextTGameConsole(resource);
-		txtGameConsole.setText(trade.gettGame().getPlatform());
+		//TextView txtGameConsole = viewCache.getTextTGameConsole(resource);
+		//txtGameConsole.setText(trade.gettGame().getPlatform());
 
-		ImageView TGameCover = viewCache.getTGameCover(resource);
-		TGameCover.setImageDrawable(trade.gettGame().getCover());
+		//ImageView TGameCover = viewCache.getTGameCover(resource);
+		//TGameCover.setImageDrawable(trade.gettGame().getCover());
 		
 		/* Take the ImageView from layout and set the city's image */
 		/*
