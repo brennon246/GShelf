@@ -146,6 +146,16 @@ public class Wishlist extends Activity {
 	private final String TAG = "Base_Activity";
 	
 	@Override
+	public boolean onCreateOptionsMenu(Menu menu) 
+	{
+		// Inflate the menu
+		getMenuInflater().inflate(R.menu.main_menu, menu);
+		//SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+		//return super.onCreateOptionsMenu(menu);
+		return true;
+	}
+	
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		switch (item.getItemId())
