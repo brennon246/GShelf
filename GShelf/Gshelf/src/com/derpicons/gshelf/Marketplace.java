@@ -19,8 +19,8 @@ public class Marketplace extends Base_Activity {
 
 	private ListView listViewTrades;
 	private Context ctx;
-	String Username;
-	int Userkey;
+	private String Username;
+	private int Userkey;
 	ArrayList<Game> TradeGames;
 	
 	// swipe constants
@@ -129,12 +129,16 @@ public class Marketplace extends Base_Activity {
 	// Handle swipe from left to right
 	private void handleSwipeLeftToRight() {
 		Intent i = new Intent(getApplicationContext(), Wishlist.class);
+		i.putExtra("UserName", Username);
+		i.putExtra("UKey", Userkey);
 		startActivity(i);
 	}
 
 	// Handle swipe from right to left
 	private void handleSwipeRightToLeft() {
 		Intent i = new Intent(getApplicationContext(), DealsView.class);
+		i.putExtra("UserName", Username);
+		i.putExtra("UKey", Userkey);
 		startActivity(i);
 	}
 
